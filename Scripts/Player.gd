@@ -3,7 +3,8 @@ class_name Player
 
 static var Instance;
 
-@export var acceleration = 50; #idk placeholder
+@export var acceleration = 500; #idk placeholder
+@export var speed = 250;
 @export var gravity = 1500; # guess
 @export var crouchLength = 1; #how long, in seconds
 @export var jumpHeight = 64; #how high, in pixels
@@ -22,8 +23,9 @@ func _ready():
 	else:
 		queue_free();
 
-func _physics_process(delta):
-	velocity.x = 500;
+func _process(delta):
+	velocity.x += acceleration * delta;
+	velocity.x = min(velocity.x, speed);
 	velocity.y += gravity * delta;
 	
 	if Input.is_action_just_pressed("ui_down") && !crouched:
@@ -32,12 +34,15 @@ func _physics_process(delta):
 	if crouched:
 		scale.y = 0.5;
 		crouchTimer += delta;
+		velocity.x *= 1 + (1 - crouchTimer) / 5;
 		
 		if crouchTimer >= crouchLength:
 			crouched = false;
 			scale.y = 1;
+			crouchTimer = 0;
 	else:
 		scale.y = 1;
+		velocity.x = velocity.x;
 	
 	if is_on_floor() && Input.is_action_pressed("ui_up"):
 		jumping = true;

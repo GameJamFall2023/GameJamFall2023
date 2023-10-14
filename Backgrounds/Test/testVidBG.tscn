@@ -1,25 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://45360e6ekna0"]
 
-[ext_resource type="VideoStream" path="res://Shaders/output.ogv" id="1_db4pf"]
+[ext_resource type="Texture2D" uid="uid://dtqjkwjqaqdro" path="res://Shaders/Teddy.png" id="2_1632w"]
 
 [node name="testVid" type="Node2D"]
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_top = -238.0
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -270.0
 offset_right = 480.0
-offset_bottom = -32.0
-stream = ExtResource("1_db4pf")
-volume_db = -80.0
-autoplay = true
-expand = true
-metadata/_edit_use_anchors_ = true
-
-[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="."]
-offset_top = -32.0
-offset_right = 480.0
-offset_bottom = 32.0
-stream = ExtResource("1_db4pf")
-volume_db = -80.0
-autoplay = true
-expand = true
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("2_1632w")
+expand_mode = 1

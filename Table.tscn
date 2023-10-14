@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmm2iwnssrkp5"]
+
+[ext_resource type="PackedScene" uid="uid://ddcpeb47nrmvu" path="res://Models/ReRun_Table_NOTFINAL.fbx" id="1_wwcmv"]
+[ext_resource type="Shader" path="res://Shaders/3D Pixels.gdshader" id="2_xh172"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="3_acuii"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76egj"]
+shader = ExtResource("2_xh172")
+shader_parameter/screenSize = Vector2(480, 270)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08811e-09, -4.27562e-08, 4.05, 2.213, 0)
+projection = 1
+size = 3.5
+near = 0.001
+
+[node name="ReRun_Table_NOTFINAL" parent="." instance=ExtResource("1_wwcmv")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.69454, -1.39537)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_76egj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_acuii")

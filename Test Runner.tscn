@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=8 format=3 uid="uid://coq60ccvflad1"]
 
 [ext_resource type="Texture2D" uid="uid://dtqjkwjqaqdro" path="res://Shaders/Teddy.png" id="1_8okm2"]
-[ext_resource type="PackedScene" uid="uid://45360e6ekna0" path="res://Backgrounds/Test/testVidBG.tscn" id="1_yloep"]
+[ext_resource type="Script" path="res://Scripts/Background Spawner.gd" id="1_lp2ia"]
+[ext_resource type="Script" path="res://Scripts/Floor follower.gd" id="1_ohngu"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_venei"]
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="4_dtw85"]
 
@@ -13,13 +14,14 @@ size = Vector2(32, 64)
 [node name="Node2D" type="Node2D"]
 
 [node name="Floor" type="StaticBody2D" parent="."]
+script = ExtResource("1_ohngu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape2D_8t0vn")
+one_way_collision_margin = 128.0
 
 [node name="Background" type="Node2D" parent="."]
-
-[node name="testVid" parent="Background" instance=ExtResource("1_yloep")]
+script = ExtResource("1_lp2ia")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("2_venei")
