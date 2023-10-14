@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="Rerun"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://Menu with achors.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
 window/vsync/vsync_mode=0
 
 [dotnet]

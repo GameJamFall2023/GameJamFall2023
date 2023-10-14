@@ -1,0 +1,193 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckv87l0jxnaqf"]
+
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Scaler.gd" id="1_vk8ns"]
+[ext_resource type="Texture2D" uid="uid://053525woyccu" path="res://Backgrounds/Test/Screenshot_2023-10-13_235818.png" id="2_xhhfb"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Button Handler.gd" id="3_4756x"]
+[ext_resource type="Shader" path="res://Shaders/SettingsFade.gdshader" id="3_ho7l5"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="4_rgr8d"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/Mouse Updater.gd" id="5_jjpb3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1fke"]
+shader = ExtResource("3_ho7l5")
+shader_parameter/bleedAmountX = 10.0
+shader_parameter/bleedAmountY = 0.0
+shader_parameter/time = 0.0
+shader_parameter/fadeTime = 2.5
+shader_parameter/mouse = Vector2(0, 0)
+shader_parameter/updateDistance = 100.0
+shader_parameter/screenSize = Vector2(480, 270)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI Scaler" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+script = ExtResource("1_vk8ns")
+
+[node name="Temp BG" type="TextureRect" parent="UI Scaler"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_xhhfb")
+
+[node name="Main" type="Control" parent="UI Scaler"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_4756x")
+
+[node name="Play" type="Button" parent="UI Scaler/Main"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.5
+offset_top = -145.0
+offset_right = 20.5
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play"
+
+[node name="Settings" type="Button" parent="UI Scaler/Main"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -110.0
+offset_right = 35.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Settings"
+
+[node name="Credits" type="Button" parent="UI Scaler/Main"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.5
+offset_top = -75.0
+offset_right = 31.5
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Credits"
+
+[node name="Quit" type="Button" parent="UI Scaler/Main"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -40.0
+offset_right = 21.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+
+[node name="Settings" type="PanelContainer" parent="UI Scaler"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -115.0
+offset_right = 220.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI Scaler/Settings"]
+layout_mode = 2
+
+[node name="Close Settings" type="Button" parent="UI Scaler/Settings/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -35.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "  X  "
+
+[node name="Credits" type="PanelContainer" parent="UI Scaler"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -115.0
+offset_right = 220.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI Scaler/Credits"]
+layout_mode = 2
+
+[node name="Close Credits" type="Button" parent="UI Scaler/Credits/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -35.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "  X  "
+
+[node name="Mouse Shader" type="TextureRect" parent="UI Scaler"]
+visible = false
+visibility_layer = 2
+material = SubResource("ShaderMaterial_q1fke")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_rgr8d")
+script = ExtResource("5_jjpb3")
+
+[connection signal="pressed" from="UI Scaler/Main/Play" to="UI Scaler/Main" method="_on_play_pressed"]
+[connection signal="pressed" from="UI Scaler/Main/Settings" to="UI Scaler/Main" method="_on_settings_pressed"]
+[connection signal="pressed" from="UI Scaler/Main/Credits" to="UI Scaler/Main" method="_on_credits_pressed"]
+[connection signal="pressed" from="UI Scaler/Main/Quit" to="UI Scaler/Main" method="_on_quit_pressed"]
+[connection signal="pressed" from="UI Scaler/Settings/Control/Close Settings" to="UI Scaler/Main" method="_on_close_settings_pressed"]
+[connection signal="pressed" from="UI Scaler/Credits/Control/Close Credits" to="UI Scaler/Main" method="_on_close_credits_pressed"]

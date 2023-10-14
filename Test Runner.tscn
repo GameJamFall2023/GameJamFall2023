@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scripts/Background Spawner.gd" id="1_lp2ia"]
 [ext_resource type="Script" path="res://Scripts/Floor follower.gd" id="1_ohngu"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_venei"]
-[ext_resource type="Texture2D" uid="uid://bax00alps0ihf" path="res://Sprites/Jump_rough_sheet.png" id="4_c8rb8"]
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="4_dtw85"]
-[ext_resource type="Texture2D" uid="uid://bc0f5mmjgbsdx" path="res://Sprites/Character_run_rough_loop_one_layer_Sheet.png" id="4_xko85"]
-[ext_resource type="Texture2D" uid="uid://dai8ouwycpa6o" path="res://Sprites/Slide_Rough_sheet.png" id="6_bna1t"]
+[ext_resource type="Texture2D" uid="uid://61kgwx5rhwi2" path="res://Sprites/Character_run_rough_loop_1.png" id="5_5de3q"]
+[ext_resource type="Texture2D" uid="uid://c3pbtj7eg34mh" path="res://Sprites/Jump_rough.png" id="6_gibgo"]
+[ext_resource type="Texture2D" uid="uid://duiepx88j88jg" path="res://Sprites/Slide_Rough_sheet_1.png" id="7_mwem1"]
 [ext_resource type="Texture2D" uid="uid://c1ubffjy7h5b8" path="res://Sprites/moster.png" id="8_w674d"]
 [ext_resource type="Script" path="res://Scripts/Monster.gd" id="9_tgo4k"]
 
@@ -45,21 +45,21 @@ shape = SubResource("RectangleShape2D_yn8cm")
 
 [node name="Running" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -32)
-texture = ExtResource("4_xko85")
+texture = ExtResource("5_5de3q")
 hframes = 4
 vframes = 2
 
 [node name="Jumping" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
 position = Vector2(0, -32)
-texture = ExtResource("4_c8rb8")
+texture = ExtResource("6_gibgo")
 hframes = 3
 vframes = 2
 
 [node name="Slide" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
 position = Vector2(-5, -32)
-texture = ExtResource("6_bna1t")
+texture = ExtResource("7_mwem1")
 hframes = 2
 vframes = 3
 

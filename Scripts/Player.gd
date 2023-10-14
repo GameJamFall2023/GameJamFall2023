@@ -49,22 +49,29 @@ func _process(delta):
 	velocity.x = min(velocity.x, speed);
 	velocity.y += gravity * delta;
 	
+	ray.position.y = collider.position.y + collider.shape.size.y / 2 - 1;
+	ray.target_position.x = collider.shape.size.x / 2 + 1;
+	
+	
 	if Input.is_action_just_pressed("ui_down") && !crouched:
 		crouched = true;
 	
 	if crouched:
-		collider.shape.size.y = 32;
-		collider.position.y = -16;
-		crouchTimer += delta;\
+		collider.shape.size.x = 60;
+		collider.shape.size.y = 18;
+		collider.position.y = -9;
+		crouchTimer += delta;
 		if !ray.is_colliding():
 			velocity.x *= 1 + (1 - crouchTimer) / 5;
 		
 		if crouchTimer >= crouchLength:
 			crouched = false;
+			collider.shape.size.x = 32;
 			collider.shape.size.y = 64;
 			collider.position.y = -32;
 			crouchTimer = 0;
 	else:
+		collider.shape.size.x = 32;
 		collider.shape.size.y = 64;
 		collider.position.y = -32;
 	
@@ -89,6 +96,7 @@ func _process(delta):
 	if !Input.is_action_pressed("ui_up") || (is_on_floor() && jumpTime > 0.1) || lastJump < -sin(jumpTime * 5):
 		jumping = false;
 	
+	
 	if ray.is_colliding() && !wasColliding:
 		velocity.x = speed * 0.2;
 		
@@ -98,6 +106,7 @@ func _process(delta):
 	
 	CameraController.Instance.position.x = position.x;
 	animate(delta);
+	
 
 func animate(delta):
 	animTimer += delta;
@@ -108,6 +117,13 @@ func animate(delta):
 		Jumping.frame += frameChange;
 		if !groundLastJump:
 			Jumping.frame = min(Jumping.frame, jumpFreeze);
+		
+		if Jumping.frame == 2:
+			collider.shape.size.y = 40;
+			collider.position.y = -44;
+		elif Jumping.frame == 3:
+			collider.shape.size.y = 50;
+			collider.position.y = -39;
 		
 		Jumping.visible = true;
 		Sliding.visible = false;
@@ -130,6 +146,9 @@ func animate(delta):
 		Jumping.frame = 0;
 	else:
 		Running.frame = fmod((Running.frame + frameChange), runningLast);
+		
+		collider.shape.size.y = 64;
+		collider.position.y = -32;
 		
 		Jumping.visible = false;
 		Sliding.visible = false;

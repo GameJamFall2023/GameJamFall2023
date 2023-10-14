@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
-uniform vec2 screenSize = vec2(1.0, 1.0);
+uniform vec2 screenSize = vec2(480.0, 270.0);
 
 void fragment() {
 	vec2 scale = screenSize - vec2(0.00001, 0.0001);
