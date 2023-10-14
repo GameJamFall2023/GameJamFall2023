@@ -29,11 +29,14 @@ var animTimer = 0;
 var jumping : bool = false;
 var groundLastJump = false;
 var jumpTime = 0;
+var jumpY = 0;
 var lastJump = 0;
 
 var crouchTimer = 0;
 var crouched = false;
 
+@onready var ray = $RayCast2D;
+var wasColliding = false;
 
 func _ready():
 	if !Instance:
@@ -52,8 +55,9 @@ func _process(delta):
 	if crouched:
 		collider.shape.size.y = 32;
 		collider.position.y = -16;
-		crouchTimer += delta;
-		velocity.x *= 1 + (1 - crouchTimer) / 5;
+		crouchTimer += delta;\
+		if !ray.is_colliding():
+			velocity.x *= 1 + (1 - crouchTimer) / 5;
 		
 		if crouchTimer >= crouchLength:
 			crouched = false;
@@ -63,7 +67,6 @@ func _process(delta):
 	else:
 		collider.shape.size.y = 64;
 		collider.position.y = -32;
-		velocity.x = velocity.x;
 	
 	if !jumping && is_on_floor():
 		groundLastJump = true;
@@ -73,23 +76,28 @@ func _process(delta):
 		Jumping.frame = 0;
 		jumping = true;
 		jumpTime = 0;
+		jumpY = position.y;
 		crouched = false;
 		crouchTimer = 0;
 	
 	if jumping:
 		lastJump = -sin(jumpTime * jumpSpeed);
 		jumpTime += delta;
-		position.y = -sin(jumpTime * jumpSpeed) * jumpHeight;
-		velocity.y = position.y;
+		position.y = -sin(jumpTime * jumpSpeed) * jumpHeight + jumpY;
+		velocity.y = -sin(jumpTime * jumpSpeed) * jumpHeight;
 		
 	if !Input.is_action_pressed("ui_up") || (is_on_floor() && jumpTime > 0.1) || lastJump < -sin(jumpTime * 5):
 		jumping = false;
+	
+	if ray.is_colliding() && !wasColliding:
+		velocity.x = speed * 0.2;
+		
+	wasColliding = ray.is_colliding();
 	
 	move_and_slide();
 	
 	CameraController.Instance.position.x = position.x;
 	animate(delta);
-
 
 func animate(delta):
 	animTimer += delta;

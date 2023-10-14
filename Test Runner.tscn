@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=13 format=3 uid="uid://coq60ccvflad1"]
 
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_3edr0"]
 [ext_resource type="Script" path="res://Scripts/Background Spawner.gd" id="1_lp2ia"]
 [ext_resource type="Script" path="res://Scripts/Floor follower.gd" id="1_ohngu"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_venei"]
@@ -7,6 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="4_dtw85"]
 [ext_resource type="Texture2D" uid="uid://bc0f5mmjgbsdx" path="res://Sprites/Character_run_rough_loop_one_layer_Sheet.png" id="4_xko85"]
 [ext_resource type="Texture2D" uid="uid://dai8ouwycpa6o" path="res://Sprites/Slide_Rough_sheet.png" id="6_bna1t"]
+[ext_resource type="Texture2D" uid="uid://c1ubffjy7h5b8" path="res://Sprites/moster.png" id="8_w674d"]
+[ext_resource type="Script" path="res://Scripts/Monster.gd" id="9_tgo4k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
 
@@ -14,6 +17,14 @@
 size = Vector2(32, 64)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="ScreenSize" type="TextureRect" parent="."]
+modulate = Color(0.388235, 0.388235, 0.388235, 1)
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+texture = ExtResource("1_3edr0")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 script = ExtResource("1_ohngu")
@@ -33,7 +44,6 @@ position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_yn8cm")
 
 [node name="Running" type="Sprite2D" parent="CharacterBody2D"]
-texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("4_xko85")
 hframes = 4
@@ -41,7 +51,6 @@ vframes = 2
 
 [node name="Jumping" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
-texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("4_c8rb8")
 hframes = 3
@@ -49,12 +58,22 @@ vframes = 2
 
 [node name="Slide" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
-texture_filter = 1
 position = Vector2(-5, -32)
 texture = ExtResource("6_bna1t")
 hframes = 2
 vframes = 3
 
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(0, -1)
+target_position = Vector2(17, 0)
+collision_mask = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -103)
 script = ExtResource("4_dtw85")
+
+[node name="Monster" type="Sprite2D" parent="."]
+position = Vector2(0, -103)
+texture = ExtResource("8_w674d")
+hframes = 6
+script = ExtResource("9_tgo4k")

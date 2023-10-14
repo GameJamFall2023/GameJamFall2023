@@ -19,7 +19,7 @@ near = 0.001
 [node name="ReRun_Table_NOTFINAL" parent="." instance=ExtResource("1_wwcmv")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.69454, -1.39537)
+transform = Transform3D(0.961329, -0.269308, 0.0576166, 0, 0.209209, 0.977871, -0.275402, -0.940056, 0.201119, 0.53459, 2.36573, -0.998998)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_76egj")
