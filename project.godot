@@ -14,9 +14,24 @@ config/name="Rerun"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+
 [dotnet]
 
 project/assembly_name="Rerun"
+
+[editor]
+
+naming/scene_name_casing=1
+
+[physics]
+
+common/physics_ticks_per_second=120
 
 [rendering]
 

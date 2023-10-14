@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://coq60ccvflad1"]
+
+[ext_resource type="Texture2D" uid="uid://dtqjkwjqaqdro" path="res://Shaders/Teddy.png" id="1_8okm2"]
+[ext_resource type="VideoStream" path="res://Shaders/output.ogv" id="2_t524k"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_venei"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8cm"]
+size = Vector2(32, 64)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_8t0vn")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Background"]
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = -32.0
+stream = ExtResource("2_t524k")
+volume_db = -80.0
+expand = true
+
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Background"]
+offset_left = -240.0
+offset_top = -32.0
+offset_right = 240.0
+offset_bottom = 32.0
+stream = ExtResource("2_t524k")
+volume_db = -80.0
+expand = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(-240, -238)
+anchor_mode = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_venei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_yn8cm")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0.484609, 3.24956)
+scale = Vector2(0.140625, 0.166016)
+texture = ExtResource("1_8okm2")
+offset = Vector2(3.665, -209.315)

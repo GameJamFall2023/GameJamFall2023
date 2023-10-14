@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5hx4hlt47np2"]
+
+[ext_resource type="VideoStream" path="res://Shaders/output.ogv" id="1_at26p"]
+[ext_resource type="Script" path="res://Shaders/stopvid.gd" id="2_qfnu3"]
+[ext_resource type="Shader" path="res://Shaders/StaticOverlay.gdshader" id="3_lj0bt"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="3_o6qd1"]
+[ext_resource type="Texture2D" uid="uid://dtqjkwjqaqdro" path="res://Shaders/Teddy.png" id="5_qy2qg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exa87"]
+shader = ExtResource("3_lj0bt")
+shader_parameter/bleedAmountX = 0.0
+shader_parameter/bleedAmountY = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0wsr"]
+shader = ExtResource("3_lj0bt")
+shader_parameter/bleedAmountX = 0.0
+shader_parameter/bleedAmountY = 0.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_at26p")
+autoplay = true
+expand = true
+script = ExtResource("2_qfnu3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_exa87")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o6qd1")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_r0wsr")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_qy2qg")
