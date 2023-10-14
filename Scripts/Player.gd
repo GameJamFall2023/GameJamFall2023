@@ -1,4 +1,7 @@
 extends CharacterBody2D
+class_name Player
+
+static var Instance;
 
 @export var acceleration = 50; #idk placeholder
 @export var gravity = 1500; # guess
@@ -13,7 +16,14 @@ var lastJump = 0;
 var crouchTimer = 0;
 var crouched = false;
 
+func _ready():
+	if !Instance:
+		Instance = self;
+	else:
+		queue_free();
+
 func _physics_process(delta):
+	velocity.x = 500;
 	velocity.y += gravity * delta;
 	
 	if Input.is_action_just_pressed("ui_down") && !crouched:
@@ -45,3 +55,5 @@ func _physics_process(delta):
 		jumping = false;
 	
 	move_and_slide();
+	
+	CameraController.Instance.position.x = position.x;
