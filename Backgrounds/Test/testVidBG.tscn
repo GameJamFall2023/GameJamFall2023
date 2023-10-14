@@ -5,9 +5,8 @@
 [node name="testVid" type="Node2D"]
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_left = -240.0
 offset_top = -238.0
-offset_right = 240.0
+offset_right = 480.0
 offset_bottom = -32.0
 stream = ExtResource("1_db4pf")
 volume_db = -80.0
@@ -16,9 +15,8 @@ expand = true
 metadata/_edit_use_anchors_ = true
 
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="."]
-offset_left = -240.0
 offset_top = -32.0
-offset_right = 240.0
+offset_right = 480.0
 offset_bottom = 32.0
 stream = ExtResource("1_db4pf")
 volume_db = -80.0

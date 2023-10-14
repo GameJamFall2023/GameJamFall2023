@@ -1,9 +1,14 @@
 extends Camera2D
+class_name CameraController
 
+static var Instance;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if !Instance:
+		Instance = self;
+	else:
+		queue_free();
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
