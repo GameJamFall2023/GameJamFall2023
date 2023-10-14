@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=10 format=3 uid="uid://coq60ccvflad1"]
 
-[ext_resource type="Texture2D" uid="uid://dtqjkwjqaqdro" path="res://Shaders/Teddy.png" id="1_8okm2"]
 [ext_resource type="Script" path="res://Scripts/Background Spawner.gd" id="1_lp2ia"]
 [ext_resource type="Script" path="res://Scripts/Floor follower.gd" id="1_ohngu"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_venei"]
+[ext_resource type="Texture2D" uid="uid://bax00alps0ihf" path="res://Sprites/Jump_rough_sheet.png" id="4_c8rb8"]
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="4_dtw85"]
+[ext_resource type="Texture2D" uid="uid://bc0f5mmjgbsdx" path="res://Sprites/Character_run_rough_loop_one_layer_Sheet.png" id="4_xko85"]
+[ext_resource type="Texture2D" uid="uid://dai8ouwycpa6o" path="res://Sprites/Slide_Rough_sheet.png" id="6_bna1t"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
 
@@ -30,11 +32,28 @@ script = ExtResource("2_venei")
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_yn8cm")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(0.484609, 3.24956)
-scale = Vector2(0.140625, 0.166016)
-texture = ExtResource("1_8okm2")
-offset = Vector2(3.665, -209.315)
+[node name="Running" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("4_xko85")
+hframes = 4
+vframes = 2
+
+[node name="Jumping" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("4_c8rb8")
+hframes = 3
+vframes = 2
+
+[node name="Slide" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+texture_filter = 1
+position = Vector2(-5, -32)
+texture = ExtResource("6_bna1t")
+hframes = 2
+vframes = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -103)
