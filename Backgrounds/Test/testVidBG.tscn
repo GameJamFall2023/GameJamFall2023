@@ -1,28 +1,75 @@
-[gd_scene load_steps=4 format=3 uid="uid://45360e6ekna0"]
+[gd_scene load_steps=9 format=3 uid="uid://45360e6ekna0"]
 
 [ext_resource type="Texture2D" uid="uid://053525woyccu" path="res://Backgrounds/Test/Screenshot_2023-10-13_235818.png" id="1_3rpmm"]
+[ext_resource type="PackedScene" uid="uid://dwcq2f27lgnm6" path="res://ReRunTableNotfinal2.tscn" id="2_7eug3"]
+[ext_resource type="Shader" path="res://Shaders/3D Pixels.gdshader" id="3_u44qw"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="4_iaux1"]
+
+[sub_resource type="Environment" id="Environment_st781"]
+background_energy_multiplier = 0.0
+ambient_light_source = 1
+reflected_light_source = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ut3dn"]
+shader = ExtResource("3_u44qw")
+shader_parameter/screenSize = Vector2(480, 270)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jlfi"]
-size = Vector2(140, 53)
+size = Vector2(117, 53)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0knx5"]
-a = Vector2(423, -54)
-b = Vector2(283, -53)
+a = Vector2(452, -53)
+b = Vector2(334, -53)
 
 [node name="testVid" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 offset_top = -238.0
 offset_right = 480.0
 offset_bottom = 32.0
 texture = ExtResource("1_3rpmm")
 expand_mode = 1
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_top = -238.0
+offset_right = 480.0
+offset_bottom = 32.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_st781")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08811e-09, -4.27562e-08, 4.05, 2.213, 0)
+projection = 1
+size = 3.5
+near = 0.001
+
+[node name="ReRun_Table_NOTFINAL2" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_7eug3")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.961329, -0.269308, 0.0576166, 0, 0.209209, 0.977871, -0.275402, -0.940056, 0.201119, 0.53459, 2.36573, -0.998998)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_ut3dn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_iaux1")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(353, -26.5)
+position = Vector2(393.5, -26.5)
 shape = SubResource("RectangleShape2D_8jlfi")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]

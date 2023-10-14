@@ -76,4 +76,5 @@ script = ExtResource("4_dtw85")
 position = Vector2(0, -103)
 texture = ExtResource("8_w674d")
 hframes = 6
+frame = 4
 script = ExtResource("9_tgo4k")
