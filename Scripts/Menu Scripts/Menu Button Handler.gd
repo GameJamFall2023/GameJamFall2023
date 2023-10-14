@@ -36,3 +36,11 @@ func _on_credits_pressed():
 func _on_close_credits_pressed():
 	creditsPanel.visible = false;
 	pass # Replace with function body.
+
+func _on_window_mode_item_selected(index):
+	if index == 0:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED);
+	elif index == 1:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN);
+	elif index == 2:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN);
