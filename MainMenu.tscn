@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://drgo8rf6v7kv0"]
+[gd_scene load_steps=10 format=3 uid="uid://b4v31grkdyp1y"]
 
 [ext_resource type="Texture2D" uid="uid://c7jco3u420l5h" path="res://UI/UIpackSheet_transparent.png" id="1_56wvo"]
 
@@ -798,10 +798,8 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchor_right = 4.0
 anchor_bottom = 4.0
-offset_bottom = 7.56006
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -811,6 +809,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = 7.55994
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TempUI" type="TileMap" parent="GridContainer"]
 tile_set = SubResource("TileSet_0hbfj")
