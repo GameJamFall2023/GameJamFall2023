@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfdww1m6x2pll"]
+
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_xvgvj"]
+
+[node name="Living Room" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0470588, 0.388235, 0.00392157, 1)
+offset_top = -32.0
+offset_right = 1920.0
+offset_bottom = 32.0
+texture = ExtResource("1_xvgvj")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.0470588, 0.541176, 0.00392157, 1)
+offset_top = -238.0
+offset_right = 1920.0
+offset_bottom = -32.0
+texture = ExtResource("1_xvgvj")

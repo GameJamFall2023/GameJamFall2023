@@ -38,9 +38,6 @@ var crouched = false;
 @onready var ray = $RayCast2D;
 var wasColliding = false;
 
-
-var hasSocks = false;
-
 func _ready():
 	if !Instance:
 		Instance = self;
@@ -56,7 +53,7 @@ func _process(delta):
 	ray.target_position.x = collider.shape.size.x / 2 + 1;
 	
 	
-	if Input.is_action_just_pressed("ui_down") && !crouched && hasSocks:
+	if Input.is_action_just_pressed("ui_down") && !crouched && Game.Instance.socks:
 		crouched = true;
 	
 	if crouched:
@@ -106,6 +103,9 @@ func _process(delta):
 	wasColliding = ray.is_colliding();
 	
 	move_and_slide();
+	
+	if position.x >= 7560:
+		position.x = -360;
 	
 	CameraController.Instance.position.x = position.x;
 	animate(delta);

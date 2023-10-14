@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://4nit3xhkec43"]
+
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_23qxq"]
+
+[node name="Kitchen Dining" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.678431, 0.407843, 0, 1)
+offset_top = -32.0
+offset_right = 1920.0
+offset_bottom = 32.0
+texture = ExtResource("1_23qxq")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.611765, 0.32549, 0, 1)
+offset_top = -238.0
+offset_right = 1920.0
+offset_bottom = -32.0
+texture = ExtResource("1_23qxq")

@@ -1,8 +1,6 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
-uniform float bleedAmountX = 0.0;
-uniform float bleedAmountY = 0.0;
 
 float random(vec2 uv) {
     return fract(sin(dot(uv.xy,
@@ -10,6 +8,6 @@ float random(vec2 uv) {
 }
 
 void fragment() {
-    vec4 color = textureLod(TEXTURE, UV, 0.0);
-	COLOR = color * (random(UV * vec2(TIME, TIME)) / 2.0 + 0.5);
+    vec4 color = textureLod(screen_texture, SCREEN_UV, 0.0);
+	COLOR = color * random(SCREEN_UV * vec2(TIME, TIME * 13.0));
 }

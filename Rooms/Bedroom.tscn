@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://td176m5ctfvj"]
+
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_hi3g2"]
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.721569, 0.619608, 0.490196, 1)
+offset_top = -32.0
+offset_right = 1920.0
+offset_bottom = 32.0
+texture = ExtResource("1_hi3g2")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.207843, 0.47451, 0.631373, 1)
+offset_top = -238.0
+offset_right = 1920.0
+offset_bottom = -32.0
+texture = ExtResource("1_hi3g2")

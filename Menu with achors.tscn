@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://ckv87l0jxnaqf"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Scaler.gd" id="1_vk8ns"]
-[ext_resource type="Texture2D" uid="uid://053525woyccu" path="res://Backgrounds/Test/Screenshot_2023-10-13_235818.png" id="2_xhhfb"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Button Handler.gd" id="3_4756x"]
 [ext_resource type="Shader" path="res://Shaders/SettingsFade.gdshader" id="3_ho7l5"]
 [ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="3_nc8gm"]
+[ext_resource type="Texture2D" uid="uid://053525woyccu" path="res://Rooms/Test/Screenshot_2023-10-13_235818.png" id="3_nncp1"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="4_rgr8d"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/Mouse Updater.gd" id="5_jjpb3"]
 
@@ -45,7 +45,7 @@ script = ExtResource("1_vk8ns")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_xhhfb")
+texture = ExtResource("3_nncp1")
 
 [node name="Title" type="Label" parent="UI Scaler"]
 layout_mode = 1
