@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var acceleration = 50; #idk placeholder
 @export var gravity = 1500; # guess
