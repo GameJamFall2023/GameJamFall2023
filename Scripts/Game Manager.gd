@@ -7,7 +7,7 @@ var batt2 = false;
 var batt3 = false;
 var batt4 = false;
 
-var socks = false;
+var socks = true;
 var soda = false;
 
 func _ready():
@@ -18,4 +18,7 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	if !DisplayServer.window_is_focused():
+		Engine.time_scale = 0;
+	else:
+		Engine.time_scale = 1;

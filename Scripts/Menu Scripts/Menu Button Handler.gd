@@ -26,7 +26,7 @@ func _on_close_settings_pressed():
 	pass # Replace with function body.
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Test Runner.tscn");
+	get_tree().change_scene_to_file("res://Game Scene.tscn");
 	pass # Replace with function body.
 
 func _on_credits_pressed():

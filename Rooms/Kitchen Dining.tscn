@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4nit3xhkec43"]
+[gd_scene load_steps=3 format=3 uid="uid://4nit3xhkec43"]
 
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_23qxq"]
+[ext_resource type="Texture2D" uid="uid://bqr11tgcg707m" path="res://Rooms/rough/kitchen.png" id="2_us1gw"]
 
 [node name="Kitchen Dining" type="Node2D"]
 
@@ -17,3 +18,13 @@ offset_top = -238.0
 offset_right = 1920.0
 offset_bottom = -32.0
 texture = ExtResource("1_23qxq")
+
+[node name="Rough" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -238.0
+offset_right = 1920.0
+offset_bottom = 32.0
+grow_vertical = 0
+texture = ExtResource("2_us1gw")

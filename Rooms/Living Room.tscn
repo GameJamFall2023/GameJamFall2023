@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfdww1m6x2pll"]
+[gd_scene load_steps=4 format=3 uid="uid://cfdww1m6x2pll"]
 
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_xvgvj"]
+[ext_resource type="Texture2D" uid="uid://cs0berwilmvi7" path="res://Rooms/rough/living.png" id="2_8ao1m"]
+
+[sub_resource type="Environment" id="Environment_4l4xm"]
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+reflected_light_source = 1
 
 [node name="Living Room" type="Node2D"]
 
@@ -17,3 +25,34 @@ offset_top = -238.0
 offset_right = 1920.0
 offset_bottom = -32.0
 texture = ExtResource("1_xvgvj")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+offset_top = -238.0
+offset_right = 1920.0
+offset_bottom = 32.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 270)
+render_target_update_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_4l4xm")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08811e-09, -4.27562e-08, 4.05, 2.213, 0)
+projection = 1
+size = 3.5
+near = 0.001
+
+[node name="Rough" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -238.0
+offset_right = 1920.0
+offset_bottom = 32.0
+grow_vertical = 0
+texture = ExtResource("2_8ao1m")

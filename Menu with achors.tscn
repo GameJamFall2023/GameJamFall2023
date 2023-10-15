@@ -89,7 +89,7 @@ offset_right = 20.5
 offset_bottom = -114.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Play"
+text = "Start"
 
 [node name="Settings" type="Button" parent="UI Scaler/Main"]
 layout_mode = 1

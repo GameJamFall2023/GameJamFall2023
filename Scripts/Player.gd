@@ -21,9 +21,10 @@ var animTimer = 0;
 
 @export var acceleration = 500; #idk placeholder
 @export var speed = 250;
+var halfSpeed = 0;
 @export var gravity = 1500; # guess
 @export var crouchLength = 1; #how long, in seconds
-@export var jumpHeight = 64; #how high, in pixels
+@export var jumpHeight = 72; #how high, in pixels
 @export var jumpSpeed = 5; #larger is faster
 
 var jumping : bool = false;
@@ -31,27 +32,34 @@ var groundLastJump = false;
 var jumpTime = 0;
 var jumpY = 0;
 var lastJump = 0;
+var jumps = 2;
 
 var crouchTimer = 0;
 var crouched = false;
 
-@onready var ray = $RayCast2D;
-var wasColliding = false;
+@onready var collision = $"Collision Check";
+@onready var collisionSahe = $"Collision Check/CollisionShape2D";
+
+var slowdownTimer = 0;
+var slowdown = false;
+var slowdownLength = 1;
 
 func _ready():
 	if !Instance:
 		Instance = self;
 	else:
 		queue_free();
+		
+	halfSpeed = speed / 2;
 
 func _process(delta):
 	velocity.x += acceleration * delta;
 	velocity.x = min(velocity.x, speed);
 	velocity.y += gravity * delta;
 	
-	ray.position.y = collider.position.y + collider.shape.size.y / 2 - 1;
-	ray.target_position.x = collider.shape.size.x / 2 + 1;
-	
+	collision.position.y = collider.position.y;
+	collision.position.x = collider.shape.size.x / 2;
+	collisionSahe.shape.size.y = collider.shape.size.y;
 	
 	if Input.is_action_just_pressed("ui_down") && !crouched && Game.Instance.socks:
 		crouched = true;
@@ -61,7 +69,7 @@ func _process(delta):
 		collider.shape.size.y = 18;
 		collider.position.y = -9;
 		crouchTimer += delta;
-		if !ray.is_colliding():
+		if !slowdown:
 			velocity.x *= 1 + (1 - crouchTimer) / 5;
 		
 		if crouchTimer >= crouchLength:
@@ -78,14 +86,19 @@ func _process(delta):
 	if !jumping && is_on_floor():
 		groundLastJump = true;
 		
-	if is_on_floor() && Input.is_action_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") && jumps > 0:
 		groundLastJump = false;
+		jumping = true;
 		Jumping.frame = 0;
 		jumping = true;
 		jumpTime = 0;
 		jumpY = position.y;
 		crouched = false;
 		crouchTimer = 0;
+		jumps -= 1;
+		
+	if is_on_floor():
+		jumps = 2;
 	
 	if jumping:
 		lastJump = -sin(jumpTime * jumpSpeed);
@@ -96,11 +109,14 @@ func _process(delta):
 	if !Input.is_action_pressed("ui_up") || (is_on_floor() && jumpTime > 0.1) || lastJump < -sin(jumpTime * 5):
 		jumping = false;
 	
+	if velocity.y > 0 && !is_on_floor() && groundLastJump:
+		groundLastJump = false;
+		Jumping.frame = 2;
 	
-	if ray.is_colliding() && !wasColliding:
-		velocity.x = speed * 0.2;
-		
-	wasColliding = ray.is_colliding();
+	if slowdown:
+		speed = halfSpeed;
+	else:
+		speed = halfSpeed * 2;
 	
 	move_and_slide();
 	
@@ -109,6 +125,11 @@ func _process(delta):
 	
 	CameraController.Instance.position.x = position.x;
 	animate(delta);
+	
+	slowdownTimer -= delta;
+	
+	if slowdownTimer <= 0:
+		slowdown = false;
 	
 
 func animate(delta):
@@ -158,3 +179,9 @@ func animate(delta):
 		Running.visible = true;
 		Sliding.frame = 0;
 		Jumping.frame = 0;
+
+
+func _on_collision_check_body_entered(body):
+	print(body.name);
+	slowdown = true;
+	slowdownTimer = slowdownLength;
