@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=27 format=3 uid="uid://coq60ccvflad1"]
 
 [ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://duiepx88j88jg" path="res://Sprites/Slide_Rough_sheet_1.png" id="8_3wq6e"]
 [ext_resource type="PackedScene" uid="uid://nmsv5n13nbd4" path="res://Rooms/Hallway3.tscn" id="8_41ke0"]
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="9_os12l"]
-[ext_resource type="Texture2D" uid="uid://c1ubffjy7h5b8" path="res://Sprites/moster.png" id="10_j18ey"]
 [ext_resource type="Script" path="res://Scripts/Monster.gd" id="11_v3x8l"]
+[ext_resource type="Shader" path="res://Shaders/Monster.gdshader" id="14_3ctay"]
+[ext_resource type="Texture2D" uid="uid://bpah5tmxpw6ru" path="res://Sprites/Monster_Clean_Sheet.png" id="14_tnide"]
+[ext_resource type="Texture2D" uid="uid://d2cygn386hyuy" path="res://Shaders/noise.webp" id="15_xnxhj"]
 [ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="17_wj8u3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
@@ -28,6 +30,11 @@ size = Vector2(3, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgyp4"]
 size = Vector2(32, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1cmd"]
+shader = ExtResource("14_3ctay")
+shader_parameter/time24 = 0.0
+shader_parameter/noise_texture = ExtResource("15_xnxhj")
 
 [sub_resource type="LabelSettings" id="LabelSettings_s3ylo"]
 font_size = 36
@@ -58,6 +65,7 @@ offset_bottom = 32.0
 texture = ExtResource("2_7g8ny")
 
 [node name="Rooms" type="Node2D" parent="."]
+position = Vector2(1, 1)
 
 [node name="Hallway3-1" parent="Rooms" instance=ExtResource("8_41ke0")]
 position = Vector2(-720, 0)
@@ -65,21 +73,22 @@ position = Vector2(-720, 0)
 [node name="Living Room" parent="Rooms" instance=ExtResource("4_5er2c")]
 
 [node name="Hallway" parent="Rooms" instance=ExtResource("5_o7mi5")]
-position = Vector2(1920, 0)
+position = Vector2(2880, 0)
 
 [node name="Kitchen Dining" parent="Rooms" instance=ExtResource("6_bkt82")]
-position = Vector2(2640, 0)
+position = Vector2(3600, 0)
 
 [node name="Hallway2" parent="Rooms" instance=ExtResource("6_i5rg1")]
-position = Vector2(4560, 0)
+position = Vector2(5520, 0)
 
 [node name="Bedroom" parent="Rooms" instance=ExtResource("4_15qy0")]
-position = Vector2(5280, 0)
+position = Vector2(6240, 0)
 
 [node name="Hallway3" parent="Rooms" instance=ExtResource("8_41ke0")]
-position = Vector2(7200, 0)
+position = Vector2(8160, 0)
 
 [node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-240, 0)
 script = ExtResource("4_1qn7o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
@@ -87,7 +96,6 @@ shape = SubResource("WorldBoundaryShape2D_8t0vn")
 one_way_collision_margin = 128.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(240, 0)
 collision_mask = 3
 script = ExtResource("5_ekfvk")
 speed = 200
@@ -135,14 +143,13 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_dgyp4")
 
 [node name="Monster" type="Sprite2D" parent="."]
-position = Vector2(240, -103)
-texture = ExtResource("10_j18ey")
-hframes = 6
-frame = 4
+material = SubResource("ShaderMaterial_p1cmd")
+position = Vector2(-165, -72)
+texture = ExtResource("14_tnide")
+hframes = 5
 script = ExtResource("11_v3x8l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(240, 0)
 offset = Vector2(0, -103)
 script = ExtResource("9_os12l")
 

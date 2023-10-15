@@ -2,15 +2,15 @@ extends Node2D
 class_name Game
 static var Instance;
 
-var batt1 = false;
-var batt2 = false;
-var batt3 = false;
-var batt4 = false;
+@export var batt1 = false;
+@export var batt2 = false;
+@export var batt3 = false;
+@export var batt4 = false;
 
-var socks = true;
-var soda = false;
+@export var socks = false;
+@export var soda = false;
 
-var paused = false;
+@export var paused = false;
 
 @onready var pauseScreen = $Camera2D/Paused;
 
@@ -38,3 +38,7 @@ func _process(delta):
 
 func _on_unpause_pressed():
 	paused = false;
+
+func dead():
+	print("DIE")
+	pass

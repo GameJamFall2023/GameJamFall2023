@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 static var Instance;
 
-@onready var collider = $CollisionShape2D;
+@onready var colliderHelper = $CollisionShape2D;
 
 @onready var Running = $Running;
 @onready var Jumping = $Jumping;
@@ -19,7 +19,7 @@ var jumpLast = 3;
 var frameRate = 12;
 var animTimer = 0;
 
-@export var acceleration = 500; #idk placeholder
+@export var acceleration = 500;
 @export var speed = 250;
 var halfSpeed = 0;
 @export var gravity = 1500; # guess
@@ -60,34 +60,34 @@ func _process(delta):
 	velocity.x = min(velocity.x, speed);
 	velocity.y += gravity * delta;
 	
-	collision.position.y = collider.position.y;
-	collision.position.x = collider.shape.size.x / 2;
-	collisionShape.shape.size.y = collider.shape.size.y;
+	collision.position.y = colliderHelper.position.y;
+	collision.position.x = colliderHelper.shape.size.x / 2;
+	collisionShape.shape.size.y = colliderHelper.shape.size.y;
 	
-	headCollision.position.y = collider.position.y - collider.shape.size.y / 2;
-	headCollisionShape.shape.size.x = collider.shape.size.x;
+	headCollision.position.y = colliderHelper.position.y - colliderHelper.shape.size.y / 2;
+	headCollisionShape.shape.size.x = colliderHelper.shape.size.x;
 	
 	if Input.is_action_just_pressed("ui_down") && !crouched && Game.Instance.socks:
 		crouched = true;
 	
 	if crouched:
-		collider.shape.size.x = 60;
-		collider.shape.size.y = 18;
-		collider.position.y = -9;
+		colliderHelper.shape.size.x = 60;
+		colliderHelper.shape.size.y = 18;
+		colliderHelper.position.y = -9;
 		crouchTimer += delta;
 		if !slowdown:
-			velocity.x *= 1 + (1 - crouchTimer) / 5;
+			velocity.x *= 1# + (1 - crouchTimer) / 5;
 		
 		if crouchTimer >= crouchLength:
 			crouched = false;
-			collider.shape.size.x = 32;
-			collider.shape.size.y = 64;
-			collider.position.y = -32;
+			colliderHelper.shape.size.x = 32;
+			colliderHelper.shape.size.y = 64;
+			colliderHelper.position.y = -32;
 			crouchTimer = 0;
 	else:
-		collider.shape.size.x = 32;
-		collider.shape.size.y = 64;
-		collider.position.y = -32;
+		colliderHelper.shape.size.x = 32;
+		colliderHelper.shape.size.y = 64;
+		colliderHelper.position.y = -32;
 	
 	if !jumping && is_on_floor():
 		groundLastJump = true;
@@ -103,8 +103,8 @@ func _process(delta):
 		crouchTimer = 0;
 		jumps -= 1;
 		
-	if is_on_floor():
-		jumps = 2;
+	if is_on_floor() && !Input.is_action_just_pressed("ui_up"):
+		jumps = 2 if Game.Instance.soda else 1;
 	
 	if jumping:
 		lastJump = -sin(jumpTime * jumpSpeed);
@@ -121,8 +121,18 @@ func _process(delta):
 	
 	if slowdown:
 		speed = halfSpeed;
+		slowdownTimer -= delta;
+		set_collision_mask_value(2, false)
 	else:
 		speed = halfSpeed * 2;
+		set_collision_mask_value(2, true)
+	
+	Running.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
+	Jumping.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
+	Sliding.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
+	
+	if slowdownTimer <= 0 && collision.get_overlapping_bodies().size() == 0:
+		slowdown = false;
 	
 	move_and_slide();
 	
@@ -131,16 +141,6 @@ func _process(delta):
 	
 	CameraController.Instance.position.x = position.x;
 	animate(delta);
-	
-	if slowdown:
-		slowdownTimer -= delta;
-	
-	Running.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
-	Jumping.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
-	Sliding.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
-	
-	if slowdownTimer <= 0:
-		slowdown = false;
 	
 
 func animate(delta):
@@ -154,11 +154,11 @@ func animate(delta):
 			Jumping.frame = min(Jumping.frame, jumpFreeze);
 		
 		if Jumping.frame == 2:
-			collider.shape.size.y = 40;
-			collider.position.y = -44;
+			colliderHelper.shape.size.y = 40;
+			colliderHelper.position.y = -44;
 		elif Jumping.frame == 3:
-			collider.shape.size.y = 50;
-			collider.position.y = -39;
+			colliderHelper.shape.size.y = 50;
+			colliderHelper.position.y = -39;
 		
 		Jumping.visible = true;
 		Sliding.visible = false;
@@ -182,8 +182,8 @@ func animate(delta):
 	else:
 		Running.frame = fmod((Running.frame + frameChange), runningLast);
 		
-		collider.shape.size.y = 64;
-		collider.position.y = -32;
+		colliderHelper.shape.size.y = 64;
+		colliderHelper.position.y = -32;
 		
 		Jumping.visible = false;
 		Sliding.visible = false;
@@ -193,9 +193,9 @@ func animate(delta):
 
 
 func _on_collision_check_body_entered(body):
-	print(body.name);
 	slowdown = true;
 	slowdownTimer = slowdownLength;
+	Monst.Instance.nyoom();
 
 
 func _on_head_check_body_entered(body):
