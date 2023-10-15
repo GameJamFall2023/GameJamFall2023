@@ -14,7 +14,7 @@ void fragment() {
 	//float randr = random(UV * vec2(time24 / 2.0 * (UV.x * 5.0), time24 / 2.0 * 13.0)) * max(1.0 - color.r * 1.2, 0.0);
 	//float randg = random(UV * vec2(time24 / 2.0 * (UV.y * 5.0), time24 / 2.0 * 13.0)) * max(1.0 - color.r * 1.2, 0.0);
 	//float randb = random(UV * vec2(time24 / 2.0 * (UV.x * 13.0), time24 / 2.0 * 7.0)) * max(1.0 - color.r * 1.2, 0.0);
-	vec4 noise = textureLod(noise_texture, UV + vec2(sin(TIME / 10000.0) * 2.5, -mod(time24, 50.0)), 0.0);
+	vec4 noise = textureLod(noise_texture, SCREEN_UV + vec2(sin(TIME / 10000.0) * 2.5, -mod(time24, 50.0)), 0.0);
 	noise = noise * max(1.0 - color.r * 1.2, 0.0);
 	COLOR = color + vec4(min(noise.r, 0.5), min(noise.g, 0.5), min(noise.b, 0.5), color.a); //+ vec4(randr, randg, randb, color.a);
 }

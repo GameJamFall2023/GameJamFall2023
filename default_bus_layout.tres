@@ -1,4 +1,10 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://bpk7toh8nmb8y"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bpk7toh8nmb8y"]
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_owxub"]
+resource_name = "Filter"
+cutoff_hz = 1500.0
+resonance = 0.75
+db = 3
 
 [resource]
 bus/1/name = &"Music"
@@ -13,3 +19,11 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/3/name = &"Music Muted"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectFilter_owxub")
+bus/3/effect/0/enabled = true

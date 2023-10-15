@@ -12,6 +12,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body == Player.Instance:
-		Game.Instance.batts += 1;
+		Game.Instance.CollectBatt();
 		get_parent().queue_free();
 	pass # Replace with function body.

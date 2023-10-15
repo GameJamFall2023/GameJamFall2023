@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://b03fbbkon38y2"]
+
+[ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="1_sbm16"]
+[ext_resource type="Script" path="res://Scripts/Reload.gd" id="2_hrtpb"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Scaler.gd" id="2_rttfi"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="6_7k7c2"]
+
+[sub_resource type="Shader" id="Shader_0a0bg"]
+code = "shader_type canvas_item;
+
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform float static = 0.0;
+uniform vec2 screenSize = vec2(480.0, 270.0);
+
+float random(vec2 uv) {
+    return fract(sin(dot(uv.xy,
+        vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+void fragment() {
+	vec2 scale = screenSize - vec2(0.00001, 0.0001);
+	vec2 pixel = SCREEN_UV * scale;
+	vec2 nearPixel = floor(pixel);
+	vec2 pixelOffset = nearPixel + vec2(0.5, 0.5);
+
+	float stat = random((pixelOffset / scale) * vec2(TIME, TIME * 13.0));
+	stat *= 0.25;
+	stat += 0.375;
+	COLOR = vec4(stat, stat, stat, static);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxaj6"]
+shader = SubResource("Shader_0a0bg")
+shader_parameter/static = 1.0
+shader_parameter/screenSize = Vector2(240, 135)
+
+[node name="Reload" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sbm16")
+script = ExtResource("2_hrtpb")
+
+[node name="UI Scaler" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+script = ExtResource("2_rttfi")
+
+[node name="Static" type="TextureRect" parent="UI Scaler"]
+material = SubResource("ShaderMaterial_kxaj6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_7k7c2")

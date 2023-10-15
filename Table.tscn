@@ -1,18 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmm2iwnssrkp5"]
+[gd_scene load_steps=12 format=3 uid="uid://bmm2iwnssrkp5"]
 
-[ext_resource type="Shader" path="res://Shaders/3D Pixels.gdshader" id="2_xh172"]
+[ext_resource type="Shader" path="res://Shaders/3D Pixels and pallete limiter.gdshader" id="1_5i6ew"]
+[ext_resource type="Texture2D" uid="uid://482widgo0u6k" path="res://Sprites/pallete.png" id="2_1bg35"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="3_acuii"]
-[ext_resource type="PackedScene" uid="uid://ddvwkb6cfwd6n" path="res://Models/ReRun_NoSlideTable.fbx" id="3_lrh2g"]
-[ext_resource type="PackedScene" uid="uid://bpp5f2h77ge05" path="res://Models/ReRun_SlideTable.fbx" id="4_hxwpo"]
+[ext_resource type="PackedScene" uid="uid://bwr4ltgeob6nv" path="res://Models/imports/BG_Box.fbx" id="4_7kotd"]
+[ext_resource type="PackedScene" uid="uid://b32fw6q2fyfju" path="res://Models/imports/FG_Box.fbx" id="5_f7f77"]
+[ext_resource type="PackedScene" uid="uid://c0x50wvkhqm1i" path="res://Models/imports/FG_Chair.fbx" id="6_0vtpq"]
+[ext_resource type="PackedScene" uid="uid://d3ltoudcftdsb" path="res://Models/imports/BG_Chair.fbx" id="7_mqndn"]
+[ext_resource type="PackedScene" uid="uid://dyhiebc6x0nj1" path="res://Models/imports/BG_Dresser.fbx" id="8_4osy5"]
+[ext_resource type="PackedScene" uid="uid://5fiv3but2mxd" path="res://Models/imports/FG_Dresser.fbx" id="9_les7w"]
+
+[sub_resource type="Environment" id="Environment_mfv61"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76egj"]
-shader = ExtResource("2_xh172")
+shader = ExtResource("1_5i6ew")
 shader_parameter/screenSize = Vector2(480, 270)
+shader_parameter/fixedColor = ExtResource("2_1bg35")
 
 [node name="Node3D" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mfv61")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08811e-09, -4.27562e-08, 4.05, 2.213, 0)
+transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08812e-09, -4.27562e-08, 4.05, 2.213, 0)
 projection = 1
 size = 3.5
 near = 0.001
@@ -27,13 +42,29 @@ grow_vertical = 2
 texture = ExtResource("3_acuii")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.961329, -0.269308, 0.0576166, 0, 0.209209, 0.977871, -0.275402, -0.940056, 0.201119, 0.0805173, 2.36573, 0.773089)
+transform = Transform3D(0.961329, -0.269308, 0.0576166, 0.236273, 0.913982, 0.329867, -0.141496, -0.303498, 0.942267, 0.50706, 2.82298, 5.66302)
+light_energy = 13.03
+spot_range = 14.3143
+spot_angle = 58.1728
 
-[node name="ReRun_NoSlideTable" parent="." instance=ExtResource("3_lrh2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013566, 0, 0.608347)
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.557103, 0)
+size = Vector3(2.85145, 1, 11.8381)
 
-[node name="ReRun_SlideTable" parent="." instance=ExtResource("4_hxwpo")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.071058, 0, -1.32586)
+[node name="BG_Box" parent="." instance=ExtResource("4_7kotd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111654, 0, 1.08189)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(0.961329, -0.269308, 0.0576166, 0, 0.209209, 0.977871, -0.275402, -0.940056, 0.201119, -1.32742, 2.36573, -1.37875)
+[node name="FG_Box" parent="." instance=ExtResource("5_f7f77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.220325, 0, 0.135676)
+
+[node name="FG_Chair" parent="." instance=ExtResource("6_0vtpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.384249, -1.19209e-07, -0.76194)
+
+[node name="BG_Chair" parent="." instance=ExtResource("7_mqndn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340476, 0, 2.13374)
+
+[node name="BG_Dresser" parent="." instance=ExtResource("8_4osy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.805892, 0, -2.1919)
+
+[node name="FG_Dresser" parent="." instance=ExtResource("9_les7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132329, 0.690382, 0.544443)

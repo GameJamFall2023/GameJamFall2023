@@ -7,6 +7,7 @@ static var Instance;
 @onready var Running = $Running;
 @onready var Jumping = $Jumping;
 @onready var Sliding = $Slide;
+@onready var Stumble = $Stumble;
 
 var runningLast = 8;
 
@@ -47,12 +48,15 @@ var crouched = false;
 
 var slowdownTimer = 0;
 var slowdown = false;
+var stumbling = false;
 var slowdownLength = 2;
 
 var coyoteTimer = 0;
-var coyoteTime = 0.1;
+var coyoteTime = 0.2;
 
 @onready var hurtSound = $Hurt;
+@onready var battSound = $Batt;
+@onready var slideSound = $Slide2;
 
 func _ready():
 	if !Instance:
@@ -76,8 +80,9 @@ func _process(delta):
 	headCollision.position.y = colliderHelper.position.y - colliderHelper.shape.size.y / 2;
 	headCollisionShape.shape.size.x = colliderHelper.shape.size.x;
 	
-	if Input.is_action_just_pressed("ui_down") && !crouched && Game.Instance.socks:
+	if Input.is_action_just_pressed("ui_down") && !crouched && Game.Instance.socks && (is_on_floor() || coyoteTimer <= coyoteTime):
 		crouched = true;
+		slideSound.play(0.0);
 	
 	if crouched:
 		colliderHelper.shape.size.x = 60;
@@ -106,8 +111,6 @@ func _process(delta):
 	else:
 		coyoteTimer = 0;
 		
-	print(coyoteTimer)
-		
 	if Input.is_action_just_pressed("ui_up") && jumps > 0 && ((jumps != maxJump || (is_on_floor() || coyoteTimer <= coyoteTime)) || maxJump == 2):
 		groundLastJump = false;
 		jumping = true;
@@ -115,6 +118,8 @@ func _process(delta):
 		jumping = true;
 		jumpTime = 0;
 		jumpY = position.y;
+		if crouched:
+			slideSound.stop();
 		crouched = false;
 		crouchTimer = 0;
 		if !is_on_floor() && jumps == 2:
@@ -126,6 +131,7 @@ func _process(delta):
 			jumpSounds[1].play();
 		else:
 			jumpSounds[0].play();
+			
 
 		
 	if is_on_floor() && !Input.is_action_just_pressed("ui_up"):
@@ -164,7 +170,7 @@ func _process(delta):
 	if position.x >= 13232:
 		position.x -= 13232;
 	
-	CameraController.Instance.position.x = position.x;
+	CameraController.Instance.position.x = position.x + 40;
 	animate(delta);
 	
 
@@ -173,7 +179,22 @@ func animate(delta):
 	var frameChange = floor(animTimer / (1.0 / frameRate));
 	animTimer -= frameChange * (1.0 / frameRate);
 	
-	if jumping || !groundLastJump:
+	if stumbling:
+		var frame = Stumble.frame + frameChange;
+		if frame == 7:
+			stumbling = false;
+			animate(0);
+		
+		Stumble.frame = frame;
+		
+		Jumping.visible = false;
+		Sliding.visible = false;
+		Running.visible = false;
+		Stumble.visible = true;
+		Sliding.frame = 0;
+		Jumping.frame = 0;
+		Running.frame = 0;
+	elif jumping || !groundLastJump:
 		Jumping.frame += frameChange;
 		if !groundLastJump:
 			Jumping.frame = min(Jumping.frame, jumpFreeze);
@@ -188,8 +209,10 @@ func animate(delta):
 		Jumping.visible = true;
 		Sliding.visible = false;
 		Running.visible = false;
+		Stumble.visible = false;
 		Running.frame = 0;
 		Sliding.frame = 0;
+		Stumble.frame = 0;
 	elif crouched || Sliding.frame >= slideFreeze:
 		Sliding.frame += frameChange;
 		
@@ -202,8 +225,10 @@ func animate(delta):
 		Jumping.visible = false;
 		Sliding.visible = true;
 		Running.visible = false;
+		Stumble.visible = false;
 		Running.frame = 0;
 		Jumping.frame = 0;
+		Stumble.frame = 0;
 	else:
 		Running.frame = fmod((Running.frame + frameChange), runningLast);
 		
@@ -213,13 +238,16 @@ func animate(delta):
 		Jumping.visible = false;
 		Sliding.visible = false;
 		Running.visible = true;
+		Stumble.visible = false;
 		Sliding.frame = 0;
 		Jumping.frame = 0;
+		Stumble.frame = 0;
 
 
 func _on_collision_check_body_entered(body):
 	if !slowdown && headCollision.get_overlapping_bodies().find(body) == -1:
 		slowdown = true;
+		stumbling = true;
 		slowdownTimer = slowdownLength;
 		Monst.Instance.nyoom();
 		hurtSound.play();

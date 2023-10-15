@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwcq2f27lgnm6"]
 
-[ext_resource type="PackedScene" uid="uid://ddcpeb47nrmvu" path="res://Models/ReRun_Table_NOTFINAL.fbx" id="1_3od26"]
+[ext_resource type="PackedScene" uid="uid://ddcpeb47nrmvu" path="res://Models/old/ReRun_Table_NOTFINAL.fbx" id="1_3od26"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kwbc"]
 shading_mode = 2

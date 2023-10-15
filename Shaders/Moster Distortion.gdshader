@@ -6,6 +6,12 @@ uniform float bleedAmountY = 0.0;
 uniform vec2 mons = vec2(0.0, 0.0);
 uniform float updateDistance = 50;
 uniform vec2 screenSize = vec2(480.0, 270.0);
+uniform float static = 0.0;
+
+float random(vec2 uv) {
+    return fract(sin(dot(uv.xy,
+        vec2(12.9898,78.233))) * 43758.5453123);
+}
 
 void fragment() {
 	vec2 scale = screenSize - vec2(0.00001, 0.0001);
@@ -23,7 +29,9 @@ void fragment() {
 	    vec4 middle = textureLod(screen_texture, SCREEN_UV, 0.0);
 		vec4 bleedLeft = textureLod(screen_texture, SCREEN_UV - vec2(bleedX * SCREEN_PIXEL_SIZE.x, bleedY * SCREEN_PIXEL_SIZE.y), 0.0);
 		vec4 bleedRight = textureLod(screen_texture, SCREEN_UV + vec2(bleedX * SCREEN_PIXEL_SIZE.x, bleedY * SCREEN_PIXEL_SIZE.y), 0.0);
+		
 		COLOR = vec4(bleedLeft.r, middle.g, bleedRight.b, middle.a) * opacity + middle * (1.0 - opacity);
+	
 	} else {
 		vec4 middle = textureLod(screen_texture, SCREEN_UV, 0.0);
 		COLOR = middle;

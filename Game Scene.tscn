@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=46 format=3 uid="uid://coq60ccvflad1"]
 
 [ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="9_os12l"]
 [ext_resource type="Texture2D" uid="uid://b2nv7qewxyl4y" path="res://Sprites/Run_Loop_Done.png" id="10_geaks"]
 [ext_resource type="Texture2D" uid="uid://2wg1540xgp0e" path="res://Sprites/jump_loop_done.png" id="11_2b4cl"]
+[ext_resource type="Texture2D" uid="uid://b0i32kun250fq" path="res://Sprites/Fumble_Loop_done.png" id="11_f2lk7"]
 [ext_resource type="Script" path="res://Scripts/Monster.gd" id="11_v3x8l"]
 [ext_resource type="Texture2D" uid="uid://42fkis3lcq0k" path="res://Sprites/slide_loop_done.png" id="12_an5xj"]
 [ext_resource type="AudioStream" uid="uid://c82gtiggddccw" path="res://Sounds/jumpp_rerun.mp3" id="13_pfegk"]
@@ -21,10 +22,15 @@
 [ext_resource type="Texture2D" uid="uid://bpah5tmxpw6ru" path="res://Sprites/Monster_Clean_Sheet.png" id="14_tnide"]
 [ext_resource type="AudioStream" uid="uid://cg12g5gxy8f7" path="res://Sounds/hurt_sound_rerun.mp3" id="15_ma6vp"]
 [ext_resource type="Texture2D" uid="uid://d2cygn386hyuy" path="res://Shaders/noise.webp" id="15_xnxhj"]
+[ext_resource type="AudioStream" uid="uid://o18otxihov5l" path="res://Sounds/Battery_pickup_rerun.mp3" id="16_s83sl"]
+[ext_resource type="AudioStream" uid="uid://c3mgus3pnslb4" path="res://Sounds/slide_rerun.wav" id="17_426sl"]
 [ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="17_wj8u3"]
 [ext_resource type="Shader" path="res://Shaders/Moster Distortion.gdshader" id="18_y63vd"]
+[ext_resource type="Shader" path="res://Shaders/Static Fade.gdshader" id="19_nuu1b"]
 [ext_resource type="Shader" path="res://Shaders/GrayBattery.gdshader" id="24_n1who"]
 [ext_resource type="Texture2D" uid="uid://caoh1ihxb81gt" path="res://Sprites/batt.png" id="24_nqi0d"]
+[ext_resource type="Texture2D" uid="uid://b0x44fqf7tw28" path="res://Sprites/die lmao.png" id="25_xbak0"]
+[ext_resource type="AudioStream" uid="uid://dfn081ota6efx" path="res://Sounds/rerun.mp3" id="28_0q71x"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
 
@@ -37,17 +43,23 @@ size = Vector2(3, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgyp4"]
 size = Vector2(32, 3)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s062d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gireo"]
 shader = ExtResource("18_y63vd")
 shader_parameter/bleedAmountX = 10.0
-shader_parameter/bleedAmountY = 10.0
-shader_parameter/mons = Vector2(-165, 166)
+shader_parameter/bleedAmountY = 0.0
+shader_parameter/mons = Vector2(0, 0)
 shader_parameter/updateDistance = 200.0
 shader_parameter/screenSize = Vector2(480, 270)
+shader_parameter/static = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1cmd"]
 shader = ExtResource("14_3ctay")
 shader_parameter/time24 = 0.0
+shader_parameter/noise_texture = ExtResource("15_xnxhj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc68u"]
+shader = ExtResource("14_3ctay")
+shader_parameter/time24 = 1.17
 shader_parameter/noise_texture = ExtResource("15_xnxhj")
 
 [sub_resource type="LabelSettings" id="LabelSettings_s3ylo"]
@@ -82,8 +94,14 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ebu3"]
+shader = ExtResource("19_nuu1b")
+shader_parameter/static = 0.0
+shader_parameter/screenSize = Vector2(240, 135)
+
 [node name="Game Manager" type="Node2D"]
 script = ExtResource("1_lycsp")
+soda = true
 
 [node name="Rooms" type="Node2D" parent="."]
 position = Vector2(1, 1)
@@ -135,6 +153,13 @@ texture = ExtResource("10_geaks")
 hframes = 4
 vframes = 2
 
+[node name="Stumble" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("11_f2lk7")
+hframes = 3
+vframes = 3
+
 [node name="Jumping" type="Sprite2D" parent="Player"]
 visible = false
 position = Vector2(0, -32)
@@ -185,8 +210,21 @@ stream = ExtResource("15_ma6vp")
 mix_target = 2
 bus = &"SFX"
 
-[node name="Moster Distortion" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_s062d")
+[node name="Batt" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("16_s83sl")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Slide2" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("17_426sl")
+mix_target = 2
+bus = &"SFX"
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+rect = Rect2(-240, -238, 480, 270)
+
+[node name="Moster Distortion" type="TextureRect" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_gireo")
 offset_left = -240.0
 offset_top = -238.0
 offset_right = 240.0
@@ -195,10 +233,17 @@ texture = ExtResource("2_7g8ny")
 
 [node name="Monster" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_p1cmd")
-position = Vector2(-165, -72)
+position = Vector2(-110, -72)
 texture = ExtResource("14_tnide")
 hframes = 5
 script = ExtResource("11_v3x8l")
+
+[node name="Die lmao" type="Sprite2D" parent="Monster"]
+visible = false
+material = SubResource("ShaderMaterial_fc68u")
+position = Vector2(71, -16)
+texture = ExtResource("25_xbak0")
+hframes = 16
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -103)
@@ -485,6 +530,32 @@ offset_bottom = 45.585
 grow_horizontal = 2
 grow_vertical = 2
 text = "Back to menu"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_0q71x")
+autoplay = true
+bus = &"Music"
+
+[node name="MusicMuted" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_0q71x")
+bus = &"Music Muted"
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="."]
+rect = Rect2(-240, -238, 480, 270)
+
+[node name="Static" type="TextureRect" parent="BackBufferCopy2"]
+material = SubResource("ShaderMaterial_3ebu3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = -240.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_7g8ny")
 
 [connection signal="body_entered" from="Player/Collision Check" to="Player" method="_on_collision_check_body_entered"]
 [connection signal="body_entered" from="Player/Head Check" to="Player" method="_on_head_check_body_entered"]

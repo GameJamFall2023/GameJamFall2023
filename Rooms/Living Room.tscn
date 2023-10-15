@@ -4,13 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://nar0nv40ssac" path="res://Rooms/rough2/living3.png" id="2_b2yap"]
 [ext_resource type="PackedScene" uid="uid://7hb35im3mm5m" path="res://Battery.tscn" id="3_vnmxq"]
 
-[sub_resource type="Environment" id="Environment_4l4xm"]
-background_energy_multiplier = 0.0
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.1
-reflected_light_source = 1
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hdpa"]
 size = Vector2(32, 32)
 
@@ -23,6 +16,12 @@ size = Vector2(32, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb0lw"]
 size = Vector2(32, 15)
+
+[sub_resource type="Environment" id="Environment_ty16e"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
 
 [node name="Living Room" type="Node2D"]
 
@@ -44,27 +43,6 @@ offset_right = 2892.0
 offset_bottom = -32.0
 texture = ExtResource("1_xvgvj")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-visible = false
-offset_top = -238.0
-offset_right = 1920.0
-offset_bottom = 32.0
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1920, 270)
-render_target_update_mode = 0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
-environment = SubResource("Environment_4l4xm")
-
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08811e-09, -4.27562e-08, 4.05, 2.213, 0)
-projection = 1
-size = 3.5
-near = 0.001
-
 [node name="Rough" type="TextureRect" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
@@ -76,189 +54,212 @@ grow_vertical = 0
 texture = ExtResource("2_b2yap")
 stretch_mode = 4
 
-[node name="Block" type="Node2D" parent="."]
+[node name="Colliders" type="Node2D" parent="."]
+
+[node name="Block" type="Node2D" parent="Colliders"]
 position = Vector2(337, -19)
 scale = Vector2(3, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block2" type="Node2D" parent="."]
+[node name="Block2" type="Node2D" parent="Colliders"]
 position = Vector2(561, -53)
 scale = Vector2(3, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block2"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block2"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block2/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block2"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block2"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block2/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block3" type="Node2D" parent="."]
+[node name="Block3" type="Node2D" parent="Colliders"]
 position = Vector2(784, -20)
 scale = Vector2(3, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block3"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block3"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block3/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block3"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block3"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block3/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block4" type="Node2D" parent="."]
+[node name="Block4" type="Node2D" parent="Colliders"]
 position = Vector2(1377, -19)
 scale = Vector2(2, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block4"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block4"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block4/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block4/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block4"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block4"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block4/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block4/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block5" type="Node2D" parent="."]
+[node name="Block5" type="Node2D" parent="Colliders"]
 position = Vector2(1553, -55)
 
-[node name="Whole" type="StaticBody2D" parent="Block5"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block5"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block5/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block5/Whole"]
 position = Vector2(0, 17)
 shape = SubResource("RectangleShape2D_n0kqg")
 
-[node name="Top" type="StaticBody2D" parent="Block5"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block5"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block5/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block5/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block6" type="Node2D" parent="."]
+[node name="Block6" type="Node2D" parent="Colliders"]
 position = Vector2(1776, -87)
 scale = Vector2(3, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block6"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block6"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block6/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block6/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block6"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block6"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block6/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block6/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block7" type="Node2D" parent="."]
+[node name="Block7" type="Node2D" parent="Colliders"]
 position = Vector2(2049, -19)
 scale = Vector2(2, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block7"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block7"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block7/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block7/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block7"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block7"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block7/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block7/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block8" type="Node2D" parent="."]
+[node name="Block8" type="Node2D" parent="Colliders"]
 position = Vector2(2257, -54)
 scale = Vector2(3, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block8"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block8"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block8/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block8/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block8"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block8"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block8/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block8/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block9" type="Node2D" parent="."]
+[node name="Block9" type="Node2D" parent="Colliders"]
 position = Vector2(2481, -87)
 scale = Vector2(3, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block9"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block9"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block9/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block9/Whole"]
 shape = SubResource("RectangleShape2D_4hdpa")
 
-[node name="Top" type="StaticBody2D" parent="Block9"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block9"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block9/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block9/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block11" type="Node2D" parent="."]
+[node name="Block11" type="Node2D" parent="Colliders"]
 position = Vector2(2737, -20)
 scale = Vector2(2, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block11"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block11"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block11/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block11/Whole"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_jb0lw")
 
-[node name="Top" type="StaticBody2D" parent="Block11"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block11"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block11/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block11/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Block12" type="Node2D" parent="."]
+[node name="Block12" type="Node2D" parent="Colliders"]
 position = Vector2(1153, -19)
 scale = Vector2(2, 1)
 
-[node name="Whole" type="StaticBody2D" parent="Block12"]
+[node name="Whole" type="StaticBody2D" parent="Colliders/Block12"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block12/Whole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block12/Whole"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_jb0lw")
 
-[node name="Top" type="StaticBody2D" parent="Block12"]
+[node name="Top" type="StaticBody2D" parent="Colliders/Block12"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block12/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block12/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
 
-[node name="Battery" parent="." instance=ExtResource("3_vnmxq")]
+[node name="Battery" parent="Colliders" instance=ExtResource("3_vnmxq")]
 position = Vector2(971, -22)
 
-[node name="Battery2" parent="." instance=ExtResource("3_vnmxq")]
-position = Vector2(2736, -188)
+[node name="Battery2" parent="Colliders" instance=ExtResource("3_vnmxq")]
+position = Vector2(2769, -207)
+
+[node name="3D" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="3D"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3D/SubViewport"]
+environment = SubResource("Environment_ty16e")
+
+[node name="Camera3D" type="Camera3D" parent="3D/SubViewport"]
+transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08812e-09, -4.27562e-08, 4.05, 2.213, 0)
+projection = 1
+size = 3.5
+near = 0.001
+
+[node name="CSGBox3D" type="CSGBox3D" parent="3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.557103, 0)
+size = Vector3(2.85145, 1, 11.8381)
