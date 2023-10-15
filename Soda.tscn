@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://lal87f5qcgom"]
+
+[ext_resource type="Script" path="res://Scripts/Soda collect.gd" id="1_27k33"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ara67"]
+radius = 17.0294
+
+[node name="Soda" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_27k33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ara67")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=33 format=3 uid="uid://coq60ccvflad1"]
 
 [ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
@@ -15,10 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://nmsv5n13nbd4" path="res://Rooms/Hallway3.tscn" id="8_41ke0"]
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="9_os12l"]
 [ext_resource type="Script" path="res://Scripts/Monster.gd" id="11_v3x8l"]
+[ext_resource type="AudioStream" uid="uid://c82gtiggddccw" path="res://Sounds/jumpp_rerun.mp3" id="13_pfegk"]
 [ext_resource type="Shader" path="res://Shaders/Monster.gdshader" id="14_3ctay"]
+[ext_resource type="AudioStream" uid="uid://b6llprw4rojod" path="res://Sounds/soda_jump_rerun.mp3" id="14_dmiwk"]
 [ext_resource type="Texture2D" uid="uid://bpah5tmxpw6ru" path="res://Sprites/Monster_Clean_Sheet.png" id="14_tnide"]
+[ext_resource type="AudioStream" uid="uid://cg12g5gxy8f7" path="res://Sounds/hurt_sound_rerun.mp3" id="15_ma6vp"]
 [ext_resource type="Texture2D" uid="uid://d2cygn386hyuy" path="res://Shaders/noise.webp" id="15_xnxhj"]
 [ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="17_wj8u3"]
+[ext_resource type="Shader" path="res://Shaders/Moster Distortion.gdshader" id="18_y63vd"]
+[ext_resource type="PackedScene" uid="uid://lal87f5qcgom" path="res://Soda.tscn" id="24_abp8q"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
 
@@ -30,6 +35,14 @@ size = Vector2(3, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgyp4"]
 size = Vector2(32, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s062d"]
+shader = ExtResource("18_y63vd")
+shader_parameter/bleedAmountX = 10.0
+shader_parameter/bleedAmountY = 10.0
+shader_parameter/mons = Vector2(-165, 166)
+shader_parameter/updateDistance = 200.0
+shader_parameter/screenSize = Vector2(480, 270)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1cmd"]
 shader = ExtResource("14_3ctay")
@@ -54,18 +67,13 @@ shadow_offset = Vector2(2, 2)
 
 [node name="Game Manager" type="Node2D"]
 script = ExtResource("1_lycsp")
-
-[node name="ScreenSize" type="TextureRect" parent="."]
-visible = false
-modulate = Color(0.388235, 0.388235, 0.388235, 1)
-offset_left = -240.0
-offset_top = -238.0
-offset_right = 240.0
-offset_bottom = 32.0
-texture = ExtResource("2_7g8ny")
+soda = true
 
 [node name="Rooms" type="Node2D" parent="."]
 position = Vector2(1, 1)
+
+[node name="Bedroom-1" parent="Rooms" instance=ExtResource("4_15qy0")]
+position = Vector2(-4014, 0)
 
 [node name="Hallway3-1" parent="Rooms" instance=ExtResource("8_41ke0")]
 position = Vector2(-720, 0)
@@ -76,16 +84,16 @@ position = Vector2(-720, 0)
 position = Vector2(2880, 0)
 
 [node name="Kitchen Dining" parent="Rooms" instance=ExtResource("6_bkt82")]
-position = Vector2(3600, 0)
+position = Vector2(4032, 0)
 
 [node name="Hallway2" parent="Rooms" instance=ExtResource("6_i5rg1")]
-position = Vector2(5520, 0)
+position = Vector2(7120, 0)
 
 [node name="Bedroom" parent="Rooms" instance=ExtResource("4_15qy0")]
-position = Vector2(6240, 0)
+position = Vector2(8560, 0)
 
 [node name="Hallway3" parent="Rooms" instance=ExtResource("8_41ke0")]
-position = Vector2(8160, 0)
+position = Vector2(11856, 0)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(-240, 0)
@@ -142,6 +150,32 @@ collision_mask = 6
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_dgyp4")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+current = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("13_pfegk")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Soda" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("14_dmiwk")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("15_ma6vp")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Moster Distortion" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_s062d")
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+texture = ExtResource("2_7g8ny")
+
 [node name="Monster" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_p1cmd")
 position = Vector2(-165, -72)
@@ -152,6 +186,28 @@ script = ExtResource("11_v3x8l")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -103)
 script = ExtResource("9_os12l")
+
+[node name="baseui" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = ExtResource("17_wj8u3")
+
+[node name="Label" type="Label" parent="Camera2D/baseui"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_s3ylo")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Paused" type="Control" parent="Camera2D"]
 visible = false
@@ -222,6 +278,166 @@ grow_vertical = 2
 text = "Continue
 "
 
+[node name="Died" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = ExtResource("17_wj8u3")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/Died"]
+modulate = Color(0.105882, 0.105882, 0.105882, 0.470588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7g8ny")
+
+[node name="Label" type="Label" parent="Camera2D/Died"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 36.0
+offset_right = 108.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "You died"
+label_settings = SubResource("LabelSettings_s3ylo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Camera2D/Died"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -65.485
+offset_right = 108.0
+offset_bottom = -25.4851
+grow_horizontal = 2
+grow_vertical = 2
+text = "take the L bozo"
+label_settings = SubResource("LabelSettings_nb32j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu" type="Button" parent="Camera2D/Died"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -12.0
+offset_right = 68.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"
+
+[node name="Win" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = ExtResource("17_wj8u3")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/Win"]
+modulate = Color(0.105882, 0.105882, 0.105882, 0.470588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7g8ny")
+
+[node name="Label" type="Label" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 36.0
+offset_right = 108.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "You won"
+label_settings = SubResource("LabelSettings_s3ylo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -65.485
+offset_right = 108.0
+offset_bottom = -25.4851
+grow_horizontal = 2
+grow_vertical = 2
+text = "How impressive"
+label_settings = SubResource("LabelSettings_nb32j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -32.555
+offset_right = 174.0
+offset_bottom = 7.44495
+grow_horizontal = 2
+grow_vertical = 2
+text = "Now leave before the monster
+unleashes it's full potential"
+label_settings = SubResource("LabelSettings_nb32j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu" type="Button" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 21.585
+offset_right = 98.0
+offset_bottom = 45.585
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"
+
+[node name="Soda" parent="." instance=ExtResource("24_abp8q")]
+position = Vector2(4975, -157)
+
 [connection signal="body_entered" from="Player/Collision Check" to="Player" method="_on_collision_check_body_entered"]
 [connection signal="body_entered" from="Player/Head Check" to="Player" method="_on_head_check_body_entered"]
 [connection signal="pressed" from="Camera2D/Paused/unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="Camera2D/Died/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Camera2D/Win/menu" to="." method="_on_menu_pressed"]

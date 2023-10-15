@@ -14,6 +14,8 @@ var animTimer2 = 0;
 
 var fails = 0;
 
+@onready var distortion = $"../Moster Distortion";
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !Instance:
@@ -52,8 +54,9 @@ func _process(delta):
 		fallAway = min(fallAway, 250);
 	
 	position.x = Player.Instance.position.x - 165 - fallAway;
-	print(fallAway);
-	print(fallAwayDelay)
+	distortion.position.x = Player.Instance.position.x - 240;
+	
+	distortion.material.set_shader_parameter("mons", Vector2(75-fallAway, 166));
 	
 func nyoom():
 	catchup = true;

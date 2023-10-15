@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckv87l0jxnaqf"]
+[gd_scene load_steps=11 format=3 uid="uid://ckv87l0jxnaqf"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Scaler.gd" id="1_vk8ns"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Button Handler.gd" id="3_4756x"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://053525woyccu" path="res://Rooms/Test/Screenshot_2023-10-13_235818.png" id="3_nncp1"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="4_rgr8d"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/Mouse Updater.gd" id="5_jjpb3"]
+[ext_resource type="AudioStream" uid="uid://bimqn46qj3tpq" path="res://Sounds/Menu_button_rerun.mp3" id="8_51gvd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vwj00"]
 font_size = 72
@@ -21,7 +22,7 @@ shader = ExtResource("3_ho7l5")
 shader_parameter/bleedAmountX = 10.0
 shader_parameter/bleedAmountY = 0.0
 shader_parameter/time = 0.0
-shader_parameter/fadeTime = 2.5
+shader_parameter/fadeTime = 1.5
 shader_parameter/mouse = Vector2(0, 0)
 shader_parameter/updateDistance = 100.0
 shader_parameter/screenSize = Vector2(480, 270)
@@ -227,6 +228,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_rgr8d")
 script = ExtResource("5_jjpb3")
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_51gvd")
+bus = &"SFX"
 
 [connection signal="pressed" from="UI Scaler/Main/Play" to="UI Scaler/Main" method="_on_play_pressed"]
 [connection signal="pressed" from="UI Scaler/Main/Settings" to="UI Scaler/Main" method="_on_settings_pressed"]

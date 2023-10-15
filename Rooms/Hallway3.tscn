@@ -1,11 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://nmsv5n13nbd4"]
+[gd_scene load_steps=7 format=3 uid="uid://nmsv5n13nbd4"]
 
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_nunlf"]
 [ext_resource type="Texture2D" uid="uid://bg5ifr3vid8mx" path="res://Rooms/rough2/hall3.png" id="2_1gpcj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocse5"]
+size = Vector2(32, 32)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_82ytm"]
+a = Vector2(-16, -17)
+b = Vector2(16, -17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77v7v"]
+size = Vector2(32, 15)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nfe8m"]
+a = Vector2(-16, -17)
+b = Vector2(16, -17)
+
 [node name="Hallway" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.741176, 0.333333, 0.341176, 1)
 offset_top = -32.0
 offset_right = 720.0
@@ -13,6 +28,7 @@ offset_bottom = 32.0
 texture = ExtResource("1_nunlf")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.560784, 0.337255, 0.0941176, 1)
 offset_top = -238.0
 offset_right = 720.0
@@ -28,3 +44,126 @@ offset_right = 720.0
 offset_bottom = 32.0
 grow_vertical = 0
 texture = ExtResource("2_1gpcj")
+stretch_mode = 2
+
+[node name="Block5" type="Node2D" parent="."]
+position = Vector2(130, -20)
+scale = Vector2(4, 1)
+
+[node name="Whole" type="StaticBody2D" parent="Block5"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block5/Whole"]
+shape = SubResource("RectangleShape2D_ocse5")
+
+[node name="Top" type="StaticBody2D" parent="Block5"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block5/Top"]
+shape = SubResource("SegmentShape2D_82ytm")
+
+[node name="Block6" type="Node2D" parent="."]
+position = Vector2(376, -154)
+scale = Vector2(3, 1)
+
+[node name="Whole" type="StaticBody2D" parent="Block6"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block6/Whole"]
+shape = SubResource("RectangleShape2D_ocse5")
+
+[node name="Top" type="StaticBody2D" parent="Block6"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block6/Top"]
+shape = SubResource("SegmentShape2D_82ytm")
+
+[node name="Block7" type="Node2D" parent="."]
+position = Vector2(231, -87)
+scale = Vector2(2, 1)
+
+[node name="Whole" type="StaticBody2D" parent="Block7"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block7/Whole"]
+shape = SubResource("RectangleShape2D_ocse5")
+
+[node name="Top" type="StaticBody2D" parent="Block7"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block7/Top"]
+shape = SubResource("SegmentShape2D_82ytm")
+
+[node name="Block8" type="Node2D" parent="."]
+position = Vector2(346, -20)
+
+[node name="Whole" type="StaticBody2D" parent="Block8"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block8/Whole"]
+shape = SubResource("RectangleShape2D_ocse5")
+
+[node name="Top" type="StaticBody2D" parent="Block8"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block8/Top"]
+shape = SubResource("SegmentShape2D_82ytm")
+
+[node name="Block9" type="Node2D" parent="."]
+position = Vector2(439, -53)
+
+[node name="Whole" type="StaticBody2D" parent="Block9"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block9/Whole"]
+shape = SubResource("RectangleShape2D_ocse5")
+
+[node name="Top" type="StaticBody2D" parent="Block9"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block9/Top"]
+shape = SubResource("SegmentShape2D_82ytm")
+
+[node name="Block10" type="Node2D" parent="."]
+position = Vector2(574, -54)
+
+[node name="Whole" type="StaticBody2D" parent="Block10"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block10/Whole"]
+shape = SubResource("RectangleShape2D_ocse5")
+
+[node name="Top" type="StaticBody2D" parent="Block10"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block10/Top"]
+shape = SubResource("SegmentShape2D_82ytm")
+
+[node name="Block14" type="Node2D" parent="."]
+position = Vector2(573, -19)
+scale = Vector2(2, 1)
+
+[node name="Whole" type="StaticBody2D" parent="Block14"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block14/Whole"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_77v7v")
+
+[node name="Top" type="StaticBody2D" parent="Block14"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block14/Top"]
+shape = SubResource("SegmentShape2D_nfe8m")

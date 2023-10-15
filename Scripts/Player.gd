@@ -33,6 +33,8 @@ var jumpTime = 0;
 var jumpY = 0;
 var lastJump = 0;
 var jumps = 2;
+var maxJump = 1;
+@onready var jumpSounds = [$Jump, $Soda];
 
 var crouchTimer = 0;
 var crouched = false;
@@ -47,6 +49,8 @@ var slowdownTimer = 0;
 var slowdown = false;
 var slowdownLength = 1;
 
+@onready var hurtSound = $Hurt;
+
 func _ready():
 	if !Instance:
 		Instance = self;
@@ -56,6 +60,8 @@ func _ready():
 	halfSpeed = speed / 2;
 
 func _process(delta):
+	maxJump = 2 if Game.Instance.soda else 1;
+	
 	velocity.x += acceleration * delta;
 	velocity.x = min(velocity.x, speed);
 	velocity.y += gravity * delta;
@@ -92,7 +98,7 @@ func _process(delta):
 	if !jumping && is_on_floor():
 		groundLastJump = true;
 		
-	if Input.is_action_just_pressed("ui_up") && jumps > 0:
+	if Input.is_action_just_pressed("ui_up") && jumps > 0 && ((jumps != maxJump || is_on_floor()) || maxJump == 2):
 		groundLastJump = false;
 		jumping = true;
 		Jumping.frame = 0;
@@ -101,7 +107,16 @@ func _process(delta):
 		jumpY = position.y;
 		crouched = false;
 		crouchTimer = 0;
+		if !is_on_floor() && jumps == 2:
+			jumps -= 1
+			
 		jumps -= 1;
+			
+		if jumps == 0 && maxJump == 2:
+			jumpSounds[1].play();
+		else:
+			jumpSounds[0].play();
+
 		
 	if is_on_floor() && !Input.is_action_just_pressed("ui_up"):
 		jumps = 2 if Game.Instance.soda else 1;
@@ -136,8 +151,8 @@ func _process(delta):
 	
 	move_and_slide();
 	
-	if position.x >= 7560:
-		position.x = -360;
+	if position.x >= 11500:
+		position.x = -1076;
 	
 	CameraController.Instance.position.x = position.x;
 	animate(delta);
@@ -196,6 +211,7 @@ func _on_collision_check_body_entered(body):
 	slowdown = true;
 	slowdownTimer = slowdownLength;
 	Monst.Instance.nyoom();
+	hurtSound.play();
 
 
 func _on_head_check_body_entered(body):

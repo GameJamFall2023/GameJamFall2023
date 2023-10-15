@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfdww1m6x2pll"]
+[gd_scene load_steps=9 format=3 uid="uid://cfdww1m6x2pll"]
 
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_xvgvj"]
 [ext_resource type="Texture2D" uid="uid://nar0nv40ssac" path="res://Rooms/rough2/living3.png" id="2_b2yap"]
+[ext_resource type="PackedScene" uid="uid://7hb35im3mm5m" path="res://Battery.tscn" id="3_vnmxq"]
 
 [sub_resource type="Environment" id="Environment_4l4xm"]
 background_energy_multiplier = 0.0
@@ -26,16 +27,20 @@ size = Vector2(32, 15)
 [node name="Living Room" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.0470588, 0.388235, 0.00392157, 1)
+offset_left = 12.0
 offset_top = -32.0
-offset_right = 2880.0
+offset_right = 2892.0
 offset_bottom = 32.0
 texture = ExtResource("1_xvgvj")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.0470588, 0.541176, 0.00392157, 1)
+offset_left = 12.0
 offset_top = -238.0
-offset_right = 2880.0
+offset_right = 2892.0
 offset_bottom = -32.0
 texture = ExtResource("1_xvgvj")
 
@@ -251,3 +256,9 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block12/Top"]
 shape = SubResource("SegmentShape2D_tpjcy")
+
+[node name="Battery" parent="." instance=ExtResource("3_vnmxq")]
+position = Vector2(971, -22)
+
+[node name="Battery2" parent="." instance=ExtResource("3_vnmxq")]
+position = Vector2(2608, -155)

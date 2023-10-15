@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7awp3alg1djx"]
+
+[ext_resource type="Script" path="res://Sock collector.gd" id="2_gkkey"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqolc"]
+radius = 17.0294
+
+[node name="Socks" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_gkkey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yqolc")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

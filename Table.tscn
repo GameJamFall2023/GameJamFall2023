@@ -27,7 +27,7 @@ grow_vertical = 2
 texture = ExtResource("3_acuii")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.961329, -0.269308, 0.0576166, 0, 0.209209, 0.977871, -0.275402, -0.940056, 0.201119, 0.53459, 2.36573, 0.781223)
+transform = Transform3D(0.961329, -0.269308, 0.0576166, 0, 0.209209, 0.977871, -0.275402, -0.940056, 0.201119, 0.0805173, 2.36573, 0.773089)
 
 [node name="ReRun_NoSlideTable" parent="." instance=ExtResource("3_lrh2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013566, 0, 0.608347)
