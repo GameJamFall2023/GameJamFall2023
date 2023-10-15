@@ -7,7 +7,10 @@ static var Instance;
 @export var batt3 = false;
 @export var batt4 = false;
 @export var batts = 0;
-@onready var battLabel = $Camera2D/baseui/Label;
+@onready var battUI1 = $Camera2D/baseui/Batt;
+@onready var battUI2 = $Camera2D/baseui/Batt2;
+@onready var battUI3 = $Camera2D/baseui/Batt3;
+@onready var battUI4 = $Camera2D/baseui/Batt4;
 
 @export var socks = false;
 @export var soda = false;
@@ -17,6 +20,7 @@ static var Instance;
 @onready var pauseScreen = $Camera2D/Paused;
 @onready var diedScreen = $Camera2D/Died;
 @onready var winScreen = $Camera2D/Win;
+
 
 var canPause = true;
 
@@ -48,7 +52,10 @@ func _process(delta):
 		winScreen.visible = true;
 		canPause = false;
 		
-	battLabel.text = str(batts);
+	battUI1.material.set_shader_parameter("gray", 0 if batts > 0 else 1);
+	battUI2.material.set_shader_parameter("gray", 0 if batts > 1 else 1);
+	battUI3.material.set_shader_parameter("gray", 0 if batts > 2 else 1);
+	battUI4.material.set_shader_parameter("gray", 0 if batts > 3 else 1);
 
 
 func _on_unpause_pressed():
@@ -59,7 +66,6 @@ func dead():
 	canPause = false;
 	diedScreen.visible = true;
 	pass
-
 
 func _on_menu_pressed():
 	Engine.time_scale = 1;

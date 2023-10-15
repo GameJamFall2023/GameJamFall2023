@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=38 format=3 uid="uid://coq60ccvflad1"]
 
 [ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://d2cygn386hyuy" path="res://Shaders/noise.webp" id="15_xnxhj"]
 [ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="17_wj8u3"]
 [ext_resource type="Shader" path="res://Shaders/Moster Distortion.gdshader" id="18_y63vd"]
+[ext_resource type="Shader" path="res://Shaders/GrayBattery.gdshader" id="24_n1who"]
+[ext_resource type="Texture2D" uid="uid://caoh1ihxb81gt" path="res://Sprites/batt.png" id="24_nqi0d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
 
@@ -55,6 +57,22 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y0ljw"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6b7c"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2oqp"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpk86"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_nb32j"]
 font_size = 12
@@ -196,6 +214,7 @@ offset_bottom = 32.0
 theme = ExtResource("17_wj8u3")
 
 [node name="Label" type="Label" parent="Camera2D/baseui"]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -207,6 +226,26 @@ text = "0"
 label_settings = SubResource("LabelSettings_s3ylo")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Batt" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_y0ljw")
+position = Vector2(464, 16)
+texture = ExtResource("24_nqi0d")
+
+[node name="Batt2" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_w6b7c")
+position = Vector2(438, 16)
+texture = ExtResource("24_nqi0d")
+
+[node name="Batt3" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_h2oqp")
+position = Vector2(412, 16)
+texture = ExtResource("24_nqi0d")
+
+[node name="Batt4" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_dpk86")
+position = Vector2(386, 16)
+texture = ExtResource("24_nqi0d")
 
 [node name="Paused" type="Control" parent="Camera2D"]
 visible = false
@@ -276,6 +315,21 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Continue
 "
+
+[node name="menu" type="Button" parent="Camera2D/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 63.385
+offset_right = 98.0
+offset_bottom = 87.385
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"
 
 [node name="Died" type="Control" parent="Camera2D"]
 visible = false
@@ -435,5 +489,6 @@ text = "Back to menu"
 [connection signal="body_entered" from="Player/Collision Check" to="Player" method="_on_collision_check_body_entered"]
 [connection signal="body_entered" from="Player/Head Check" to="Player" method="_on_head_check_body_entered"]
 [connection signal="pressed" from="Camera2D/Paused/unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="Camera2D/Paused/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Camera2D/Died/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Camera2D/Win/menu" to="." method="_on_menu_pressed"]
