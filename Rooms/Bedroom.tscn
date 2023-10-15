@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://td176m5ctfvj"]
 
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_hi3g2"]
-[ext_resource type="Texture2D" uid="uid://c7hgbkoetcs67" path="res://Rooms/rough/bedroom.png" id="2_3dha4"]
+[ext_resource type="Texture2D" uid="uid://kbu5uau4pkm2" path="res://Rooms/rough2/bedroom.png" id="2_oh2kk"]
 
 [node name="Bedroom" type="Node2D"]
 
@@ -27,4 +27,4 @@ offset_top = -238.0
 offset_right = 1920.0
 offset_bottom = 32.0
 grow_vertical = 0
-texture = ExtResource("2_3dha4")
+texture = ExtResource("2_oh2kk")

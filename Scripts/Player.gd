@@ -38,7 +38,10 @@ var crouchTimer = 0;
 var crouched = false;
 
 @onready var collision = $"Collision Check";
-@onready var collisionSahe = $"Collision Check/CollisionShape2D";
+@onready var collisionShape = $"Collision Check/CollisionShape2D";
+
+@onready var headCollision = $"Head Check";
+@onready var headCollisionShape = $"Head Check/CollisionShape2D";
 
 var slowdownTimer = 0;
 var slowdown = false;
@@ -59,7 +62,10 @@ func _process(delta):
 	
 	collision.position.y = collider.position.y;
 	collision.position.x = collider.shape.size.x / 2;
-	collisionSahe.shape.size.y = collider.shape.size.y;
+	collisionShape.shape.size.y = collider.shape.size.y;
+	
+	headCollision.position.y = collider.position.y - collider.shape.size.y / 2;
+	headCollisionShape.shape.size.x = collider.shape.size.x;
 	
 	if Input.is_action_just_pressed("ui_down") && !crouched && Game.Instance.socks:
 		crouched = true;
@@ -126,7 +132,12 @@ func _process(delta):
 	CameraController.Instance.position.x = position.x;
 	animate(delta);
 	
-	slowdownTimer -= delta;
+	if slowdown:
+		slowdownTimer -= delta;
+	
+	Running.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
+	Jumping.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
+	Sliding.self_modulate = Color(1.0, 1.0, 1.0, cos(slowdownTimer * 25) / 4 + 0.75);
 	
 	if slowdownTimer <= 0:
 		slowdown = false;
@@ -185,3 +196,9 @@ func _on_collision_check_body_entered(body):
 	print(body.name);
 	slowdown = true;
 	slowdownTimer = slowdownLength;
+
+
+func _on_head_check_body_entered(body):
+	jumping = false;
+	position.y = -lastJump * jumpHeight + jumpY
+	pass # Replace with function body.

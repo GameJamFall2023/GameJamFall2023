@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=24 format=3 uid="uid://coq60ccvflad1"]
 
 [ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
@@ -23,8 +23,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8cm"]
 size = Vector2(32, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8n3k"]
-size = Vector2(1, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3cw"]
+size = Vector2(3, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgyp4"]
+size = Vector2(32, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_s3ylo"]
 font_size = 36
@@ -83,44 +86,53 @@ script = ExtResource("4_1qn7o")
 shape = SubResource("WorldBoundaryShape2D_8t0vn")
 one_way_collision_margin = 128.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(240, 0)
 collision_mask = 3
 script = ExtResource("5_ekfvk")
 speed = 200
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_yn8cm")
 
-[node name="Running" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Running" type="Sprite2D" parent="Player"]
 position = Vector2(0, -32)
 texture = ExtResource("6_j6f3o")
 hframes = 4
 vframes = 2
 
-[node name="Jumping" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Jumping" type="Sprite2D" parent="Player"]
 visible = false
 position = Vector2(0, -32)
 texture = ExtResource("7_b8apx")
 hframes = 3
 vframes = 2
 
-[node name="Slide" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Slide" type="Sprite2D" parent="Player"]
 visible = false
 position = Vector2(-5, -32)
 texture = ExtResource("8_3wq6e")
 hframes = 2
 vframes = 3
 
-[node name="Collision Check" type="Area2D" parent="CharacterBody2D"]
+[node name="Collision Check" type="Area2D" parent="Player"]
 position = Vector2(16, -32)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Collision Check"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Collision Check"]
 position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_p8n3k")
+shape = SubResource("RectangleShape2D_aq3cw")
+
+[node name="Head Check" type="Area2D" parent="Player"]
+position = Vector2(0, -65)
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Head Check"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_dgyp4")
 
 [node name="Monster" type="Sprite2D" parent="."]
 position = Vector2(240, -103)
@@ -203,5 +215,6 @@ grow_vertical = 2
 text = "Continue
 "
 
-[connection signal="body_entered" from="CharacterBody2D/Collision Check" to="CharacterBody2D" method="_on_collision_check_body_entered"]
+[connection signal="body_entered" from="Player/Collision Check" to="Player" method="_on_collision_check_body_entered"]
+[connection signal="body_entered" from="Player/Head Check" to="Player" method="_on_head_check_body_entered"]
 [connection signal="pressed" from="Camera2D/Paused/unpause" to="." method="_on_unpause_pressed"]

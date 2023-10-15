@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfdww1m6x2pll"]
+[gd_scene load_steps=5 format=3 uid="uid://cfdww1m6x2pll"]
 
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_xvgvj"]
-[ext_resource type="Texture2D" uid="uid://cs0berwilmvi7" path="res://Rooms/rough/living.png" id="2_8ao1m"]
+[ext_resource type="Texture2D" uid="uid://dx07wlqplwcdr" path="res://Rooms/rough2/living.png" id="2_fdo1a"]
 
 [sub_resource type="Environment" id="Environment_4l4xm"]
 background_energy_multiplier = 0.0
@@ -9,6 +9,9 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.1
 reflected_light_source = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1rtn"]
+size = Vector2(93, 34)
 
 [node name="Living Room" type="Node2D"]
 
@@ -55,4 +58,12 @@ offset_top = -238.0
 offset_right = 1920.0
 offset_bottom = 32.0
 grow_vertical = 0
-texture = ExtResource("2_8ao1m")
+texture = ExtResource("2_fdo1a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1610.5, -87)
+shape = SubResource("RectangleShape2D_i1rtn")
