@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://h638ocsh02hg"]
+
+[ext_resource type="Script" path="res://Scripts/Scene Loader.gd" id="1_gdelo"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/Menu Scaler.gd" id="1_lidxs"]
+[ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="2_gw0tf"]
+[ext_resource type="Script" path="res://Scripts/MenuCam.gd" id="2_xseu2"]
+[ext_resource type="Shader" path="res://Shaders/Moster Distortion.gdshader" id="4_4pyyb"]
+[ext_resource type="Shader" path="res://Shaders/3D Pixels.gdshader" id="4_45aew"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="5_iorrh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rssyq"]
+font_size = 48
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0vgm"]
+shader = ExtResource("4_45aew")
+shader_parameter/screenSize = Vector2(480, 270)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqpwa"]
+shader = ExtResource("4_4pyyb")
+shader_parameter/bleedAmountX = 10.0
+shader_parameter/bleedAmountY = 10.0
+shader_parameter/mons = Vector2(240, 135)
+shader_parameter/updateDistance = 250.0
+shader_parameter/screenSize = Vector2(480, 270)
+
+[node name="Loader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gdelo")
+
+[node name="MenuCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("2_xseu2")
+
+[node name="Intro" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+theme = ExtResource("2_gw0tf")
+script = ExtResource("1_lidxs")
+
+[node name="Back" type="TextureRect" parent="Intro"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iorrh")
+
+[node name="Label" type="Label" parent="Intro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -51.0
+offset_right = 216.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Made with
+Godot"
+label_settings = SubResource("LabelSettings_rssyq")
+horizontal_alignment = 1
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Intro"]
+rect = Rect2(0, 0, 480, 270)
+
+[node name="IntroPix" type="TextureRect" parent="Intro/BackBufferCopy"]
+material = SubResource("ShaderMaterial_a0vgm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iorrh")
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="Intro"]
+rect = Rect2(0, 0, 480, 270)
+
+[node name="IntroPix2" type="TextureRect" parent="Intro/BackBufferCopy2"]
+material = SubResource("ShaderMaterial_cqpwa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iorrh")

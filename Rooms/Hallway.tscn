@@ -82,7 +82,7 @@ collision_layer = 2
 shape = SubResource("SegmentShape2D_euyfv")
 
 [node name="Block" type="Node2D" parent="."]
-position = Vector2(400, -81)
+position = Vector2(400, -84)
 scale = Vector2(3, 1)
 
 [node name="Whole" type="StaticBody2D" parent="Block"]
@@ -100,7 +100,7 @@ collision_mask = 2
 shape = SubResource("SegmentShape2D_ioeid")
 
 [node name="Block2" type="Node2D" parent="."]
-position = Vector2(750, -80)
+position = Vector2(751, -84)
 scale = Vector2(3, 1)
 
 [node name="Whole" type="StaticBody2D" parent="Block2"]

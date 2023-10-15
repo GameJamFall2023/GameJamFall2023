@@ -261,4 +261,4 @@ shape = SubResource("SegmentShape2D_tpjcy")
 position = Vector2(971, -22)
 
 [node name="Battery2" parent="." instance=ExtResource("3_vnmxq")]
-position = Vector2(2608, -155)
+position = Vector2(2736, -188)

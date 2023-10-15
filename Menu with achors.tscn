@@ -27,7 +27,7 @@ shader_parameter/mouse = Vector2(0, 0)
 shader_parameter/updateDistance = 100.0
 shader_parameter/screenSize = Vector2(480, 270)
 
-[node name="Control" type="Control"]
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -47,7 +47,10 @@ var crouched = false;
 
 var slowdownTimer = 0;
 var slowdown = false;
-var slowdownLength = 1;
+var slowdownLength = 2;
+
+var coyoteTimer = 0;
+var coyoteTime = 0.1;
 
 @onready var hurtSound = $Hurt;
 
@@ -68,7 +71,7 @@ func _process(delta):
 	
 	collision.position.y = colliderHelper.position.y;
 	collision.position.x = colliderHelper.shape.size.x / 2;
-	collisionShape.shape.size.y = colliderHelper.shape.size.y;
+	collisionShape.shape.size.y = colliderHelper.shape.size.y * 0.9;
 	
 	headCollision.position.y = colliderHelper.position.y - colliderHelper.shape.size.y / 2;
 	headCollisionShape.shape.size.x = colliderHelper.shape.size.x;
@@ -78,8 +81,8 @@ func _process(delta):
 	
 	if crouched:
 		colliderHelper.shape.size.x = 60;
-		colliderHelper.shape.size.y = 18;
-		colliderHelper.position.y = -9;
+		colliderHelper.shape.size.y = 14;
+		colliderHelper.position.y = -7;
 		crouchTimer += delta;
 		if !slowdown:
 			velocity.x *= 1# + (1 - crouchTimer) / 5;
@@ -98,7 +101,14 @@ func _process(delta):
 	if !jumping && is_on_floor():
 		groundLastJump = true;
 		
-	if Input.is_action_just_pressed("ui_up") && jumps > 0 && ((jumps != maxJump || is_on_floor()) || maxJump == 2):
+	if !is_on_floor():
+		coyoteTimer += delta;
+	else:
+		coyoteTimer = 0;
+		
+	print(coyoteTimer)
+		
+	if Input.is_action_just_pressed("ui_up") && jumps > 0 && ((jumps != maxJump || (is_on_floor() || coyoteTimer <= coyoteTime)) || maxJump == 2):
 		groundLastJump = false;
 		jumping = true;
 		Jumping.frame = 0;
@@ -127,7 +137,7 @@ func _process(delta):
 		position.y = -sin(jumpTime * jumpSpeed) * jumpHeight + jumpY;
 		velocity.y = -sin(jumpTime * jumpSpeed) * jumpHeight;
 		
-	if !Input.is_action_pressed("ui_up") || (is_on_floor() && jumpTime > 0.1) || lastJump < -sin(jumpTime * 5):
+	if !Input.is_action_pressed("ui_up") || (is_on_floor() && jumpTime > 0.1) || lastJump < -sin(jumpTime * 5) || headCollision.get_overlapping_bodies().size() > 0:
 		jumping = false;
 	
 	if velocity.y > 0 && !is_on_floor() && groundLastJump:
@@ -208,13 +218,16 @@ func animate(delta):
 
 
 func _on_collision_check_body_entered(body):
-	slowdown = true;
-	slowdownTimer = slowdownLength;
-	Monst.Instance.nyoom();
-	hurtSound.play();
+	if !slowdown && headCollision.get_overlapping_bodies().find(body) == -1:
+		slowdown = true;
+		slowdownTimer = slowdownLength;
+		Monst.Instance.nyoom();
+		hurtSound.play();
 
 
 func _on_head_check_body_entered(body):
-	jumping = false;
-	position.y = -lastJump * jumpHeight + jumpY
+	if jumping:
+		#jumping = false;
+		print("head")
+		#position.y = -lastJump * jumpHeight + jumpY;
 	pass # Replace with function body.

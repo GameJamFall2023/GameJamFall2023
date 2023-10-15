@@ -23,6 +23,7 @@ func _process(delta):
 		mouseShader.material.set_shader_parameter("time", 1.5);
 		
 		if fadeTimer > fadeLength:
+			#Loader.Instance.LoadGame();
 			get_tree().change_scene_to_packed(load("res://Game Scene.tscn"));
 	pass
 

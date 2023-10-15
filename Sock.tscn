@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7awp3alg1djx"]
 
-[ext_resource type="Script" path="res://Sock collector.gd" id="2_gkkey"]
+[ext_resource type="Script" path="res://Scripts/Sock collector.gd" id="2_gkkey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yqolc"]
 radius = 17.0294

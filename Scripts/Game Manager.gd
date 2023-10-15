@@ -63,5 +63,6 @@ func dead():
 
 func _on_menu_pressed():
 	Engine.time_scale = 1;
+	#Loader.Instance.LoadMenu();
 	get_tree().change_scene_to_packed(load("res://Menu with achors.tscn"));
 	pass # Replace with function body.
