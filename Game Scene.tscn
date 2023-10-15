@@ -88,11 +88,8 @@ script = ExtResource("1_lycsp")
 [node name="Rooms" type="Node2D" parent="."]
 position = Vector2(1, 1)
 
-[node name="Bedroom-1" parent="Rooms" instance=ExtResource("4_15qy0")]
-position = Vector2(-4014, 0)
-
 [node name="Hallway3-1" parent="Rooms" instance=ExtResource("8_41ke0")]
-position = Vector2(-720, 0)
+position = Vector2(-1376, 0)
 
 [node name="Living Room" parent="Rooms" instance=ExtResource("4_5er2c")]
 
@@ -110,6 +107,9 @@ position = Vector2(8560, 0)
 
 [node name="Hallway3" parent="Rooms" instance=ExtResource("8_41ke0")]
 position = Vector2(11856, 0)
+
+[node name="Living Room2" parent="Rooms" instance=ExtResource("4_5er2c")]
+position = Vector2(13232, 0)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(-240, 0)
