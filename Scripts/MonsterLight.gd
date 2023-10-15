@@ -4,6 +4,8 @@ extends OmniLight3D
 @onready var parent = $"../../..";
 @export var screenWidth = 0;
 
+var zero = 78.05;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var pixelOffset = parent.position.x - Monst.Instance.position.x;
+	var pixelOffset = Monst.Instance.position.x;
 	var unitOffset = pixelOffset / pixelsPerUnit;
-	position.z = unitOffset + screenWidth / pixelsPerUnit + 0.5;
+	position.z = -(Monst.Instance.position.x / 77.15) + zero + 0.5;
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://coq60ccvflad1"]
+[gd_scene load_steps=72 format=3 uid="uid://coq60ccvflad1"]
 
 [ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
@@ -10,27 +10,60 @@
 [ext_resource type="PackedScene" uid="uid://4nit3xhkec43" path="res://Rooms/Kitchen Dining.tscn" id="6_bkt82"]
 [ext_resource type="PackedScene" uid="uid://bjq8se457aabt" path="res://Rooms/Hallway2.tscn" id="6_i5rg1"]
 [ext_resource type="PackedScene" uid="uid://nmsv5n13nbd4" path="res://Rooms/Hallway3.tscn" id="8_41ke0"]
+[ext_resource type="Shader" path="res://Shaders/3D Pixels and pallete limiter.gdshader" id="8_76lnw"]
+[ext_resource type="PackedScene" uid="uid://c3aaxd1s4wu2r" path="res://Models/imports/FG_Loveseat.fbx" id="8_n6nxu"]
+[ext_resource type="Texture2D" uid="uid://482widgo0u6k" path="res://Sprites/pallete.png" id="9_2x7hq"]
+[ext_resource type="PackedScene" uid="uid://bgq3xl8xvatdy" path="res://Models/imports/FG_Ottoman.fbx" id="9_3hv1s"]
 [ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="9_os12l"]
 [ext_resource type="Texture2D" uid="uid://b2nv7qewxyl4y" path="res://Sprites/Run_Loop_Done.png" id="10_geaks"]
+[ext_resource type="PackedScene" uid="uid://b3i5cyoe7jfb7" path="res://Models/imports/FG_NoSlideTable.fbx" id="10_oqtwb"]
+[ext_resource type="PackedScene" uid="uid://6xm7t7546r4w" path="res://Models/imports/FG_Lamp.fbx" id="10_y8ryo"]
 [ext_resource type="Texture2D" uid="uid://2wg1540xgp0e" path="res://Sprites/jump_loop_done.png" id="11_2b4cl"]
+[ext_resource type="PackedScene" uid="uid://bppml4tgpwt2l" path="res://Models/imports/FG_Washer.fbx" id="11_7wnk0"]
+[ext_resource type="PackedScene" uid="uid://bjw56qyr4u8qk" path="res://Models/imports/FG_Couch.fbx" id="11_ev6wn"]
 [ext_resource type="Texture2D" uid="uid://b0i32kun250fq" path="res://Sprites/Fumble_Loop_done.png" id="11_f2lk7"]
 [ext_resource type="Script" path="res://Scripts/Monster.gd" id="11_v3x8l"]
 [ext_resource type="Texture2D" uid="uid://42fkis3lcq0k" path="res://Sprites/slide_loop_done.png" id="12_an5xj"]
+[ext_resource type="PackedScene" uid="uid://dvyx68k4ev37i" path="res://Models/imports/FG_Dryer.fbx" id="12_nr72w"]
+[ext_resource type="PackedScene" uid="uid://c0x50wvkhqm1i" path="res://Models/imports/FG_Chair.fbx" id="12_pqf5m"]
+[ext_resource type="PackedScene" uid="uid://b32fw6q2fyfju" path="res://Models/imports/FG_Box.fbx" id="13_67snn"]
+[ext_resource type="PackedScene" uid="uid://cwecatr0jbj3p" path="res://Models/imports/FG_Shelf_Long.fbx" id="13_ffbwi"]
 [ext_resource type="AudioStream" uid="uid://c82gtiggddccw" path="res://Sounds/jumpp_rerun.mp3" id="13_pfegk"]
 [ext_resource type="Shader" path="res://Shaders/Monster.gdshader" id="14_3ctay"]
 [ext_resource type="AudioStream" uid="uid://b6llprw4rojod" path="res://Sounds/soda_jump_rerun.mp3" id="14_dmiwk"]
+[ext_resource type="PackedScene" uid="uid://cgtnpujtt6duk" path="res://Models/imports/FG_Chair_Dining_Left.fbx" id="14_igolo"]
 [ext_resource type="Texture2D" uid="uid://bpah5tmxpw6ru" path="res://Sprites/Monster_Clean_Sheet.png" id="14_tnide"]
+[ext_resource type="PackedScene" uid="uid://dax0qsihy3i8t" path="res://Models/imports/FG_SlideTable.fbx" id="14_vvp67"]
 [ext_resource type="AudioStream" uid="uid://cg12g5gxy8f7" path="res://Sounds/hurt_sound_rerun.mp3" id="15_ma6vp"]
+[ext_resource type="PackedScene" uid="uid://cj16f3w5ib2pa" path="res://Models/imports/FG_Chair_Dining_Right.fbx" id="15_on3kk"]
+[ext_resource type="Script" path="res://Scripts/MonsterLight.gd" id="15_trt6k"]
 [ext_resource type="Texture2D" uid="uid://d2cygn386hyuy" path="res://Shaders/noise.webp" id="15_xnxhj"]
+[ext_resource type="PackedScene" uid="uid://bwmh6ih2etfqk" path="res://Models/imports/FG_Chair_Dining.fbx" id="16_rk37e"]
 [ext_resource type="AudioStream" uid="uid://o18otxihov5l" path="res://Sounds/Battery_pickup_rerun.mp3" id="16_s83sl"]
 [ext_resource type="AudioStream" uid="uid://c3mgus3pnslb4" path="res://Sounds/slide_rerun.wav" id="17_426sl"]
 [ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="17_wj8u3"]
+[ext_resource type="PackedScene" uid="uid://chgb66itombk3" path="res://Models/imports/BG_Ottoman.fbx" id="18_bxa0g"]
 [ext_resource type="Shader" path="res://Shaders/Moster Distortion.gdshader" id="18_y63vd"]
+[ext_resource type="PackedScene" uid="uid://m05s1n4pamx" path="res://Models/imports/FG_Dresser_Open.fbx" id="19_jn3l3"]
 [ext_resource type="Shader" path="res://Shaders/Static Fade.gdshader" id="19_nuu1b"]
+[ext_resource type="PackedScene" uid="uid://cwkc06024mxfq" path="res://Models/imports/FG_Shelf_Short.fbx" id="19_teopc"]
+[ext_resource type="PackedScene" uid="uid://5fiv3but2mxd" path="res://Models/imports/FG_Dresser.fbx" id="20_jq87y"]
+[ext_resource type="PackedScene" uid="uid://cykqdi6whwn6d" path="res://Models/imports/FG_Bed_NoBack.fbx" id="21_r63t1"]
+[ext_resource type="PackedScene" uid="uid://b2w4wcl64oq4g" path="res://Models/imports/FG_Bed.fbx" id="22_7a4o1"]
+[ext_resource type="PackedScene" uid="uid://b3650sd5x5txo" path="res://Models/imports/FG_Table_Small.fbx" id="23_oqw1d"]
 [ext_resource type="Shader" path="res://Shaders/GrayBattery.gdshader" id="24_n1who"]
 [ext_resource type="Texture2D" uid="uid://caoh1ihxb81gt" path="res://Sprites/batt.png" id="24_nqi0d"]
 [ext_resource type="Texture2D" uid="uid://b0x44fqf7tw28" path="res://Sprites/die lmao.png" id="25_xbak0"]
 [ext_resource type="AudioStream" uid="uid://dfn081ota6efx" path="res://Sounds/rerun.mp3" id="28_0q71x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chnaq"]
+albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
+uv1_scale = Vector3(100, 500, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ueul"]
+shader = ExtResource("8_76lnw")
+shader_parameter/screenSize = Vector2(480, 270)
+shader_parameter/fixedColor = ExtResource("9_2x7hq")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
 
@@ -106,6 +139,348 @@ soda = true
 [node name="Rooms" type="Node2D" parent="."]
 position = Vector2(1, 1)
 
+[node name="3D" type="SubViewportContainer" parent="Rooms"]
+offset_left = -1376.0
+offset_top = -238.0
+offset_right = 13419.0
+offset_bottom = 32.0
+
+[node name="SubViewport" type="SubViewport" parent="Rooms/3D"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(14795, 270)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08812e-09, -4.27562e-08, 4.05, 2.213, 0)
+cull_mask = 1047553
+projection = 1
+current = true
+size = 3.5
+near = 0.001
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8377, 24.7529)
+light_energy = 2.5
+light_bake_mode = 0
+light_cull_mask = 4294966273
+omni_range = 25.0
+omni_shadow_mode = 0
+script = ExtResource("15_trt6k")
+screenWidth = 1440
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48, 0)
+size = Vector3(4, 1, 500)
+
+[node name="Wall" type="CSGBox3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.453, 0, 0)
+size = Vector3(2, 52.624, 500)
+material = SubResource("StandardMaterial3D_chnaq")
+
+[node name="Living Room" type="Node3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 59.425)
+
+[node name="FG_Loveseat" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("8_n6nxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0, 14.278)
+
+[node name="FG_Ottoman" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("9_3hv1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.845)
+
+[node name="FG_Lamp" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("10_y8ryo")]
+transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0, 0, -1.475)
+
+[node name="FG_Couch" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("11_ev6wn")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.005, 0.94, -4.36)
+
+[node name="FG_Chair" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("12_pqf5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.89)
+
+[node name="FG_Box6" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("13_67snn")]
+transform = Transform3D(1.12, 0, 0, 0, -1.12, -9.79135e-08, 0, -9.79135e-08, 1.12, 0, 0.905, -10.93)
+
+[node name="FG_Box5" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("13_67snn")]
+transform = Transform3D(1.12, 0, 0, 0, -1.12, -9.79135e-08, 0, -9.79135e-08, 1.12, 0, 0.905, -10.295)
+
+[node name="FG_Loveseat2" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("8_n6nxu")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, -8.74228e-08, 1, 0.895, 1.53, -13.462)
+
+[node name="FG_Box4" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("13_67snn")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.49, 11.69)
+
+[node name="FG_Box3" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("13_67snn")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.49, 11.05)
+
+[node name="FG_Box2" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("13_67snn")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.045, 8.795)
+
+[node name="FG_Box" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("13_67snn")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.045, 8.21)
+
+[node name="FG_SlideTable2" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, 0, -16.84)
+
+[node name="FG_SlideTable" parent="Rooms/3D/SubViewport/Living Room" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, 0, 3.665)
+
+[node name="Hall1" type="Node3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.245)
+
+[node name="FG_SlideTable" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, -0.04, 4.745)
+
+[node name="FG_Box" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425, 4.55)
+
+[node name="FG_SlideTable2" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, -0.04, 0.175)
+
+[node name="FG_Box2" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.445, -0.005)
+
+[node name="FG_SlideTable3" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, -0.065, -4.38)
+
+[node name="FG_Box3" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385, -4.52)
+
+[node name="Box" parent="Rooms/3D/SubViewport/Hall1/FG_Box3/RootNode" index="0"]
+layers = 3
+
+[node name="FG_NoSlideTable" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("10_oqtwb")]
+transform = Transform3D(1, 0, 0, 0, 0.565, 0, 0, 0, 1, 0, 0.885, 2.25)
+
+[node name="NoSlideTable" parent="Rooms/3D/SubViewport/Hall1/FG_NoSlideTable/RootNode" index="0"]
+layers = 3
+
+[node name="FG_SlideTable4" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("14_vvp67")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, -8.74228e-08, 1, -0.091, 1.834, -2.27)
+
+[node name="Slide table" parent="Rooms/3D/SubViewport/Hall1/FG_SlideTable4/RootNode" index="0"]
+layers = 3
+
+[node name="FG_Box4" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.89, -1.985)
+
+[node name="Box" parent="Rooms/3D/SubViewport/Hall1/FG_Box4/RootNode" index="0"]
+layers = 3
+
+[node name="FG_Box5" parent="Rooms/3D/SubViewport/Hall1" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89, -2.565)
+
+[node name="Box" parent="Rooms/3D/SubViewport/Hall1/FG_Box5/RootNode" index="0"]
+layers = 3
+
+[node name="Kitchen" type="Node3D" parent="Rooms/3D/SubViewport"]
+
+[node name="FG_Washer" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("11_7wnk0")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 23.075)
+
+[node name="FG_Dryer" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("12_nr72w")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 22.665)
+
+[node name="FG_Shelf_Long" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("13_ffbwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465, 20.1)
+
+[node name="FG_Box" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505, 20.45)
+
+[node name="FG_Box2" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505, 19.885)
+
+[node name="FG_Shelf_Long2" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("13_ffbwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 17.16)
+
+[node name="FG_Box3" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 17.52)
+
+[node name="FG_Box4" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("13_67snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91, 16.97)
+
+[node name="FG_SlideTable" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.665, 0, 0, 0, 0.665, 0, 0, 0, 0.665, 0, 0, 15.77)
+
+[node name="FG_Dryer2" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("12_nr72w")]
+transform = Transform3D(0.5, 0, 0, 0, -0.5, -1.65229e-07, 0, -4.37114e-08, 1.89, 0, 1.72, 14.08)
+
+[node name="FG_Chair_Dining_Left" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("14_igolo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.81, 10.64)
+
+[node name="FG_Chair_Dining_Right" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("15_on3kk")]
+transform = Transform3D(1, 0, 0, 0, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 1.795, 11.81)
+
+[node name="FG_Chair_Dining" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("16_rk37e")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 9.455)
+
+[node name="FG_Dryer3" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("12_nr72w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.105, 1.35)
+
+[node name="FG_Loveseat" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("8_n6nxu")]
+transform = Transform3D(0.685, 0, 0, 0, 0.685, 0, 0, 0, 0.685, 0, 0, -0.49)
+
+[node name="FG_Shelf_Short" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("19_teopc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31, 5.27)
+
+[node name="FG_Shelf_Short2" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("19_teopc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42, 7.01)
+
+[node name="FG_Shelf_Short3" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("19_teopc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 7.81)
+
+[node name="FG_Shelf_Long3" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("13_ffbwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.205, 0, 1.135, 3.205)
+
+[node name="FG_Loveseat2" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("8_n6nxu")]
+transform = Transform3D(0.685, 0, 0, 0, 0.685, 0, 0, 0, 0.685, 0, 0.455, -2.15)
+
+[node name="FG_Loveseat3" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("8_n6nxu")]
+transform = Transform3D(0.685, 0, 0, 0, -0.685, -5.98846e-08, 0, -5.98846e-08, 0.685, 0, 1.675, -4.565)
+
+[node name="FG_SlideTable2" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, -6.775)
+
+[node name="FG_Dryer4" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("12_nr72w")]
+transform = Transform3D(0.54, 0, 0, 0, 0.54, 0, 0, 0, 0.54, 0, 0.4, -6.955)
+
+[node name="FG_Washer2" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("11_7wnk0")]
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 0, -9.46)
+
+[node name="FG_Lamp" parent="Rooms/3D/SubViewport/Kitchen" instance=ExtResource("10_y8ryo")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, -11.525)
+
+[node name="Hall2" type="Node3D" parent="Rooms/3D/SubViewport"]
+
+[node name="FG_SlideTable" parent="Rooms/3D/SubViewport/Hall2" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, -18.44)
+
+[node name="FG_Couch" parent="Rooms/3D/SubViewport/Hall2" instance=ExtResource("11_ev6wn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.815, -20.945)
+
+[node name="FG_Couch2" parent="Rooms/3D/SubViewport/Hall2" instance=ExtResource("11_ev6wn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.235, -25.035)
+
+[node name="FG_Couch3" parent="Rooms/3D/SubViewport/Hall2" instance=ExtResource("11_ev6wn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26, -29.165)
+
+[node name="FG_Chair" parent="Rooms/3D/SubViewport/Hall2" instance=ExtResource("12_pqf5m")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, -23.145)
+
+[node name="FG_Chair2" parent="Rooms/3D/SubViewport/Hall2" instance=ExtResource("12_pqf5m")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, -26.9)
+
+[node name="FG_Chair3" parent="Rooms/3D/SubViewport/Hall2" instance=ExtResource("12_pqf5m")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, -31.07)
+
+[node name="Bedroom" type="Node3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.8626)
+
+[node name="BG_Ottoman" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("18_bxa0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.68, 0, 0, -3.175)
+
+[node name="FG_Dresser_Open" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("19_jn3l3")]
+transform = Transform3D(0.725, 0, 0, 0, 0.56, 0, 0, 0, 0.675, 0, 0.225, -14.98)
+
+[node name="FG_Dresser" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("20_jq87y")]
+transform = Transform3D(1, 0, 0, 0, 1.61, 0, 0, 0, 0.695, 0, 1.94, -24.79)
+
+[node name="FG_Bed_NoBack" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("21_r63t1")]
+transform = Transform3D(1, 0, 0, 0, 0.81, 0, 0, 0, 0.73, 0, 0.445, -6.27)
+
+[node name="FG_Bed_NoBack2" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("21_r63t1")]
+transform = Transform3D(1, 0, 0, 0, 0.81, 0, 0, 0, 0.73, 0, 0.81, -12.095)
+
+[node name="FG_Chair" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("12_pqf5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -9.145)
+
+[node name="FG_Dresser2" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("20_jq87y")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0, 0, -18.54)
+
+[node name="FG_Dresser3" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("20_jq87y")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0, 0, -22.425)
+
+[node name="FG_Dresser4" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("20_jq87y")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0, 0, -27.23)
+
+[node name="FG_Dresser_Open2" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("19_jn3l3")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0, 0, -28.05)
+
+[node name="FG_Bed" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("22_7a4o1")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, -8.74228e-08, 1, 0, 1.81, -24.575)
+
+[node name="FG_Bed2" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("22_7a4o1")]
+transform = Transform3D(1, 7.64274e-15, -9.79135e-08, 0, -1, -9.79135e-08, 8.74228e-08, -8.74228e-08, 1.12, 0, 1.81, -30.31)
+
+[node name="FG_SlideTable" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("14_vvp67")]
+transform = Transform3D(0.68, 0, 0, 0, 0.745, 0, 0, 0, 0.65, 0, 1.585, -30.165)
+
+[node name="FG_Ottoman" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("9_3hv1s")]
+transform = Transform3D(1, 0, 0, 0, -1, -1.11027e-07, 0, -8.74228e-08, 1.27, 0, 2.485, -27.79)
+
+[node name="FG_Loveseat" parent="Rooms/3D/SubViewport/Bedroom" instance=ExtResource("8_n6nxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83, -33.45)
+
+[node name="Hall3" type="Node3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78.795)
+
+[node name="FG_Bed_NoBack" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("21_r63t1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11, 0)
+
+[node name="FG_Bed_NoBack2" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("21_r63t1")]
+transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, 1.695, -6.43)
+
+[node name="FG_Bed_NoBack3" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("21_r63t1")]
+transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, 1.69, -10.545)
+
+[node name="FG_NoSlideTable" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("10_oqtwb")]
+transform = Transform3D(1, 0, 0, 0, 0.575, 0, 0, 0, 1, 0, 0.855, -3.33)
+
+[node name="FG_NoSlideTable2" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("10_oqtwb")]
+transform = Transform3D(1, 0, 0, 0, 0.575, 0, 0, 0, 1, 0, 0.4, -8.64)
+
+[node name="FG_Dryer" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("12_nr72w")]
+transform = Transform3D(1, 0, 0, 0, 0.495, 0, 0, 0, 1, 0, 0.06, -6.03)
+
+[node name="FG_Table_Small" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("23_oqw1d")]
+transform = Transform3D(1, 0, 0, 0, 0.95, 0, 0, 0, 1, 0, 0.005, -11.365)
+
+[node name="FG_Box" parent="Rooms/3D/SubViewport/Hall3" instance=ExtResource("13_67snn")]
+transform = Transform3D(0.785, 0, 0, 0, 0.785, 0, 0, 0, 0.785, 0, 0.565, -11.415)
+
+[node name="Hall3-1" type="Node3D" parent="Rooms/3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 92.74)
+
+[node name="FG_Bed_NoBack" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("21_r63t1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11, 0)
+
+[node name="FG_Bed_NoBack2" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("21_r63t1")]
+transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, 1.695, -6.43)
+
+[node name="FG_Bed_NoBack3" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("21_r63t1")]
+transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, 1.69, -10.545)
+
+[node name="FG_NoSlideTable" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("10_oqtwb")]
+transform = Transform3D(1, 0, 0, 0, 0.575, 0, 0, 0, 1, 0, 0.855, -3.33)
+
+[node name="FG_NoSlideTable2" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("10_oqtwb")]
+transform = Transform3D(1, 0, 0, 0, 0.575, 0, 0, 0, 1, 0, 0.4, -8.64)
+
+[node name="FG_Dryer" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("12_nr72w")]
+transform = Transform3D(1, 0, 0, 0, 0.495, 0, 0, 0, 1, 0, 0.06, -6.03)
+
+[node name="FG_Table_Small" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("23_oqw1d")]
+transform = Transform3D(1, 0, 0, 0, 0.95, 0, 0, 0, 1, 0, 0.005, -11.365)
+
+[node name="FG_Box" parent="Rooms/3D/SubViewport/Hall3-1" instance=ExtResource("13_67snn")]
+transform = Transform3D(0.785, 0, 0, 0, 0.785, 0, 0, 0, 0.785, 0, 0.565, -11.415)
+
+[node name="TextureRect3" type="TextureRect" parent="Rooms"]
+material = SubResource("ShaderMaterial_3ueul")
+offset_left = -1376.0
+offset_top = -238.0
+offset_right = 13419.0
+offset_bottom = 30.0
+texture = ExtResource("2_7g8ny")
+
 [node name="Hallway3-1" parent="Rooms" instance=ExtResource("8_41ke0")]
 position = Vector2(-1376, 0)
 
@@ -126,9 +501,6 @@ position = Vector2(8560, 0)
 [node name="Hallway3" parent="Rooms" instance=ExtResource("8_41ke0")]
 position = Vector2(11856, 0)
 
-[node name="Living Room2" parent="Rooms" instance=ExtResource("4_5er2c")]
-position = Vector2(13232, 0)
-
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(-240, 0)
 script = ExtResource("4_1qn7o")
@@ -138,6 +510,7 @@ shape = SubResource("WorldBoundaryShape2D_8t0vn")
 one_way_collision_margin = 128.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(11754, -49)
 collision_mask = 3
 script = ExtResource("5_ekfvk")
 speed = 200
@@ -563,3 +936,15 @@ texture = ExtResource("2_7g8ny")
 [connection signal="pressed" from="Camera2D/Paused/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Camera2D/Died/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Camera2D/Win/menu" to="." method="_on_menu_pressed"]
+
+[editable path="Rooms/3D/SubViewport/Living Room/FG_Loveseat"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_SlideTable"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_Box"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_SlideTable2"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_Box2"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_SlideTable3"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_Box3"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_NoSlideTable"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_SlideTable4"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_Box4"]
+[editable path="Rooms/3D/SubViewport/Hall1/FG_Box5"]

@@ -167,7 +167,7 @@ func _process(delta):
 	
 	move_and_slide();
 	
-	if position.x >= 13232:
+	if position.x >= 12356:
 		position.x -= 13232;
 	
 	CameraController.Instance.position.x = position.x + 40;

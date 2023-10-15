@@ -12,15 +12,15 @@ size = Vector2(32, 32)
 a = Vector2(-16, -17)
 b = Vector2(16, -17)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vie"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uewwo"]
+size = Vector2(32, 64)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bg4qm"]
 a = Vector2(-16, -17)
 b = Vector2(16, -17)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uewwo"]
-size = Vector2(32, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vie"]
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nao22"]
 size = Vector2(32, 15)
@@ -48,6 +48,7 @@ offset_bottom = -32.0
 texture = ExtResource("1_23qxq")
 
 [node name="Rough" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -255,23 +256,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block12/Top"]
 shape = SubResource("SegmentShape2D_vq1dk")
-
-[node name="Block14" type="Node2D" parent="."]
-position = Vector2(409, -38)
-
-[node name="Whole" type="StaticBody2D" parent="Block14"]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block14/Whole"]
-shape = SubResource("RectangleShape2D_s7vie")
-
-[node name="Top" type="StaticBody2D" parent="Block14"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block14/Top"]
-shape = SubResource("SegmentShape2D_bg4qm")
 
 [node name="Block16" type="Node2D" parent="."]
 position = Vector2(1262, -48)
