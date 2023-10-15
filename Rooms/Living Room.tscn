@@ -1,8 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfdww1m6x2pll"]
+[gd_scene load_steps=21 format=3 uid="uid://cfdww1m6x2pll"]
 
 [ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_xvgvj"]
+[ext_resource type="PackedScene" uid="uid://c3aaxd1s4wu2r" path="res://Models/imports/FG_Loveseat.fbx" id="2_8taee"]
 [ext_resource type="Texture2D" uid="uid://nar0nv40ssac" path="res://Rooms/rough2/living3.png" id="2_b2yap"]
+[ext_resource type="Shader" path="res://Shaders/3D Pixels and pallete limiter.gdshader" id="3_bpudb"]
+[ext_resource type="PackedScene" uid="uid://bgq3xl8xvatdy" path="res://Models/imports/FG_Ottoman.fbx" id="3_trn5q"]
 [ext_resource type="PackedScene" uid="uid://7hb35im3mm5m" path="res://Battery.tscn" id="3_vnmxq"]
+[ext_resource type="PackedScene" uid="uid://6xm7t7546r4w" path="res://Models/imports/FG_Lamp.fbx" id="4_scyyf"]
+[ext_resource type="Texture2D" uid="uid://482widgo0u6k" path="res://Sprites/pallete.png" id="4_tsry2"]
+[ext_resource type="PackedScene" uid="uid://bjw56qyr4u8qk" path="res://Models/imports/FG_Couch.fbx" id="5_rc07o"]
+[ext_resource type="PackedScene" uid="uid://c0x50wvkhqm1i" path="res://Models/imports/FG_Chair.fbx" id="6_4q572"]
+[ext_resource type="PackedScene" uid="uid://dax0qsihy3i8t" path="res://Models/imports/FG_SlideTable.fbx" id="7_ngpws"]
+[ext_resource type="PackedScene" uid="uid://b32fw6q2fyfju" path="res://Models/imports/FG_Box.fbx" id="8_opck5"]
+[ext_resource type="Script" path="res://Scripts/MonsterLight.gd" id="9_qslvl"]
+
+[sub_resource type="Environment" id="Environment_ty16e"]
+background_color = Color(0.352941, 0.352941, 0.352941, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77bqe"]
+albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhwbp"]
+shader = ExtResource("3_bpudb")
+shader_parameter/screenSize = Vector2(480, 270)
+shader_parameter/fixedColor = ExtResource("4_tsry2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hdpa"]
 size = Vector2(32, 32)
@@ -16,12 +40,6 @@ size = Vector2(32, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb0lw"]
 size = Vector2(32, 15)
-
-[sub_resource type="Environment" id="Environment_ty16e"]
-background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.1
 
 [node name="Living Room" type="Node2D"]
 
@@ -43,7 +61,89 @@ offset_right = 2892.0
 offset_bottom = -32.0
 texture = ExtResource("1_xvgvj")
 
+[node name="3D" type="SubViewportContainer" parent="."]
+offset_top = -238.0
+offset_right = 2880.0
+offset_bottom = 32.0
+
+[node name="SubViewport" type="SubViewport" parent="3D"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2880, 270)
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3D/SubViewport"]
+environment = SubResource("Environment_ty16e")
+
+[node name="Camera3D" type="Camera3D" parent="3D/SubViewport"]
+transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08812e-09, -4.27562e-08, 4.05, 2.213, 0)
+cull_mask = 1047553
+projection = 1
+current = true
+size = 3.5
+near = 0.001
+
+[node name="Floor" type="CSGBox3D" parent="3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48, 0)
+size = Vector3(4, 1, 50)
+
+[node name="Wall" type="CSGBox3D" parent="3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.453, 0, 0)
+material_override = SubResource("StandardMaterial3D_77bqe")
+size = Vector3(2, 52.624, 50)
+
+[node name="FG_Loveseat" parent="3D/SubViewport" instance=ExtResource("2_8taee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0, 14.278)
+
+[node name="FG_Ottoman" parent="3D/SubViewport" instance=ExtResource("3_trn5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.845)
+
+[node name="FG_Lamp" parent="3D/SubViewport" instance=ExtResource("4_scyyf")]
+transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0, 0, -1.475)
+
+[node name="FG_Couch" parent="3D/SubViewport" instance=ExtResource("5_rc07o")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.005, 0.94, -4.36)
+
+[node name="FG_Chair" parent="3D/SubViewport" instance=ExtResource("6_4q572")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.89)
+
+[node name="FG_Box6" parent="3D/SubViewport" instance=ExtResource("8_opck5")]
+transform = Transform3D(1.12, 0, 0, 0, -1.12, -9.79135e-08, 0, -9.79135e-08, 1.12, 0, 0.905, -10.93)
+
+[node name="FG_Box5" parent="3D/SubViewport" instance=ExtResource("8_opck5")]
+transform = Transform3D(1.12, 0, 0, 0, -1.12, -9.79135e-08, 0, -9.79135e-08, 1.12, 0, 0.905, -10.295)
+
+[node name="FG_Loveseat2" parent="3D/SubViewport" instance=ExtResource("2_8taee")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, -8.74228e-08, 1, 0.895, 1.53, -13.462)
+
+[node name="FG_Box4" parent="3D/SubViewport" instance=ExtResource("8_opck5")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.49, 11.69)
+
+[node name="FG_Box3" parent="3D/SubViewport" instance=ExtResource("8_opck5")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.49, 11.05)
+
+[node name="FG_Box2" parent="3D/SubViewport" instance=ExtResource("8_opck5")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.045, 8.795)
+
+[node name="FG_Box" parent="3D/SubViewport" instance=ExtResource("8_opck5")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 0, 0.045, 8.21)
+
+[node name="FG_SlideTable2" parent="3D/SubViewport" instance=ExtResource("7_ngpws")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, 0, -16.84)
+
+[node name="FG_SlideTable" parent="3D/SubViewport" instance=ExtResource("7_ngpws")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, 0, 3.665)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8377, 7.935)
+light_energy = 2.5
+light_cull_mask = 4294966273
+omni_range = 25.0
+script = ExtResource("9_qslvl")
+screenWidth = 1440
+
 [node name="Rough" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -53,6 +153,13 @@ offset_bottom = 32.0
 grow_vertical = 0
 texture = ExtResource("2_b2yap")
 stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bhwbp")
+offset_top = -238.0
+offset_right = 2880.0
+offset_bottom = 32.0
+texture = ExtResource("1_xvgvj")
 
 [node name="Colliders" type="Node2D" parent="."]
 
@@ -243,23 +350,4 @@ position = Vector2(971, -22)
 [node name="Battery2" parent="Colliders" instance=ExtResource("3_vnmxq")]
 position = Vector2(2769, -207)
 
-[node name="3D" type="SubViewportContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewport" type="SubViewport" parent="3D"]
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="3D/SubViewport"]
-environment = SubResource("Environment_ty16e")
-
-[node name="Camera3D" type="Camera3D" parent="3D/SubViewport"]
-transform = Transform3D(-4.37114e-08, -0.207912, 0.978148, 0, 0.978148, 0.207912, -1, 9.08812e-09, -4.27562e-08, 4.05, 2.213, 0)
-projection = 1
-size = 3.5
-near = 0.001
-
-[node name="CSGBox3D" type="CSGBox3D" parent="3D/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.557103, 0)
-size = Vector3(2.85145, 1, 11.8381)
+[editable path="3D/SubViewport/FG_Loveseat"]
