@@ -1,0 +1,547 @@
+[gd_scene load_steps=44 format=3 uid="uid://coq60ccvflad1"]
+
+[ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
+[ext_resource type="Script" path="res://Scripts/Floor follower.gd" id="4_1qn7o"]
+[ext_resource type="PackedScene" uid="uid://cfdww1m6x2pll" path="res://Rooms/Living Room.tscn" id="4_5er2c"]
+[ext_resource type="PackedScene" uid="uid://td176m5ctfvj" path="res://Rooms/Bedroom.tscn" id="4_15qy0"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="5_ekfvk"]
+[ext_resource type="PackedScene" uid="uid://bk2jdb4kl52r5" path="res://Rooms/Hallway.tscn" id="5_o7mi5"]
+[ext_resource type="PackedScene" uid="uid://4nit3xhkec43" path="res://Rooms/Kitchen Dining.tscn" id="6_bkt82"]
+[ext_resource type="PackedScene" uid="uid://bjq8se457aabt" path="res://Rooms/Hallway2.tscn" id="6_i5rg1"]
+[ext_resource type="PackedScene" uid="uid://nmsv5n13nbd4" path="res://Rooms/Hallway3.tscn" id="8_41ke0"]
+[ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="9_os12l"]
+[ext_resource type="Texture2D" uid="uid://b2nv7qewxyl4y" path="res://Sprites/Run_Loop_Done.png" id="10_geaks"]
+[ext_resource type="Texture2D" uid="uid://2wg1540xgp0e" path="res://Sprites/jump_loop_done.png" id="11_2b4cl"]
+[ext_resource type="Texture2D" uid="uid://b0i32kun250fq" path="res://Sprites/Fumble_Loop_done.png" id="11_f2lk7"]
+[ext_resource type="Script" path="res://Scripts/Monster.gd" id="11_v3x8l"]
+[ext_resource type="Texture2D" uid="uid://42fkis3lcq0k" path="res://Sprites/slide_loop_done.png" id="12_an5xj"]
+[ext_resource type="AudioStream" uid="uid://c82gtiggddccw" path="res://Sounds/jumpp_rerun.mp3" id="13_pfegk"]
+[ext_resource type="Shader" path="res://Shaders/Monster.gdshader" id="14_3ctay"]
+[ext_resource type="AudioStream" uid="uid://b6llprw4rojod" path="res://Sounds/soda_jump_rerun.mp3" id="14_dmiwk"]
+[ext_resource type="Texture2D" uid="uid://bpah5tmxpw6ru" path="res://Sprites/Monster_Clean_Sheet.png" id="14_tnide"]
+[ext_resource type="AudioStream" uid="uid://cg12g5gxy8f7" path="res://Sounds/hurt_sound_rerun.mp3" id="15_ma6vp"]
+[ext_resource type="Texture2D" uid="uid://d2cygn386hyuy" path="res://Shaders/noise.webp" id="15_xnxhj"]
+[ext_resource type="AudioStream" uid="uid://o18otxihov5l" path="res://Sounds/Battery_pickup_rerun.mp3" id="16_s83sl"]
+[ext_resource type="AudioStream" uid="uid://c3mgus3pnslb4" path="res://Sounds/slide_rerun.wav" id="17_426sl"]
+[ext_resource type="Theme" uid="uid://fio014goti61" path="res://Rerun.tres" id="17_wj8u3"]
+[ext_resource type="Shader" path="res://Shaders/Static Fade.gdshader" id="19_nuu1b"]
+[ext_resource type="Shader" path="res://Shaders/GrayBattery.gdshader" id="24_n1who"]
+[ext_resource type="Texture2D" uid="uid://caoh1ihxb81gt" path="res://Sprites/batt.png" id="24_nqi0d"]
+[ext_resource type="Texture2D" uid="uid://b0x44fqf7tw28" path="res://Sprites/die lmao.png" id="25_xbak0"]
+[ext_resource type="AudioStream" uid="uid://dfn081ota6efx" path="res://Sounds/rerun.mp3" id="28_0q71x"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8cm"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3cw"]
+size = Vector2(3, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgyp4"]
+size = Vector2(32, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s062d"]
+shader = ExtResource("19_nuu1b")
+shader_parameter/static = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1cmd"]
+shader = ExtResource("14_3ctay")
+shader_parameter/time24 = 0.0
+shader_parameter/noise_texture = ExtResource("15_xnxhj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc68u"]
+shader = ExtResource("14_3ctay")
+shader_parameter/time24 = 1.17
+shader_parameter/noise_texture = ExtResource("15_xnxhj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_s3ylo"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y0ljw"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6b7c"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2oqp"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpk86"]
+shader = ExtResource("24_n1who")
+shader_parameter/gray = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nb32j"]
+font_size = 12
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="Game Manager" type="Node2D"]
+script = ExtResource("1_lycsp")
+soda = true
+
+[node name="Rooms" type="Node2D" parent="."]
+position = Vector2(1, 1)
+
+[node name="Hallway3-1" parent="Rooms" instance=ExtResource("8_41ke0")]
+position = Vector2(-1376, 0)
+
+[node name="Living Room" parent="Rooms" instance=ExtResource("4_5er2c")]
+
+[node name="Hallway" parent="Rooms" instance=ExtResource("5_o7mi5")]
+position = Vector2(2880, 0)
+
+[node name="Kitchen Dining" parent="Rooms" instance=ExtResource("6_bkt82")]
+position = Vector2(4032, 0)
+
+[node name="Hallway2" parent="Rooms" instance=ExtResource("6_i5rg1")]
+position = Vector2(7120, 0)
+
+[node name="Bedroom" parent="Rooms" instance=ExtResource("4_15qy0")]
+position = Vector2(8560, 0)
+
+[node name="Hallway3" parent="Rooms" instance=ExtResource("8_41ke0")]
+position = Vector2(11856, 0)
+
+[node name="Living Room2" parent="Rooms" instance=ExtResource("4_5er2c")]
+position = Vector2(13232, 0)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-240, 0)
+script = ExtResource("4_1qn7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_8t0vn")
+one_way_collision_margin = 128.0
+
+[node name="Player" type="CharacterBody2D" parent="."]
+collision_mask = 3
+script = ExtResource("5_ekfvk")
+speed = 200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_yn8cm")
+one_way_collision_margin = 4.0
+
+[node name="Running" type="Sprite2D" parent="Player"]
+position = Vector2(0, -32)
+texture = ExtResource("10_geaks")
+hframes = 4
+vframes = 2
+
+[node name="Stumble" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("11_f2lk7")
+hframes = 3
+vframes = 3
+
+[node name="Jumping" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("11_2b4cl")
+hframes = 3
+vframes = 2
+
+[node name="Slide" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(-5, -32)
+texture = ExtResource("12_an5xj")
+hframes = 2
+vframes = 3
+
+[node name="Collision Check" type="Area2D" parent="Player"]
+position = Vector2(16, -32)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Collision Check"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_aq3cw")
+
+[node name="Head Check" type="Area2D" parent="Player"]
+position = Vector2(0, -65)
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Head Check"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_dgyp4")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+current = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("13_pfegk")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Soda" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("14_dmiwk")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("15_ma6vp")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Batt" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("16_s83sl")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Slide2" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("17_426sl")
+mix_target = 2
+bus = &"SFX"
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+rect = Rect2(-240, -238, 480, 270)
+
+[node name="Moster Distortion" type="TextureRect" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_s062d")
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+texture = ExtResource("2_7g8ny")
+
+[node name="Monster" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_p1cmd")
+position = Vector2(-181, -71)
+texture = ExtResource("14_tnide")
+hframes = 5
+script = ExtResource("11_v3x8l")
+
+[node name="Die lmao" type="Sprite2D" parent="Monster"]
+material = SubResource("ShaderMaterial_fc68u")
+position = Vector2(71, -16)
+texture = ExtResource("25_xbak0")
+hframes = 16
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -103)
+script = ExtResource("9_os12l")
+
+[node name="baseui" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = ExtResource("17_wj8u3")
+
+[node name="Label" type="Label" parent="Camera2D/baseui"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_s3ylo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Batt" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_y0ljw")
+position = Vector2(464, 16)
+texture = ExtResource("24_nqi0d")
+
+[node name="Batt2" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_w6b7c")
+position = Vector2(438, 16)
+texture = ExtResource("24_nqi0d")
+
+[node name="Batt3" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_h2oqp")
+position = Vector2(412, 16)
+texture = ExtResource("24_nqi0d")
+
+[node name="Batt4" type="Sprite2D" parent="Camera2D/baseui"]
+material = SubResource("ShaderMaterial_dpk86")
+position = Vector2(386, 16)
+texture = ExtResource("24_nqi0d")
+
+[node name="Paused" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = ExtResource("17_wj8u3")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/Paused"]
+modulate = Color(0.105882, 0.105882, 0.105882, 0.470588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7g8ny")
+
+[node name="Label" type="Label" parent="Camera2D/Paused"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 36.0
+offset_right = 108.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_s3ylo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Camera2D/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 1.47
+offset_right = 108.0
+offset_bottom = 41.47
+grow_horizontal = 2
+grow_vertical = 2
+text = "(or press esc)"
+label_settings = SubResource("LabelSettings_nb32j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unpause" type="Button" parent="Camera2D/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -12.0
+offset_right = 68.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue
+"
+
+[node name="menu" type="Button" parent="Camera2D/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 63.385
+offset_right = 98.0
+offset_bottom = 87.385
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"
+
+[node name="Died" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = ExtResource("17_wj8u3")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/Died"]
+modulate = Color(0.105882, 0.105882, 0.105882, 0.470588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7g8ny")
+
+[node name="Label" type="Label" parent="Camera2D/Died"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 36.0
+offset_right = 108.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "You died"
+label_settings = SubResource("LabelSettings_s3ylo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Camera2D/Died"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -65.485
+offset_right = 108.0
+offset_bottom = -25.4851
+grow_horizontal = 2
+grow_vertical = 2
+text = "take the L bozo"
+label_settings = SubResource("LabelSettings_nb32j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu" type="Button" parent="Camera2D/Died"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -12.0
+offset_right = 68.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"
+
+[node name="Win" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = ExtResource("17_wj8u3")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/Win"]
+modulate = Color(0.105882, 0.105882, 0.105882, 0.470588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7g8ny")
+
+[node name="Label" type="Label" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 36.0
+offset_right = 108.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "You won"
+label_settings = SubResource("LabelSettings_s3ylo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -65.485
+offset_right = 108.0
+offset_bottom = -25.4851
+grow_horizontal = 2
+grow_vertical = 2
+text = "How impressive"
+label_settings = SubResource("LabelSettings_nb32j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -32.555
+offset_right = 174.0
+offset_bottom = 7.44495
+grow_horizontal = 2
+grow_vertical = 2
+text = "Now leave before the monster
+unleashes it's full potential"
+label_settings = SubResource("LabelSettings_nb32j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu" type="Button" parent="Camera2D/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 21.585
+offset_right = 98.0
+offset_bottom = 45.585
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_0q71x")
+autoplay = true
+bus = &"Music"
+
+[node name="MusicMuted" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_0q71x")
+bus = &"Music Muted"
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="."]
+rect = Rect2(-240, -238, 480, 270)
+
+[node name="Static" type="TextureRect" parent="BackBufferCopy2"]
+material = SubResource("ShaderMaterial_s062d")
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+texture = ExtResource("2_7g8ny")
+
+[connection signal="body_entered" from="Player/Collision Check" to="Player" method="_on_collision_check_body_entered"]
+[connection signal="body_entered" from="Player/Head Check" to="Player" method="_on_head_check_body_entered"]
+[connection signal="pressed" from="Camera2D/Paused/unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="Camera2D/Paused/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Camera2D/Died/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Camera2D/Win/menu" to="." method="_on_menu_pressed"]

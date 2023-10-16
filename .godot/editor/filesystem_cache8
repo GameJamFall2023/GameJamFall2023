@@ -1,0 +1,184 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1697416763
+Battery.tscn::PackedScene::2260605948559626968::1697377440::0::1::::<><>::uid://caoh1ihxb81gt::::res://Sprites/batt.png<>res://Scripts/Batt collect.gd
+default_bus_layout.tres::AudioBusLayout::3461874737314652686::1697416766::0::1::::<><>::
+Game Scene.tscn::PackedScene::5790442203104561864::1697416177::0::1::::<><>::res://Scripts/Game Manager.gd<>uid://eg3tmxmk74iu::::res://Shaders/white.png<>res://Scripts/Floor follower.gd<>uid://cfdww1m6x2pll::::res://Rooms/Living Room.tscn<>uid://td176m5ctfvj::::res://Rooms/Bedroom.tscn<>res://Scripts/Player.gd<>uid://bk2jdb4kl52r5::::res://Rooms/Hallway.tscn<>uid://4nit3xhkec43::::res://Rooms/Kitchen Dining.tscn<>uid://bjq8se457aabt::::res://Rooms/Hallway2.tscn<>uid://nmsv5n13nbd4::::res://Rooms/Hallway3.tscn<>res://Shaders/3D Pixels and pallete limiter.gdshader<>uid://c3aaxd1s4wu2r::::res://Models/imports/FG_Loveseat.fbx<>uid://482widgo0u6k::::res://Sprites/pallete.png<>uid://bgq3xl8xvatdy::::res://Models/imports/FG_Ottoman.fbx<>res://Scripts/Camera Controller.gd<>uid://b2nv7qewxyl4y::::res://Sprites/Run_Loop_Done.png<>uid://b3i5cyoe7jfb7::::res://Models/imports/FG_NoSlideTable.fbx<>uid://6xm7t7546r4w::::res://Models/imports/FG_Lamp.fbx<>uid://2wg1540xgp0e::::res://Sprites/jump_loop_done.png<>uid://bppml4tgpwt2l::::res://Models/imports/FG_Washer.fbx<>uid://bjw56qyr4u8qk::::res://Models/imports/FG_Couch.fbx<>uid://b0i32kun250fq::::res://Sprites/Fumble_Loop_done.png<>res://Scripts/Monster.gd<>uid://42fkis3lcq0k::::res://Sprites/slide_loop_done.png<>uid://dvyx68k4ev37i::::res://Models/imports/FG_Dryer.fbx<>uid://c0x50wvkhqm1i::::res://Models/imports/FG_Chair.fbx<>uid://b32fw6q2fyfju::::res://Models/imports/FG_Box.fbx<>uid://cwecatr0jbj3p::::res://Models/imports/FG_Shelf_Long.fbx<>uid://c82gtiggddccw::::res://Sounds/jumpp_rerun.mp3<>res://Shaders/Monster.gdshader<>uid://b6llprw4rojod::::res://Sounds/soda_jump_rerun.mp3<>uid://cgtnpujtt6duk::::res://Models/imports/FG_Chair_Dining_Left.fbx<>uid://bpah5tmxpw6ru::::res://Sprites/Monster_Clean_Sheet.png<>uid://dax0qsihy3i8t::::res://Models/imports/FG_SlideTable.fbx<>uid://cg12g5gxy8f7::::res://Sounds/hurt_sound_rerun.mp3<>uid://cj16f3w5ib2pa::::res://Models/imports/FG_Chair_Dining_Right.fbx<>res://Scripts/MonsterLight.gd<>uid://d2cygn386hyuy::::res://Shaders/noise.webp<>uid://bwmh6ih2etfqk::::res://Models/imports/FG_Chair_Dining.fbx<>uid://o18otxihov5l::::res://Sounds/Battery_pickup_rerun.mp3<>uid://c3mgus3pnslb4::::res://Sounds/slide_rerun.wav<>uid://fio014goti61::::res://Rerun.tres<>uid://chgb66itombk3::::res://Models/imports/BG_Ottoman.fbx<>res://Shaders/Moster Distortion.gdshader<>uid://m05s1n4pamx::::res://Models/imports/FG_Dresser_Open.fbx<>res://Shaders/Static Fade.gdshader<>uid://cwkc06024mxfq::::res://Models/imports/FG_Shelf_Short.fbx<>uid://5fiv3but2mxd::::res://Models/imports/FG_Dresser.fbx<>uid://cykqdi6whwn6d::::res://Models/imports/FG_Bed_NoBack.fbx<>uid://b2w4wcl64oq4g::::res://Models/imports/FG_Bed.fbx<>uid://b3650sd5x5txo::::res://Models/imports/FG_Table_Small.fbx<>res://Shaders/GrayBattery.gdshader<>uid://caoh1ihxb81gt::::res://Sprites/batt.png<>uid://b0x44fqf7tw28::::res://Sprites/die lmao.png<>uid://dfn081ota6efx::::res://Sounds/rerun.mp3
+icon.svg::CompressedTexture2D::2444293737367803921::1697241496::1697416765::1::::<><>::
+Loader.tscn::PackedScene::557077362083119192::1697396119::0::1::::<><>::res://Scripts/Scene Loader.gd<>res://Scripts/Menu Scripts/Menu Scaler.gd<>uid://fio014goti61::::res://Rerun.tres<>res://Scripts/MenuCam.gd<>res://Shaders/Moster Distortion.gdshader<>res://Shaders/3D Pixels.gdshader<>uid://eg3tmxmk74iu::::res://Shaders/white.png
+MainMenu.tscn::PackedScene::4466995930331384504::1697340367::0::1::::<><>::uid://c7jco3u420l5h::::res://UI/UIpackSheet_transparent.png<>res://Scripts/quit.gd
+Menu with achors.tscn::PackedScene::5520143159585159261::1697416177::0::1::::<><>::res://Scripts/Menu Scripts/Menu Scaler.gd<>res://Scripts/Menu Scripts/Menu Button Handler.gd<>res://Shaders/SettingsFade.gdshader<>uid://fio014goti61::::res://Rerun.tres<>uid://053525woyccu::::res://Rooms/Test/Screenshot_2023-10-13_235818.png<>uid://eg3tmxmk74iu::::res://Shaders/white.png<>res://Scripts/Menu Scripts/Mouse Updater.gd<>uid://bimqn46qj3tpq::::res://Sounds/Menu_button_rerun.mp3
+Reload.tscn::PackedScene::4199249791141323711::1697407505::0::1::::<><>::uid://fio014goti61::::res://Rerun.tres<>res://Scripts/Reload.gd<>res://Scripts/Menu Scripts/Menu Scaler.gd<>uid://eg3tmxmk74iu::::res://Shaders/white.png
+Rerun.tres::Theme::368355333667503184::1697416177::0::1::::<><>::uid://dj6124auutuqq::::res://Fonts/press_start/PrStart.ttf
+ReRunTableNotfinal2.tscn::PackedScene::8708565360739185291::1697388372::0::1::::<><>::uid://ddcpeb47nrmvu::::res://Models/old/ReRun_Table_NOTFINAL.fbx
+Sock.tscn::PackedScene::4633827712022210405::1697416177::0::1::::<><>::res://Scripts/Sock collector.gd
+Soda.tscn::PackedScene::772805787993405712::1697416177::0::1::::<><>::res://Scripts/Soda collect.gd
+Table.tscn::PackedScene::3255114161992873196::1697396650::0::1::::<><>::res://Shaders/3D Pixels and pallete limiter.gdshader<>uid://482widgo0u6k::::res://Sprites/pallete.png<>uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://bwr4ltgeob6nv::::res://Models/imports/BG_Box.fbx<>uid://b32fw6q2fyfju::::res://Models/imports/FG_Box.fbx<>uid://c0x50wvkhqm1i::::res://Models/imports/FG_Chair.fbx<>uid://d3ltoudcftdsb::::res://Models/imports/BG_Chair.fbx<>uid://dyhiebc6x0nj1::::res://Models/imports/BG_Dresser.fbx<>uid://5fiv3but2mxd::::res://Models/imports/FG_Dresser.fbx
+Test Runner.tscn::PackedScene::5790442203104561864::1697319109::0::1::::<><>::uid://eg3tmxmk74iu::::res://Shaders/white.png<>res://Scripts/Background Spawner.gd<>res://Scripts/Floor follower.gd<>res://Scripts/Player.gd<>res://Scripts/Camera Controller.gd<>uid://61kgwx5rhwi2::::res://Sprites/Character_run_rough_loop_1.png<>uid://c3pbtj7eg34mh::::res://Sprites/Jump_rough.png<>uid://duiepx88j88jg::::res://Sprites/Slide_Rough_sheet_1.png<>uid://c1ubffjy7h5b8::::res://Sprites/moster.png<>res://Scripts/Monster.gd
+::res://Backgrounds/::1697326589
+::res://Backgrounds/Test/::1697318581
+Screenshot_2023-10-13_235818.png::CompressedTexture2D::1818407538681030848::1697318535::1697416765::1::::<><>::
+testVidBG.tscn::PackedScene::2099164554210468029::1697318535::0::1::::<><>::uid://053525woyccu::::res://Backgrounds/Test/Screenshot_2023-10-13_235818.png<>uid://dwcq2f27lgnm6::::res://ReRunTableNotfinal2.tscn<>res://Shaders/3D Pixels.gdshader<>uid://eg3tmxmk74iu::::res://Shaders/white.png
+::res://Fonts/::1697318535
+::res://Fonts/press_start/::1697318580
+PrStart.ttf::FontFile::7856585736558167768::1697251776::1697416765::1::::<><>::
+prstartk.ttf::FontFile::4614323206011251726::1697251776::1697416765::1::::<><>::
+::res://Materials/::1697409359
+Flat.png::CompressedTexture2D::3652167038838350329::1697399845::1697416765::1::::<><>::
+outline background.tres::StandardMaterial3D::8083089939923867403::1697409359::0::1::::<><>::
+outline foreground.tres::StandardMaterial3D::4446625607951969051::1697409359::0::1::::<><>::
+::res://Menu/::1697302797
+::res://Models/::1697401303
+::res://Models/imports/::1697401337
+BG_Box.fbx::PackedScene::3967451109485016243::1697388476::1697416771::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Chair.fbx::PackedScene::9148437507415818329::1697388477::1697416771::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Chair_Dining.fbx::PackedScene::3260941960268566561::1697398991::1697416771::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Chair_Dining_Left.fbx::PackedScene::441996969423994457::1697399197::1697416771::1::::<><>::
+BG_Chair_Dining_Right.fbx::PackedScene::677931509265219564::1697399194::1697416770::1::::<><>::
+BG_Couch.fbx::PackedScene::3946047670404654737::1697388483::1697416770::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Dresser.fbx::PackedScene::8858737878841440920::1697388484::1697416769::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Dresser_Open.fbx::PackedScene::786445120830857514::1697388485::1697416769::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Dryer.fbx::PackedScene::5208224901351072926::1697399000::1697416769::1::::<><>::
+BG_Lamp.fbx::PackedScene::1946270839315645432::1697388486::1697416769::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Loveseat.fbx::PackedScene::32832492737164460::1697388480::1697416769::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_NoSlideTable.fbx::PackedScene::1538073640307836965::1697388481::1697416768::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Ottoman.fbx::PackedScene::5276667257445350420::1697388481::1697416768::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Oven.fbx::PackedScene::6689634921362624164::1697398985::1697416768::1::::<><>::
+BG_Shelf_Long.fbx::PackedScene::7941343131558634138::1697399004::1697416768::1::::<><>::
+BG_Shelf_Short.fbx::PackedScene::8406774633705654281::1697399007::1697416768::1::::<><>::
+BG_SlideTable.fbx::PackedScene::6032091158834816542::1697388482::1697416767::1::::<><>::uid://dnfrks1iljj04::::res://Materials/outline background.tres
+BG_Washer.fbx::PackedScene::150684154825241928::1697398994::1697416767::1::::<><>::
+FG_Bed.fbx::PackedScene::4328735976252796160::1697400754::1697416766::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Bed_NoBack.fbx::PackedScene::6478994690591107701::1697400756::1697416779::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Box.fbx::PackedScene::4407791031522474442::1697388476::1697416778::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Chair.fbx::PackedScene::6576910489729951004::1697388477::1697416778::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Chair_Dining.fbx::PackedScene::3955828587572234806::1697398991::1697416777::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Chair_Dining_Left.fbx::PackedScene::5234014779616198278::1697399197::1697416777::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Chair_Dining_Right.fbx::PackedScene::5460107443492658226::1697399194::1697416777::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Couch.fbx::PackedScene::3065414334679642302::1697388483::1697416776::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Dresser.fbx::PackedScene::2116511908659188105::1697388484::1697416776::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Dresser_Open.fbx::PackedScene::26345017900247447::1697388485::1697416776::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Dryer.fbx::PackedScene::8684226434062528704::1697399000::1697416775::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Lamp.fbx::PackedScene::2224121639220982588::1697388486::1697416775::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Loveseat.fbx::PackedScene::6738170261103366839::1697388480::1697416775::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_NoSlideTable.fbx::PackedScene::4370049691373819038::1697388481::1697416775::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Ottoman.fbx::PackedScene::2842325568452022586::1697388481::1697416775::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Oven.fbx::PackedScene::5452357304761601975::1697398985::1697416774::1::::<><>::
+FG_Shelf_Long.fbx::PackedScene::6325375897777977699::1697399004::1697416774::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Shelf_Short.fbx::PackedScene::6337807451906641126::1697399007::1697416774::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_SlideTable.fbx::PackedScene::7208290195074286805::1697388482::1697416774::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Table_Small.fbx::PackedScene::4417571122014193352::1697401293::1697416773::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+FG_Washer.fbx::PackedScene::3470968805042618125::1697398994::1697416772::1::::<><>::uid://b4l8jk4lqvg64::::res://Materials/outline foreground.tres
+::res://Models/old/::1697388373
+ReRun_NoSlideTable.fbx::PackedScene::7414534247119275575::1697323006::1697416772::1::::<><>::
+ReRun_SlideTable.fbx::PackedScene::3472050873768024304::1697323515::1697416772::1::::<><>::
+ReRun_Table_NOTFINAL.fbx::PackedScene::7374875334363303334::1697255022::1697416771::1::::<><>::
+::res://Rooms/::1697406509
+Bedroom.tscn::PackedScene::1341418597729675487::1697398638::0::1::::<><>::uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://ng0ppmyyq0rf::::res://Rooms/rough 3/bedroomasd.png<>uid://7hb35im3mm5m::::res://Battery.tscn<>uid://b7awp3alg1djx::::res://Sock.tscn
+Hallway2.tscn::PackedScene::3053186381850484533::1697398634::0::1::::<><>::uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://dbqs38lic8s0j::::res://Rooms/rough 3/hall2asdf.png
+Hallway3.tscn::PackedScene::938359504887149871::1697398641::0::1::::<><>::uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://xw8pj1710663::::res://Rooms/rough 3/hall3.png
+Hallway.tscn::PackedScene::3144599227542594796::1697406509::0::1::::<><>::uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://c365mkbl7d8fx::::res://Rooms/rough 3/hall11asd.png<>res://Shaders/3D Pixels and pallete limiter.gdshader<>uid://482widgo0u6k::::res://Sprites/pallete.png
+Kitchen Dining.tscn::PackedScene::2062834548847918430::1697406509::0::1::::<><>::uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://e0y0jc174wac::::res://Rooms/rough 3/kitchebn.png<>uid://7hb35im3mm5m::::res://Battery.tscn<>uid://lal87f5qcgom::::res://Soda.tscn
+Living Room.tscn::PackedScene::5131355165730382821::1697406509::0::1::::<><>::uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://nar0nv40ssac::::res://Rooms/rough2/living3.png<>res://Shaders/3D Pixels and pallete limiter.gdshader<>uid://7hb35im3mm5m::::res://Battery.tscn<>uid://482widgo0u6k::::res://Sprites/pallete.png
+::res://Rooms/rough/::1697326595
+bedroom.png::CompressedTexture2D::7033701642900156358::1697326280::1697416765::1::::<><>::
+hall1.png::CompressedTexture2D::4036178286917655450::1697326508::1697416765::1::::<><>::
+hall2.png::CompressedTexture2D::7185329587237662506::1697326517::1697416765::1::::<><>::
+hall3.png::CompressedTexture2D::3560292846141378999::1697326523::1697416765::1::::<><>::
+kitchen.png::CompressedTexture2D::3546162683486746576::1697326532::1697416765::1::::<><>::
+living.png::CompressedTexture2D::6087918784151994388::1697326539::1697416765::1::::<><>::
+::res://Rooms/rough2/::1697342394
+bedroom.png::CompressedTexture2D::705221779221926435::1697331331::1697416765::1::::<><>::
+bedroomasd.png::CompressedTexture2D::2356323611156023070::1697341869::1697416765::1::::<><>::
+hall1.png::CompressedTexture2D::3291659623962226525::1697331353::1697416765::1::::<><>::
+hall2.png::CompressedTexture2D::4332586429840017600::1697331371::1697416765::1::::<><>::
+hall2asdf.png::CompressedTexture2D::4995516982389976869::1697341883::1697416765::1::::<><>::
+hall3.png::CompressedTexture2D::2869980680171212011::1697331390::1697416765::1::::<><>::
+hall11asd.png::CompressedTexture2D::3502440437788335524::1697341876::1697416765::1::::<><>::
+kitchebn.png::CompressedTexture2D::5410834986216162344::1697341860::1697416765::1::::<><>::
+kitchen.png::CompressedTexture2D::3966166777163996492::1697331416::1697416765::1::::<><>::
+living2.png::CompressedTexture2D::4295815273827630267::1697333886::1697416765::1::::<><>::
+living3.png::CompressedTexture2D::913532517615281866::1697334788::1697416765::1::::<><>::
+living.png::CompressedTexture2D::8827197733010797375::1697331290::1697416765::1::::<><>::
+::res://Rooms/rough 3/::1697383670
+bedroomasd.png::CompressedTexture2D::926386753057600427::1697342163::1697416765::1::::<><>::
+hall2asdf.png::CompressedTexture2D::7263625597512303499::1697342232::1697416765::1::::<><>::
+hall3.png::CompressedTexture2D::1661790676298690590::1697383668::1697416765::1::::<><>::
+hall11asd.png::CompressedTexture2D::6803968166257829117::1697342310::1697416765::1::::<><>::
+kitchebn.png::CompressedTexture2D::333867148102650626::1697342385::1697416765::1::::<><>::
+living3.png::CompressedTexture2D::7265166899782059498::1697334788::1697416765::1::::<><>::
+::res://Rooms/Test/::1697318581
+Screenshot_2023-10-13_235818.png::CompressedTexture2D::1818407538681030848::1697294707::1697416765::1::::<><>::
+testVidBG.tscn::PackedScene::2099164554210468029::1697315977::0::1::::<><>::uid://053525woyccu::::res://Rooms/Test/Screenshot_2023-10-13_235818.png<>uid://dwcq2f27lgnm6::::res://ReRunTableNotfinal2.tscn<>res://Shaders/3D Pixels.gdshader<>uid://eg3tmxmk74iu::::res://Shaders/white.png
+::res://Scripts/::1697416177
+Background Spawner.gd::GDScript::-1::1697311178::0::1::::<>Node2D<>::
+Batt collect.gd::GDScript::-1::1697386825::0::1::::<>Area2D<>::
+Camera Controller.gd::GDScript::-1::1697254193::0::1::::CameraController<>Camera2D<>::
+Color Bleed Controller.gd::GDScript::-1::1697253462::0::1::::<>Control<>::
+Floor follower.gd::GDScript::-1::1697259897::0::1::::<>StaticBody2D<>::
+Game Manager.gd::GDScript::-1::1697416177::0::1::::Game<>Node2D<>::
+MenuCam.gd::GDScript::-1::1697379806::0::1::::<>Camera2D<>::
+Monster.gd::GDScript::-1::1697416177::0::1::::Monst<>Sprite2D<>::
+MonsterLight.gd::GDScript::-1::1697402473::0::1::::<>OmniLight3D<>::
+Paused.gd::GDScript::-1::1697328404::0::1::::Pause<>Control<>::
+Player.gd::GDScript::-1::1697416177::0::1::::Player<>CharacterBody2D<>::
+quit.gd::GDScript::-1::1697260835::0::1::::<>Control<>::
+Reload.gd::GDScript::-1::1697416177::0::1::::<>Control<>::
+Room Spawner.gd::GDScript::-1::1697315350::0::1::::<>Node2D<>::
+Scene Loader.gd::GDScript::-1::1697380281::0::1::::Loader<>Control<>::
+Sock collector.gd::GDScript::-1::1697390273::0::1::::<>Area2D<>::
+Soda collect.gd::GDScript::-1::1697344427::0::1::::<>Area2D<>::
+test script.gd::GDScript::-1::1697290416::0::1::::<>Sprite2D<>::
+::res://Scripts/Menu Scripts/::1697380289
+Menu Button Handler.gd::GDScript::-1::1697380289::0::1::::<>Control<>::
+Menu Scaler.gd::GDScript::-1::1697329864::0::1::::<>Control<>::
+Mouse Updater.gd::GDScript::-1::1697306435::0::1::::<>TextureRect<>::
+::res://Shaders/::1697416177
+3D Pixels and pallete limiter.gdshader::Shader::-1::1697409396::0::1::::<><>::
+3D Pixels.gdshader::Shader::-1::1697409396::0::1::::<><>::
+change button.gd::GDScript::-1::1697246669::0::1::::<>Button<>::
+change the bleed.gd::GDScript::-1::1697243192::0::1::::<>TextureRect<>::
+Color Bleed.gdshader::Shader::-1::1697409396::0::1::::<><>::
+GrayBattery.gdshader::Shader::-1::1697409396::0::1::::<><>::
+Monster.gdshader::Shader::-1::1697416177::0::1::::<><>::
+Moster Distortion.gdshader::Shader::-1::1697409396::0::1::::<><>::
+noise.webp::CompressedTexture2D::9059958235003296104::1697336113::1697416765::1::::<><>::
+SettingsFade.gdshader::Shader::-1::1697409396::0::1::::<><>::
+Static Fade.gdshader::Shader::-1::1697409396::0::1::::<><>::
+StaticOverlay.gdshader::Shader::-1::1697409396::0::1::::<><>::
+stopvid.gd::GDScript::-1::1697246488::0::1::::<>VideoStreamPlayer<>::
+Teddy.png::CompressedTexture2D::8526445605285364636::1697245902::1697416765::1::::<><>::
+Test Scene.tscn::PackedScene::6894405985222062397::1697253483::0::1::::<><>::res://Shaders/output.ogv<>res://Shaders/stopvid.gd<>res://Shaders/StaticOverlay.gdshader<>uid://eg3tmxmk74iu::::res://Shaders/white.png<>uid://dtqjkwjqaqdro::::res://Shaders/Teddy.png
+white.png::CompressedTexture2D::294876313328725496::1697241896::1697416765::1::::<><>::
+::res://Sounds/::1697389793
+Battery_pickup_rerun.mp3::AudioStreamMP3::1038347328261537019::1697386728::1697416765::1::::<><>::
+hurt_sound_rerun.mp3::AudioStreamMP3::154391173836346942::1697341416::1697416765::1::::<><>::
+jumpp_rerun.mp3::AudioStreamMP3::7145210068574046058::1697339484::1697416765::1::::<><>::
+Menu_button_rerun.mp3::AudioStreamMP3::2973700224857312394::1697340309::1697416765::1::::<><>::
+monster_scream_rerun_panningfix.mp3::AudioStreamMP3::7636407184536212832::1697339501::1697416765::1::::<><>::
+rerun.mp3::AudioStreamMP3::7538621424189127209::1697389726::1697416765::1::::<><>::
+slide_rerun.wav::AudioStreamWAV::6763302529508973099::1697388195::1697416765::1::::<><>::
+soda_jump_rerun.mp3::AudioStreamMP3::4585678593819322787::1697339493::1697416765::1::::<><>::
+::res://Sprites/::1697416177
+batt.png::CompressedTexture2D::4802214537582041983::1697343776::1697416765::1::::<><>::
+batteries.png::CompressedTexture2D::3661299464921314839::1697293796::1697416765::1::::<><>::
+Character_run_rough_loop_1.png::CompressedTexture2D::2230147051505938123::1697298899::1697416765::1::::<><>::
+Character_run_rough_loop_one_layer_Sheet.png::CompressedTexture2D::2578765622836491213::1697290305::1697416765::1::::<><>::
+die lmao.png::CompressedTexture2D::4190435331405089351::1697391043::1697416765::1::::<><>::
+Fumble_Loop_done.png::CompressedTexture2D::4159405645666821598::1697390111::1697416765::1::::<><>::
+fumble_loop_socks_done.png::CompressedTexture2D::620751588552981203::1697390116::1697416765::1::::<><>::
+jump_loop_done.png::CompressedTexture2D::1940927443081023250::1697377252::1697416765::1::::<><>::
+jump_loop_socks_done.png::CompressedTexture2D::3629360270357803358::1697377270::1697416765::1::::<><>::
+Jump_rough.png::CompressedTexture2D::6769189824973751763::1697298906::1697416765::1::::<><>::
+Jump_rough_2.png::CompressedTexture2D::3880664702310840237::1697299164::1697416765::1::::<><>::
+Jump_rough_sheet.png::CompressedTexture2D::2435463959402685979::1697290316::1697416765::1::::<><>::
+Monster_Clean_Sheet.png::CompressedTexture2D::3439732948577365586::1697334462::1697416765::1::::<><>::
+moster.png::CompressedTexture2D::6639108780672043827::1697293415::1697416765::1::::<><>::
+pallete.png::CompressedTexture2D::2105280002771056416::1697387345::1697416765::1::::<><>::
+Run_Loop_Done.png::CompressedTexture2D::4309689422559896974::1697377243::1697416765::1::::<><>::
+run_loop_socks_done.png::CompressedTexture2D::8764462509236930107::1697377256::1697416765::1::::<><>::
+slide_loop_done.png::CompressedTexture2D::2091536557045704540::1697377248::1697416765::1::::<><>::
+slide_loop_socks_done.png::CompressedTexture2D::8100975309647279790::1697377260::1697416765::1::::<><>::
+Slide_Rough_sheet.png::CompressedTexture2D::7177806820534156740::1697290037::1697416765::1::::<><>::
+Slide_Rough_sheet_1.png::CompressedTexture2D::8579824861280398900::1697298944::1697416765::1::::<><>::
+::res://UI/::1697318581
+UIpackSheet_transparent.png::CompressedTexture2D::7037611701594574919::1697251776::1697416765::1::::<><>::

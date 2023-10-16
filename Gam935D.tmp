@@ -1,0 +1,108 @@
+[gd_scene load_steps=18 format=3 uid="uid://coq60ccvflad1"]
+
+[ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="1_lycsp"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="2_7g8ny"]
+[ext_resource type="Script" path="res://Scripts/Room Spawner.gd" id="3_y0k21"]
+[ext_resource type="Script" path="res://Scripts/Floor follower.gd" id="4_1qn7o"]
+[ext_resource type="PackedScene" uid="uid://cfdww1m6x2pll" path="res://Rooms/Living Room.tscn" id="4_5er2c"]
+[ext_resource type="PackedScene" uid="uid://td176m5ctfvj" path="res://Rooms/Bedroom.tscn" id="4_15qy0"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="5_ekfvk"]
+[ext_resource type="PackedScene" uid="uid://bk2jdb4kl52r5" path="res://Rooms/Hallway.tscn" id="5_o7mi5"]
+[ext_resource type="PackedScene" uid="uid://4nit3xhkec43" path="res://Rooms/Kitchen Dining.tscn" id="6_bkt82"]
+[ext_resource type="Texture2D" uid="uid://61kgwx5rhwi2" path="res://Sprites/Character_run_rough_loop_1.png" id="6_j6f3o"]
+[ext_resource type="Texture2D" uid="uid://c3pbtj7eg34mh" path="res://Sprites/Jump_rough.png" id="7_b8apx"]
+[ext_resource type="Texture2D" uid="uid://duiepx88j88jg" path="res://Sprites/Slide_Rough_sheet_1.png" id="8_3wq6e"]
+[ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="9_os12l"]
+[ext_resource type="Texture2D" uid="uid://c1ubffjy7h5b8" path="res://Sprites/moster.png" id="10_j18ey"]
+[ext_resource type="Script" path="res://Scripts/Monster.gd" id="11_v3x8l"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8cm"]
+size = Vector2(32, 64)
+
+[node name="Game Manager" type="Node2D"]
+script = ExtResource("1_lycsp")
+
+[node name="ScreenSize" type="TextureRect" parent="."]
+modulate = Color(0.388235, 0.388235, 0.388235, 1)
+offset_left = -240.0
+offset_top = -238.0
+offset_right = 240.0
+offset_bottom = 32.0
+texture = ExtResource("2_7g8ny")
+
+[node name="Rooms" type="Node2D" parent="."]
+script = ExtResource("3_y0k21")
+
+[node name="Hallway-1" parent="Rooms" instance=ExtResource("5_o7mi5")]
+position = Vector2(-480, 0)
+
+[node name="Living Room" parent="Rooms" instance=ExtResource("4_5er2c")]
+
+[node name="Hallway" parent="Rooms" instance=ExtResource("5_o7mi5")]
+position = Vector2(1920, 0)
+
+[node name="Kitchen Dining" parent="Rooms" instance=ExtResource("6_bkt82")]
+position = Vector2(2400, 0)
+
+[node name="Hallway2" parent="Rooms" instance=ExtResource("5_o7mi5")]
+position = Vector2(4320, 0)
+
+[node name="Bedroom" parent="Rooms" instance=ExtResource("4_15qy0")]
+position = Vector2(4800, 0)
+
+[node name="Hallway3" parent="Rooms" instance=ExtResource("5_o7mi5")]
+position = Vector2(6720, 0)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+script = ExtResource("4_1qn7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_8t0vn")
+one_way_collision_margin = 128.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(240, 0)
+script = ExtResource("5_ekfvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_yn8cm")
+
+[node name="Running" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -32)
+texture = ExtResource("6_j6f3o")
+hframes = 4
+vframes = 2
+
+[node name="Jumping" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("7_b8apx")
+hframes = 3
+vframes = 2
+
+[node name="Slide" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(-5, -32)
+texture = ExtResource("8_3wq6e")
+hframes = 2
+vframes = 3
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(0, -1)
+target_position = Vector2(17, 0)
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(240, 0)
+offset = Vector2(0, -103)
+script = ExtResource("9_os12l")
+
+[node name="Monster" type="Sprite2D" parent="."]
+position = Vector2(240, -103)
+texture = ExtResource("10_j18ey")
+hframes = 6
+frame = 4
+script = ExtResource("11_v3x8l")

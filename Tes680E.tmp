@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://coq60ccvflad1"]
+
+[ext_resource type="Script" path="res://Scripts/Background Spawner.gd" id="1_lp2ia"]
+[ext_resource type="Script" path="res://Scripts/Floor follower.gd" id="1_ohngu"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_venei"]
+[ext_resource type="Texture2D" uid="uid://bax00alps0ihf" path="res://Sprites/Jump_rough_sheet.png" id="4_c8rb8"]
+[ext_resource type="Script" path="res://Scripts/Camera Controller.gd" id="4_dtw85"]
+[ext_resource type="Texture2D" uid="uid://bc0f5mmjgbsdx" path="res://Sprites/Character_run_rough_loop_one_layer_Sheet.png" id="4_xko85"]
+[ext_resource type="Texture2D" uid="uid://dai8ouwycpa6o" path="res://Sprites/Slide_Rough_sheet.png" id="6_bna1t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8t0vn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8cm"]
+size = Vector2(32, 64)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+script = ExtResource("1_ohngu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_8t0vn")
+one_way_collision_margin = 128.0
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_lp2ia")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_venei")
+acceleration = null
+speed = null
+gravity = null
+crouchLength = null
+jumpHeight = null
+jumpSpeed = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_yn8cm")
+
+[node name="Running" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("4_xko85")
+hframes = 4
+vframes = 2
+
+[node name="Jumping" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("4_c8rb8")
+hframes = 3
+vframes = 2
+
+[node name="Slide" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+texture_filter = 1
+position = Vector2(-5, -32)
+texture = ExtResource("6_bna1t")
+hframes = 2
+vframes = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -103)
+script = ExtResource("4_dtw85")
