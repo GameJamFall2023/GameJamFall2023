@@ -1,33 +1,40 @@
-[gd_scene load_steps=12 format=3 uid="uid://4nit3xhkec43"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_23qxq"]
-[ext_resource type="Texture2D" uid="uid://e0y0jc174wac" path="res://Rooms/rough 3/kitchebn.png" id="2_1q3wr"]
-[ext_resource type="PackedScene" uid="uid://7hb35im3mm5m" path="res://Battery.tscn" id="3_xla6r"]
-[ext_resource type="PackedScene" uid="uid://lal87f5qcgom" path="res://Soda.tscn" id="4_f4g6v"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://e0y0jc174wac" path="res://Rooms/rough 3/kitchebn.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://7hb35im3mm5m" path="res://Battery.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://lal87f5qcgom" path="res://Soda.tscn" id="4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf6wm"]
+[sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 32)
+script = null
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_vq1dk"]
+[sub_resource type="SegmentShape2D" id="2"]
 a = Vector2(-16, -17)
 b = Vector2(16, -17)
+script = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uewwo"]
+[sub_resource type="RectangleShape2D" id="3"]
 size = Vector2(32, 64)
+script = null
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_bg4qm"]
+[sub_resource type="SegmentShape2D" id="4"]
 a = Vector2(-16, -17)
 b = Vector2(16, -17)
+script = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vie"]
+[sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(32, 32)
+script = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nao22"]
+[sub_resource type="RectangleShape2D" id="6"]
 size = Vector2(32, 15)
+script = null
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_lui23"]
+[sub_resource type="SegmentShape2D" id="7"]
 a = Vector2(-16, -17)
 b = Vector2(16, -17)
+script = null
 
 [node name="Kitchen Dining" type="Node2D"]
 
@@ -37,7 +44,7 @@ modulate = Color(0.678431, 0.407843, 0, 1)
 offset_top = -32.0
 offset_right = 1920.0
 offset_bottom = 32.0
-texture = ExtResource("1_23qxq")
+texture = ExtResource( "1" )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 visible = false
@@ -45,7 +52,7 @@ modulate = Color(0.611765, 0.32549, 0, 1)
 offset_top = -238.0
 offset_right = 1920.0
 offset_bottom = -32.0
-texture = ExtResource("1_23qxq")
+texture = ExtResource( "1" )
 
 [node name="Rough" type="TextureRect" parent="."]
 visible = false
@@ -56,7 +63,7 @@ offset_top = -223.0
 offset_right = 3088.0
 offset_bottom = 47.0
 grow_vertical = 0
-texture = ExtResource("2_1q3wr")
+texture = ExtResource( "2" )
 stretch_mode = 2
 
 [node name="Block2" type="Node2D" parent="."]
@@ -68,14 +75,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block2/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block2"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block2/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block3" type="Node2D" parent="."]
 position = Vector2(659, -80)
@@ -86,14 +93,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block3/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block3"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block3/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block4" type="Node2D" parent="."]
 position = Vector2(901, -112)
@@ -104,14 +111,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block4/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block4"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block4/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block5" type="Node2D" parent="."]
 position = Vector2(1414, -144)
@@ -122,14 +129,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block5/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block5"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block5/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block6" type="Node2D" parent="."]
 position = Vector2(1737, -144)
@@ -140,14 +147,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block6/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block6"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block6/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block7" type="Node2D" parent="."]
 position = Vector2(1125, -143)
@@ -158,14 +165,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block7/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block7"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block7/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block8" type="Node2D" parent="."]
 position = Vector2(902, -118)
@@ -176,14 +183,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block8/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block8"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block8/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block9" type="Node2D" parent="."]
 position = Vector2(2026, -15)
@@ -194,14 +201,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block9/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block9"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block9/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block10" type="Node2D" parent="."]
 position = Vector2(2155, -47)
@@ -212,14 +219,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block10/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block10"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block10/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block11" type="Node2D" parent="."]
 position = Vector2(2347, -111)
@@ -230,14 +237,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block11/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block11"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block11/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block12" type="Node2D" parent="."]
 position = Vector2(225, -16)
@@ -248,14 +255,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block12/Whole"]
-shape = SubResource("RectangleShape2D_mf6wm")
+shape = SubResource( "1" )
 
 [node name="Top" type="StaticBody2D" parent="Block12"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block12/Top"]
-shape = SubResource("SegmentShape2D_vq1dk")
+shape = SubResource( "2" )
 
 [node name="Block16" type="Node2D" parent="."]
 position = Vector2(1262, -48)
@@ -266,14 +273,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block16/Whole"]
 position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_uewwo")
+shape = SubResource( "3" )
 
 [node name="Top" type="StaticBody2D" parent="Block16"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block16/Top"]
-shape = SubResource("SegmentShape2D_bg4qm")
+shape = SubResource( "4" )
 
 [node name="Block17" type="Node2D" parent="."]
 position = Vector2(1883, -48)
@@ -284,14 +291,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block17/Whole"]
 position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_uewwo")
+shape = SubResource( "3" )
 
 [node name="Top" type="StaticBody2D" parent="Block17"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block17/Top"]
-shape = SubResource("SegmentShape2D_bg4qm")
+shape = SubResource( "4" )
 
 [node name="Block18" type="Node2D" parent="."]
 position = Vector2(2879, -48)
@@ -302,14 +309,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block18/Whole"]
 position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_uewwo")
+shape = SubResource( "3" )
 
 [node name="Top" type="StaticBody2D" parent="Block18"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block18/Top"]
-shape = SubResource("SegmentShape2D_bg4qm")
+shape = SubResource( "4" )
 
 [node name="Block19" type="Node2D" parent="."]
 position = Vector2(2525, -49)
@@ -319,14 +326,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block19/Whole"]
-shape = SubResource("RectangleShape2D_s7vie")
+shape = SubResource( "5" )
 
 [node name="Top" type="StaticBody2D" parent="Block19"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block19/Top"]
-shape = SubResource("SegmentShape2D_bg4qm")
+shape = SubResource( "4" )
 
 [node name="Block20" type="Node2D" parent="."]
 position = Vector2(2717, -15)
@@ -336,14 +343,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block20/Whole"]
-shape = SubResource("RectangleShape2D_s7vie")
+shape = SubResource( "5" )
 
 [node name="Top" type="StaticBody2D" parent="Block20"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block20/Top"]
-shape = SubResource("SegmentShape2D_bg4qm")
+shape = SubResource( "4" )
 
 [node name="Block21" type="Node2D" parent="."]
 position = Vector2(772, -16)
@@ -354,13 +361,13 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block21/Whole"]
 position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_nao22")
+shape = SubResource( "6" )
 
 [node name="Top" type="StaticBody2D" parent="Block21"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block21/Top"]
-shape = SubResource("SegmentShape2D_lui23")
+shape = SubResource( "7" )
 
 [node name="Block22" type="Node2D" parent="."]
 position = Vector2(2509, -15)
@@ -371,18 +378,18 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block22/Whole"]
 position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_nao22")
+shape = SubResource( "6" )
 
 [node name="Top" type="StaticBody2D" parent="Block22"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block22/Top"]
-shape = SubResource("SegmentShape2D_lui23")
+shape = SubResource( "7" )
 
-[node name="Battery" parent="." instance=ExtResource("3_xla6r")]
+[node name="Battery" parent="." instance=ExtResource( "3" )]
 position = Vector2(771, -7)
 
-[node name="Soda" parent="." instance=ExtResource("4_f4g6v")]
+[node name="Soda" parent="." instance=ExtResource( "4" )]
 position = Vector2(943, -158)
 
 [node name="Block23" type="Node2D" parent="."]
@@ -394,10 +401,10 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block23/Whole"]
 position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_nao22")
+shape = SubResource( "6" )
 
 [node name="Top" type="StaticBody2D" parent="Block23"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block23/Top"]
-shape = SubResource("SegmentShape2D_lui23")
+shape = SubResource( "7" )

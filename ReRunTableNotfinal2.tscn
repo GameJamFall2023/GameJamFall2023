@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwcq2f27lgnm6"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://ddcpeb47nrmvu" path="res://Models/old/ReRun_Table_NOTFINAL.fbx" id="1_3od26"]
+[ext_resource type="PackedScene" uid="uid://ddcpeb47nrmvu" path="res://Models/old/ReRun_Table_NOTFINAL.fbx" id="1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kwbc"]
+[sub_resource type="StandardMaterial3D" id="1"]
 shading_mode = 2
 albedo_color = Color(0.509804, 0.235294, 0.121569, 1)
+script = null
 
-[node name="ReRun_Table_NOTFINAL" instance=ExtResource("1_3od26")]
+[node name="ReRun_Table_NOTFINAL" instance=ExtResource( "1" )]
 
 [node name="Table" parent="RootNode" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_4kwbc")
+surface_material_override/0 = SubResource( "1" )

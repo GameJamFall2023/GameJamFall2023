@@ -30,6 +30,7 @@ var staticTimer = 1;
 
 var canPause = true;
 
+
 func _ready():
 	if !Instance:
 		Instance = self;
@@ -38,6 +39,7 @@ func _ready():
 
 
 func _process(delta):
+	
 	if staticFade:
 		staticTimer -= delta;
 		staticTimer = max(staticTimer, 0);
@@ -68,8 +70,16 @@ func _process(delta):
 		Engine.time_scale = 0;
 		
 	if (batt1 && batt2 && batt3 && batt4) || batts >= 4:
-		winScreen.visible = true;
+		#winScreen.visible = true;
+		Player.Instance.playWin = true;
+		Monst.Instance.playingWin = true;
+		Monst.Instance.nowPos = Monst.Instance.position.x;
 		canPause = false;
+		
+	battUI1.material.set_shader_parameter("gray", 0 if batts > 0 else 1);
+	battUI2.material.set_shader_parameter("gray", 0 if batts > 1 else 1);
+	battUI3.material.set_shader_parameter("gray", 0 if batts > 2 else 1);
+	battUI4.material.set_shader_parameter("gray", 0 if batts > 3 else 1);
 
 
 func _on_unpause_pressed():
@@ -91,8 +101,11 @@ func _on_menu_pressed():
 
 func CollectBatt():
 	Player.Instance.battSound.play();
+	Player.Instance.collecting = true;
 	batts += 1;
 	battUI1.material.set_shader_parameter("gray", 0 if batts > 0 else 1);
 	battUI2.material.set_shader_parameter("gray", 0 if batts > 1 else 1);
 	battUI3.material.set_shader_parameter("gray", 0 if batts > 2 else 1);
 	battUI4.material.set_shader_parameter("gray", 0 if batts > 3 else 1);
+
+

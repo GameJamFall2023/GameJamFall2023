@@ -8,6 +8,8 @@ static var Instance;
 @onready var Jumping = $Jumping;
 @onready var Sliding = $Slide;
 @onready var Stumble = $Stumble;
+@onready var Collect = $Collect;
+@onready var Win = $Win;
 
 var runningLast = 8;
 
@@ -51,12 +53,18 @@ var slowdown = false;
 var stumbling = false;
 var slowdownLength = 2;
 
+var collecting = false;
+
 var coyoteTimer = 0;
 var coyoteTime = 0.2;
 
 @onready var hurtSound = $Hurt;
 @onready var battSound = $Batt;
 @onready var slideSound = $Slide2;
+
+var playStart = false;
+var playWin = false;
+
 
 func _ready():
 	if !Instance:
@@ -67,6 +75,15 @@ func _ready():
 	halfSpeed = speed / 2;
 
 func _process(delta):
+	if playWin:
+		winAnim(delta);
+		return;
+		
+	if playStart:
+		startAnim(delta);
+		return;
+		
+		
 	maxJump = 2 if Game.Instance.soda else 1;
 	
 	velocity.x += acceleration * delta;
@@ -179,7 +196,24 @@ func animate(delta):
 	var frameChange = floor(animTimer / (1.0 / frameRate));
 	animTimer -= frameChange * (1.0 / frameRate);
 	
-	if stumbling:
+	if collecting:
+		var frame = Collect.frame + frameChange;
+		if frame == 5:
+			collecting = false;
+			animate(0);
+		
+		Collect.frame = frame;
+		
+		Jumping.visible = false;
+		Sliding.visible = false;
+		Running.visible = false;
+		Stumble.visible = false;
+		Collect.visible = true;
+		Sliding.frame = 0;
+		Jumping.frame = 0;
+		Running.frame = 0;
+		Stumble.frame = 0;
+	elif stumbling:
 		var frame = Stumble.frame + frameChange;
 		if frame == 7:
 			stumbling = false;
@@ -191,9 +225,11 @@ func animate(delta):
 		Sliding.visible = false;
 		Running.visible = false;
 		Stumble.visible = true;
+		Collect.visible = false;
 		Sliding.frame = 0;
 		Jumping.frame = 0;
 		Running.frame = 0;
+		Collect.frame = 0;
 	elif jumping || !groundLastJump:
 		Jumping.frame += frameChange;
 		if !groundLastJump:
@@ -210,9 +246,11 @@ func animate(delta):
 		Sliding.visible = false;
 		Running.visible = false;
 		Stumble.visible = false;
+		Collect.visible = false;
 		Running.frame = 0;
 		Sliding.frame = 0;
 		Stumble.frame = 0;
+		Collect.frame = 0;
 	elif crouched || Sliding.frame >= slideFreeze:
 		Sliding.frame += frameChange;
 		
@@ -226,9 +264,11 @@ func animate(delta):
 		Sliding.visible = true;
 		Running.visible = false;
 		Stumble.visible = false;
+		Collect.visible = false;
 		Running.frame = 0;
 		Jumping.frame = 0;
 		Stumble.frame = 0;
+		Collect.frame = 0;
 	else:
 		Running.frame = fmod((Running.frame + frameChange), runningLast);
 		
@@ -239,9 +279,11 @@ func animate(delta):
 		Sliding.visible = false;
 		Running.visible = true;
 		Stumble.visible = false;
+		Collect.visible = false;
 		Sliding.frame = 0;
 		Jumping.frame = 0;
 		Stumble.frame = 0;
+		Collect.frame = 0;
 
 
 func _on_collision_check_body_entered(body):
@@ -259,3 +301,60 @@ func _on_head_check_body_entered(body):
 		print("head")
 		#position.y = -lastJump * jumpHeight + jumpY;
 	pass # Replace with function body.
+
+
+var collectLoop = false;
+var winAnimTimer = 0;
+var moveTime = 1;
+var movingMons = true;
+
+func winAnim(delta):
+	Jumping.visible = false;
+	Sliding.visible = false;
+	Running.visible = false;
+	Stumble.visible = false;
+	if !collectLoop:
+		Collect.visible = false;
+		Win.visible = true;
+		
+	if movingMons:
+		moveTime -= delta;
+		CameraController.Instance.position.x = lerp(position.x, position.x + 40, moveTime);
+		
+		if Win.frame < 2:
+			animTimer += delta;
+			var frameChange = floor(animTimer / (1.0 / frameRate));
+			animTimer -= frameChange * (1.0 / frameRate);
+			
+			var frame = Win.frame + frameChange;
+			
+			Win.frame = clamp(frame, 0, 16);
+		
+		if moveTime <= 0:
+			movingMons = false;
+		return;
+	
+	animTimer += delta;
+	var frameChange = floor(animTimer / (1.0 / frameRate));
+	animTimer -= frameChange * (1.0 / frameRate);
+	
+	var frame = Win.frame + frameChange;
+	
+	Win.frame = clamp(frame, 0, 16);
+	
+	if frame == 14:
+		Monst.Instance.amDie = true;
+	
+	if frame == 17 && !collectLoop:
+		Collect.visible = true;
+		Win.visible = false;
+		collectLoop = true;
+		frameRate *= 0.75;
+		Collect.flip_h = true;
+		
+	if collectLoop:
+		Collect.frame = fmod(Collect.frame + frameChange, 5.0);
+
+
+func startAnim(delta):
+	pass

@@ -12,5 +12,5 @@ func _process(delta):
 	count -= delta;
 	
 	if count <= 0:
-		get_tree().change_scene_to_packed(load("res://Game Scene.tscn"));
+		get_tree().change_scene_to_file("res://Game Scene.tscn");
 	pass

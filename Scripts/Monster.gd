@@ -22,6 +22,9 @@ var playingDie = false;
 @onready var staticOutCon = $"../BackBufferCopy2";
 @onready var dieLmao = $"Die lmao";
 
+var playingWin = false;
+var nowPos = 0;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !Instance:
@@ -33,6 +36,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if playingWin:
+		playWin(delta);
+		return;
+	
 	animTimer += delta;
 	var frameChange = floor(animTimer / (1.0 / frameRate));
 	animTimer -= frameChange * (1.0 / frameRate);
@@ -76,7 +83,7 @@ func _process(delta):
 	
 	distortion.material.set_shader_parameter("mons", Vector2(75-fallAway, 166));
 	if playingDie:
-		distortion.material.set_shader_parameter("updateDistance", 200 + 500 * dieLmao.frame / 15);
+		#distortion.material.set_shader_parameter("updateDistance", 200 + 500 * dieLmao.frame / 15);
 		
 		if dieLmao.frame == 4:
 			Player.Instance.visible = false;
@@ -86,7 +93,7 @@ func _process(delta):
 			staticOut.material.set_shader_parameter("static", (dieLmao.frame - 8) / 6.0);
 			
 		if dieLmao.frame == 15:
-			get_tree().change_scene_to_packed(load("res://Reload.tscn"));
+			get_tree().change_scene_to_file("res://Reload.tscn");
 	
 func nyoom():
 	catchup = true;
@@ -94,3 +101,32 @@ func nyoom():
 	if fallAway < 75:
 		doomed = true;
 		#Game.Instance.dead();
+
+var fadingDie = 0;
+var amDie = false;
+
+func playWin(delta):
+	if Player.Instance.movingMons:
+		animTimer += delta;
+		var frameChange = floor(animTimer / (1.0 / frameRate));
+		animTimer -= frameChange * (1.0 / frameRate);
+		
+		frame = fmod((frame + frameChange), 5);
+		
+		position.x = lerp(Player.Instance.position.x - 181, nowPos, Player.Instance.moveTime);
+		distortionCon.position.x = CameraController.Instance.position.x;
+		staticOutCon.position.x = CameraController.Instance.position.x;
+		
+		distortion.material.set_shader_parameter("mons", Vector2(75-fallAway, 166));
+	
+	if amDie:
+		fadingDie += delta;
+		
+		if fadingDie > 2:
+			get_tree().change_scene_to_packed(load("res://Reload.tscn"));
+		elif fadingDie <= 2:
+			modulate = Color(1.0, 1.0, 1.0, 1.0 - (fadingDie - 1.0));
+			material = null;
+		elif fadingDie <= 1:
+			material.set_shader_parameter("fade", 1.0 - fadingDie);
+		

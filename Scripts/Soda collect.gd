@@ -13,5 +13,6 @@ func _process(delta):
 func _on_body_entered(body):
 	if body == Player.Instance:
 		Game.Instance.soda = true;
+		Player.Instance.collecting = true;
 		get_parent().queue_free();
 	pass # Replace with function body.

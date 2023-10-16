@@ -1,28 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfdww1m6x2pll"]
+[gd_scene load_steps=11 format=3]
 
-[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1_xvgvj"]
-[ext_resource type="Texture2D" uid="uid://nar0nv40ssac" path="res://Rooms/rough2/living3.png" id="2_b2yap"]
-[ext_resource type="Shader" path="res://Shaders/3D Pixels and pallete limiter.gdshader" id="3_bpudb"]
-[ext_resource type="PackedScene" uid="uid://7hb35im3mm5m" path="res://Battery.tscn" id="3_vnmxq"]
-[ext_resource type="Texture2D" uid="uid://482widgo0u6k" path="res://Sprites/pallete.png" id="4_tsry2"]
+[ext_resource type="Texture2D" uid="uid://eg3tmxmk74iu" path="res://Shaders/white.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://nar0nv40ssac" path="res://Rooms/rough2/living3.png" id="2"]
+[ext_resource type="Shader" path="res://Shaders/3D Pixels and pallete limiter.gdshader" id="3"]
+[ext_resource type="Texture2D" uid="uid://482widgo0u6k" path="res://Sprites/pallete.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://7hb35im3mm5m" path="res://Battery.tscn" id="5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhwbp"]
-shader = ExtResource("3_bpudb")
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource( "3" )
 shader_parameter/screenSize = Vector2(480, 270)
-shader_parameter/fixedColor = ExtResource("4_tsry2")
+shader_parameter/fixedColor = ExtResource( "4" )
+script = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hdpa"]
+[sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(32, 32)
+script = null
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_tpjcy"]
+[sub_resource type="SegmentShape2D" id="3"]
 a = Vector2(-16, -17)
 b = Vector2(16, -17)
+script = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0kqg"]
+[sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(32, 66)
+script = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb0lw"]
+[sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(32, 15)
+script = null
 
 [node name="Living Room" type="Node2D"]
 
@@ -33,7 +38,7 @@ offset_left = 12.0
 offset_top = -32.0
 offset_right = 2892.0
 offset_bottom = 32.0
-texture = ExtResource("1_xvgvj")
+texture = ExtResource( "1" )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 visible = false
@@ -42,7 +47,7 @@ offset_left = 12.0
 offset_top = -238.0
 offset_right = 2892.0
 offset_bottom = -32.0
-texture = ExtResource("1_xvgvj")
+texture = ExtResource( "1" )
 
 [node name="Rough" type="TextureRect" parent="."]
 visible = false
@@ -53,16 +58,16 @@ offset_top = -238.0
 offset_right = 2880.0
 offset_bottom = 32.0
 grow_vertical = 0
-texture = ExtResource("2_b2yap")
+texture = ExtResource( "2" )
 stretch_mode = 4
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_bhwbp")
+material = SubResource( "1" )
 offset_top = -238.0
 offset_right = 2880.0
 offset_bottom = 32.0
-texture = ExtResource("1_xvgvj")
+texture = ExtResource( "1" )
 
 [node name="Colliders" type="Node2D" parent="."]
 
@@ -75,14 +80,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block2" type="Node2D" parent="Colliders"]
 position = Vector2(561, -53)
@@ -93,13 +98,13 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block2/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block2"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block2/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block3" type="Node2D" parent="Colliders"]
 position = Vector2(784, -20)
@@ -109,13 +114,13 @@ scale = Vector2(3, 1)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block3/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block3"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block3/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block4" type="Node2D" parent="Colliders"]
 position = Vector2(1377, -19)
@@ -125,13 +130,13 @@ scale = Vector2(2, 1)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block4/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block4"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block4/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block5" type="Node2D" parent="Colliders"]
 position = Vector2(1553, -55)
@@ -141,13 +146,13 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block5/Whole"]
 position = Vector2(0, 17)
-shape = SubResource("RectangleShape2D_n0kqg")
+shape = SubResource( "4" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block5"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block5/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block6" type="Node2D" parent="Colliders"]
 position = Vector2(1776, -87)
@@ -157,13 +162,13 @@ scale = Vector2(3, 1)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block6/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block6"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block6/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block7" type="Node2D" parent="Colliders"]
 position = Vector2(2049, -19)
@@ -173,13 +178,13 @@ scale = Vector2(2, 1)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block7/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block7"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block7/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block8" type="Node2D" parent="Colliders"]
 position = Vector2(2257, -54)
@@ -189,13 +194,13 @@ scale = Vector2(3, 1)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block8/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block8"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block8/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block9" type="Node2D" parent="Colliders"]
 position = Vector2(2481, -87)
@@ -205,13 +210,13 @@ scale = Vector2(3, 1)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block9/Whole"]
-shape = SubResource("RectangleShape2D_4hdpa")
+shape = SubResource( "2" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block9"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block9/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block11" type="Node2D" parent="Colliders"]
 position = Vector2(2737, -20)
@@ -222,13 +227,13 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block11/Whole"]
 position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_jb0lw")
+shape = SubResource( "5" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block11"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block11/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
 [node name="Block12" type="Node2D" parent="Colliders"]
 position = Vector2(1153, -19)
@@ -239,16 +244,16 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block12/Whole"]
 position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_jb0lw")
+shape = SubResource( "5" )
 
 [node name="Top" type="StaticBody2D" parent="Colliders/Block12"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Block12/Top"]
-shape = SubResource("SegmentShape2D_tpjcy")
+shape = SubResource( "3" )
 
-[node name="Battery" parent="Colliders" instance=ExtResource("3_vnmxq")]
+[node name="Battery" parent="Colliders" instance=ExtResource( "5" )]
 position = Vector2(971, -22)
 
-[node name="Battery2" parent="Colliders" instance=ExtResource("3_vnmxq")]
+[node name="Battery2" parent="Colliders" instance=ExtResource( "5" )]
 position = Vector2(2769, -207)
